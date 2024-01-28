@@ -1,0 +1,15 @@
+-- sentinel.hcl --
+policy "foo" {
+  source = "foo.sentinel"
+
+  params = {
+    "name" = "Sample"
+  }
+}
+
+policy "empty" { }
+
+-- astOut.json --
+null
+-- diagOut.txt --
+ERROR: params attribute in a policy block is not valid in Sentinel v0.20.0 (Requires v0.21.0+).:sentinel.hcl:3,2->5,3

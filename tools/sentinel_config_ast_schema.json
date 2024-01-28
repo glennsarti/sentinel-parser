@@ -1,0 +1,196 @@
+[
+  {
+    "name": "Feature",
+    "hasList": true,
+    "properties": [
+      { "name": "Name", "type": "string" },
+      { "name": "NameRange", "type": "*position.SourceRange" },
+      { "name": "Value", "type": "*DynamicValue" },
+      { "name": "ValueRange", "type": "*position.SourceRange" },
+      { "name": "ValueType", "type": "string" }
+    ]
+  },
+  {
+    "name": "File",
+    "properties": [
+      { "name": "Globals", "type": "map[string]*Global" },
+      { "name": "Imports", "type": "map[string]Import" },
+      { "name": "Mocks", "type": "map[string]*Mock" },
+      { "name": "Params", "type": "map[string]*Parameter" },
+      { "name": "Policies", "type": "map[string]*Policy" },
+      { "name": "SentinelOptions", "type": "*SentinelOptions" },
+      { "name": "Test", "type": "*Test" }
+    ]
+  },
+  {
+    "name": "Global",
+    "hasPointerMap": true,
+    "hclBlockType": "global",
+    "properties": [
+      { "name": "GlobalRange", "type": "*position.SourceRange", "hclRange": true },
+      { "name": "Name", "type": "string", "hclName": true },
+      { "name": "NameRange", "type": "*position.SourceRange", "hclNameRange": true },
+      { "name": "Value", "type": "*DynamicValue" },
+      { "name": "ValueRange", "type": "*position.SourceRange" },
+      { "name": "ValueType", "type": "string" }
+    ]
+  },
+  {
+    "name": "Mock",
+    "hasPointerMap": true,
+    "hclBlockType": "mock",
+    "properties": [
+      { "name": "Data", "type": "map[string]*Parameter" },
+      { "name": "DataRange", "type": "*position.SourceRange" },
+      { "name": "MockRange", "type": "*position.SourceRange", "hclRange": true },
+      { "name": "Module", "type": "*MockModule" },
+      { "name": "Name", "type": "string", "hclName": true },
+      { "name": "NameRange", "type": "*position.SourceRange", "hclNameRange": true }
+    ]
+  },
+  {
+    "name": "MockModule",
+    "properties": [
+      { "name": "MockModuleRange", "type": "*position.SourceRange" },
+      { "name": "Source", "type": "string" },
+      { "name": "SourceRange", "type": "*position.SourceRange" }
+    ]
+  },
+  {
+    "name": "Parameter",
+    "hasPointerMap": true,
+    "hclBlockType": "param",
+    "properties": [
+      { "name": "Name", "type": "string", "hclName": true },
+      { "name": "NameRange", "type": "*position.SourceRange", "hclNameRange": true },
+      { "name": "ParameterRange", "type": "*position.SourceRange", "hclRange": true },
+      { "name": "Value", "type": "*DynamicValue" },
+      { "name": "ValueRange", "type": "*position.SourceRange" },
+      { "name": "ValueType", "type": "string" }
+    ]
+  },
+  {
+    "name": "Policy",
+    "hasPointerMap": true,
+    "hclBlockType": "policy",
+    "properties": [
+      { "name": "EnforcementLevel", "type": "string" },
+      { "name": "EnforcementLevelRange", "type": "*position.SourceRange" },
+      { "name": "Name", "type": "string", "hclName": true },
+      { "name": "NameRange", "type": "*position.SourceRange", "hclNameRange": true },
+      { "name": "Params", "type": "map[string]*Parameter" },
+      { "name": "ParamsRange", "type": "*position.SourceRange" },
+      { "name": "PolicyRange", "type": "*position.SourceRange", "hclRange": true },
+      { "name": "Source", "type": "string" },
+      { "name": "SourceRange", "type": "*position.SourceRange" }
+    ]
+  },
+  {
+    "name": "SentinelOptions",
+    "hclBlockType": "sentinel",
+    "properties": [
+      { "name": "Features", "type": "[]*Feature" },
+      { "name": "FeaturesRange", "type": "*position.SourceRange" },
+      { "name": "SentinelOptionsRange", "type": "*position.SourceRange", "hclRange": true }
+    ]
+  },
+  {
+    "name": "Test",
+    "hclBlockType": "test",
+    "properties": [
+      { "name": "Rules", "type": "[]*TestRule" },
+      { "name": "RulesRange", "type": "*position.SourceRange" },
+      { "name": "TestRange", "type": "*position.SourceRange", "hclRange": true }
+    ]
+  },
+  {
+    "name": "TestRule",
+    "properties": [
+      { "name": "Name", "type": "string" },
+      { "name": "NameRange", "type": "*position.SourceRange" },
+      { "name": "TestRuleRange", "type": "*position.SourceRange" },
+      { "name": "ValueRange", "type": "*position.SourceRange" },
+      { "name": "ValueType", "type": "string" }
+    ]
+  },
+  {
+    "name": "V1ModuleImport",
+    "importSchema": "v1",
+    "hclBlockType": "module",
+    "properties": [
+      { "name": "BlockRange", "type": "*position.SourceRange", "hclRange": true },
+      { "name": "Name", "type": "string", "hclName": true },
+      { "name": "NameRange", "type": "*position.SourceRange", "hclNameRange": true },
+      { "name": "Source", "type": "string" },
+      { "name": "SourceRange", "type": "*position.SourceRange" }
+    ]
+  },
+  {
+    "name": "V1PluginImport",
+    "importSchema": "v1",
+    "hclBlockType": "import",
+    "properties": [
+      { "name": "Args", "type": "[]string" },
+      { "name": "ArgsRange", "type": "*position.SourceRange" },
+      { "name": "BlockRange", "type": "*position.SourceRange", "hclRange": true },
+      { "name": "Config", "type": "map[string]*Parameter" },
+      { "name": "ConfigRange", "type": "*position.SourceRange" },
+      { "name": "Env", "type": "[]string" },
+      { "name": "EnvRange", "type": "*position.SourceRange" },
+      { "name": "Name", "type": "string", "hclName": true },
+      { "name": "NameRange", "type": "*position.SourceRange", "hclNameRange": true },
+      { "name": "Path", "type": "string" },
+      { "name": "PathRange", "type": "*position.SourceRange" }
+    ]
+  },
+  {
+    "name": "V2ModuleImport",
+    "importSchema": "v2",
+    "hclBlockType": "module import",
+    "properties": [
+      { "name": "BlockRange", "type": "*position.SourceRange", "hclRange": true },
+      { "name": "Kind", "type": "string" },
+      { "name": "KindRange", "type": "*position.SourceRange" },
+      { "name": "Name", "type": "string", "hclName": true },
+      { "name": "NameRange", "type": "*position.SourceRange", "hclNameRange": true },
+      { "name": "Source", "type": "string" },
+      { "name": "SourceRange", "type": "*position.SourceRange" }
+    ]
+  },
+  {
+    "name": "V2PluginImport",
+    "importSchema": "v2",
+    "hclBlockType": "plugin import",
+    "properties": [
+      { "name": "Args", "type": "[]string" },
+      { "name": "ArgsRange", "type": "*position.SourceRange" },
+      { "name": "BlockRange", "type": "*position.SourceRange", "hclRange": true },
+      { "name": "Config", "type": "map[string]*Parameter" },
+      { "name": "ConfigRange", "type": "*position.SourceRange" },
+      { "name": "Env", "type": "map[string]*Parameter" },
+      { "name": "EnvRange", "type": "*position.SourceRange" },
+      { "name": "Kind", "type": "string" },
+      { "name": "KindRange", "type": "*position.SourceRange" },
+      { "name": "Name", "type": "string", "hclName": true },
+      { "name": "NameRange", "type": "*position.SourceRange", "hclNameRange": true },
+      { "name": "Source", "type": "string" },
+      { "name": "SourceRange", "type": "*position.SourceRange" }
+    ]
+  },
+  {
+    "name": "V2StaticImport",
+    "importSchema": "v2",
+    "hclBlockType": "static import",
+    "properties": [
+      { "name": "BlockRange", "type": "*position.SourceRange", "hclRange": true },
+      { "name": "Format", "type": "string" },
+      { "name": "FormatRange", "type": "*position.SourceRange" },
+      { "name": "Kind", "type": "string" },
+      { "name": "KindRange", "type": "*position.SourceRange" },
+      { "name": "Name", "type": "string", "hclName": true },
+      { "name": "NameRange", "type": "*position.SourceRange", "hclNameRange": true },
+      { "name": "Source", "type": "string" },
+      { "name": "SourceRange", "type": "*position.SourceRange" }
+    ]
+  }
+]

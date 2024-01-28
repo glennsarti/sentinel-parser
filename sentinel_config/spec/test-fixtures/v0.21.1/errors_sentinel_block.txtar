@@ -1,0 +1,6 @@
+-- sentinel.hcl --
+sentinel {}
+-- astOut.json --
+null
+-- diagOut.txt --
+ERROR: sentinel block is not valid in Sentinel v0.21.1 (Requires v0.22.0+).:sentinel.hcl:0,0->0,8

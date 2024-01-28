@@ -1,0 +1,255 @@
+-- input.sentinel --
+# From language documentation
+import "time"
+import "math" as m
+-- tokens.txt --
+0:29:COMMENT:# From language documentation
+30:36:import:import
+37:43:STRING:"time"
+43:44:;:\n
+44:50:import:import
+51:57:STRING:"math"
+58:60:as:as
+61:62:IDENT:m
+62:63:;:\n
+63:63:EOF:
+-- astOut.txt --
+{
+  "_t": "File",
+  "_p": {
+    "doc": null,
+    "imports": [
+      {
+        "_t": "ImportDecl",
+        "_p": {
+          "alias": null,
+          "aspos": {
+            "end": {
+              "byte": -1,
+              "column": -1,
+              "line": -1
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": -1,
+              "column": -1,
+              "line": -1
+            }
+          },
+          "doc": {
+            "_t": "Comments",
+            "_p": {
+              "list": [
+                {
+                  "_t": "Comment",
+                  "_p": {
+                    "nodepos": {
+                      "end": {
+                        "byte": 29,
+                        "column": 29,
+                        "line": 0
+                      },
+                      "filename": "input.sentinel",
+                      "start": {
+                        "byte": 0,
+                        "column": 0,
+                        "line": 0
+                      }
+                    },
+                    "prefix": "#",
+                    "prefixpos": {
+                      "end": {
+                        "byte": 1,
+                        "column": 1,
+                        "line": 0
+                      },
+                      "filename": "input.sentinel",
+                      "start": {
+                        "byte": 0,
+                        "column": 0,
+                        "line": 0
+                      }
+                    },
+                    "text": "From language documentation",
+                    "textpos": {
+                      "end": {
+                        "byte": 29,
+                        "column": 29,
+                        "line": 0
+                      },
+                      "filename": "input.sentinel",
+                      "start": {
+                        "byte": 2,
+                        "column": 2,
+                        "line": 0
+                      }
+                    }
+                  }
+                }
+              ],
+              "nodepos": {
+                "end": {
+                  "byte": 29,
+                  "column": 29,
+                  "line": 0
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 0,
+                  "column": 0,
+                  "line": 0
+                }
+              }
+            }
+          },
+          "importpos": {
+            "end": {
+              "byte": 36,
+              "column": 6,
+              "line": 1
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 30,
+              "column": 0,
+              "line": 1
+            }
+          },
+          "name": {
+            "_t": "BasicLit",
+            "_p": {
+              "kind": "STRING",
+              "nodepos": {
+                "end": {
+                  "byte": 43,
+                  "column": 13,
+                  "line": 1
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 37,
+                  "column": 7,
+                  "line": 1
+                }
+              },
+              "value": "\"time\""
+            }
+          },
+          "nodepos": {
+            "end": {
+              "byte": 43,
+              "column": 13,
+              "line": 1
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 30,
+              "column": 0,
+              "line": 1
+            }
+          }
+        }
+      },
+      {
+        "_t": "ImportDecl",
+        "_p": {
+          "alias": {
+            "_t": "Ident",
+            "_p": {
+              "name": "m",
+              "nodepos": {
+                "end": {
+                  "byte": 62,
+                  "column": 18,
+                  "line": 2
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 61,
+                  "column": 17,
+                  "line": 2
+                }
+              }
+            }
+          },
+          "aspos": {
+            "end": {
+              "byte": 60,
+              "column": 16,
+              "line": 2
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 58,
+              "column": 14,
+              "line": 2
+            }
+          },
+          "doc": null,
+          "importpos": {
+            "end": {
+              "byte": 50,
+              "column": 6,
+              "line": 2
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 44,
+              "column": 0,
+              "line": 2
+            }
+          },
+          "name": {
+            "_t": "BasicLit",
+            "_p": {
+              "kind": "STRING",
+              "nodepos": {
+                "end": {
+                  "byte": 57,
+                  "column": 13,
+                  "line": 2
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 51,
+                  "column": 7,
+                  "line": 2
+                }
+              },
+              "value": "\"math\""
+            }
+          },
+          "nodepos": {
+            "end": {
+              "byte": 62,
+              "column": 18,
+              "line": 2
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 44,
+              "column": 0,
+              "line": 2
+            }
+          }
+        }
+      }
+    ],
+    "nodepos": {
+      "end": {
+        "byte": 62,
+        "column": 18,
+        "line": 2
+      },
+      "filename": "input.sentinel",
+      "start": {
+        "byte": 30,
+        "column": 0,
+        "line": 1
+      }
+    },
+    "params": [],
+    "statements": []
+  }
+}
+-- astError.txt --

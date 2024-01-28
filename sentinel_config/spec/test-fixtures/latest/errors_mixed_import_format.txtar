@@ -1,0 +1,16 @@
+-- sentinel.hcl --
+// Old style plugin import
+import "import1" {
+  path = "some_binary"
+
+  env = ["NAME=value"]
+}
+
+// Latest style imports
+import "module" "module1" {
+  source = "../something.sentinel"
+}
+-- astOut.json --
+null
+-- diagOut.txt --
+ERROR: All import blocks must have 2 labels (kind, name).:sentinel.hcl:1,17->1,18

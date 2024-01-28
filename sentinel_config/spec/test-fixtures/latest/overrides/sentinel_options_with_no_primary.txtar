@@ -1,0 +1,95 @@
+-- sentinel.hcl --
+-- sentinel_override.hcl --
+
+
+sentinel {
+  features = {
+    tomato = false
+  }
+}
+      
+-- astOut.json --
+{
+  "_t": "File",
+  "_p": {
+    "globals": {},
+    "imports": {},
+    "mocks": {},
+    "params": {},
+    "policies": {},
+    "sentineloptions": {
+      "_t": "SentinelOptions",
+      "_p": {
+        "features": [
+          {
+            "_t": "Feature",
+            "_p": {
+              "name": "tomato",
+              "namerange": {
+                "filename": "sentinel_override.hcl",
+                "start": {
+                  "line": 4,
+                  "column": 4,
+                  "byte": 32
+                },
+                "end": {
+                  "line": 4,
+                  "column": 10,
+                  "byte": 38
+                }
+              },
+              "value": {
+                "_t": "DynamicValue",
+                "_p": {
+                  "value": false
+                }
+              },
+              "valuerange": {
+                "filename": "sentinel_override.hcl",
+                "start": {
+                  "line": 4,
+                  "column": 13,
+                  "byte": 41
+                },
+                "end": {
+                  "line": 4,
+                  "column": 18,
+                  "byte": 46
+                }
+              },
+              "valuetype": "bool"
+            }
+          }
+        ],
+        "featuresrange": {
+          "filename": "sentinel_override.hcl",
+          "start": {
+            "line": 3,
+            "column": 2,
+            "byte": 15
+          },
+          "end": {
+            "line": 5,
+            "column": 3,
+            "byte": 50
+          }
+        },
+        "sentineloptionsrange": {
+          "filename": "sentinel_override.hcl",
+          "start": {
+            "line": 2,
+            "column": 0,
+            "byte": 2
+          },
+          "end": {
+            "line": 2,
+            "column": 8,
+            "byte": 10
+          }
+        }
+      }
+    },
+    "test": null
+  }
+}
+-- diagOut.txt --

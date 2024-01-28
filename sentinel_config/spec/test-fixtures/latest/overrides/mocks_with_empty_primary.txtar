@@ -1,0 +1,146 @@
+-- sentinel.hcl --
+mock "foo" {}
+-- sentinel_override.hcl --
+
+
+mock "foo" {
+  data = { number1 = 42 }
+
+  module {
+    source = "over.sentinel"
+  }
+}
+-- astOut.json --
+{
+  "_t": "File",
+  "_p": {
+    "globals": {},
+    "imports": {},
+    "mocks": {
+      "foo": {
+        "_t": "Mock",
+        "_p": {
+          "data": {
+            "number1": {
+              "_t": "Parameter",
+              "_p": {
+                "name": "number1",
+                "namerange": {
+                  "filename": "sentinel_override.hcl",
+                  "start": {
+                    "line": 3,
+                    "column": 11,
+                    "byte": 26
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 18,
+                    "byte": 33
+                  }
+                },
+                "parameterrange": null,
+                "value": {
+                  "_t": "DynamicValue",
+                  "_p": {
+                    "value": 42
+                  }
+                },
+                "valuerange": {
+                  "filename": "sentinel_override.hcl",
+                  "start": {
+                    "line": 3,
+                    "column": 21,
+                    "byte": 36
+                  },
+                  "end": {
+                    "line": 3,
+                    "column": 23,
+                    "byte": 38
+                  }
+                },
+                "valuetype": "number"
+              }
+            }
+          },
+          "datarange": {
+            "filename": "sentinel_override.hcl",
+            "start": {
+              "line": 3,
+              "column": 2,
+              "byte": 17
+            },
+            "end": {
+              "line": 3,
+              "column": 25,
+              "byte": 40
+            }
+          },
+          "mockrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 0,
+              "column": 0,
+              "byte": 0
+            },
+            "end": {
+              "line": 0,
+              "column": 10,
+              "byte": 10
+            }
+          },
+          "module": {
+            "_t": "MockModule",
+            "_p": {
+              "mockmodulerange": {
+                "filename": "sentinel_override.hcl",
+                "start": {
+                  "line": 5,
+                  "column": 2,
+                  "byte": 44
+                },
+                "end": {
+                  "line": 5,
+                  "column": 8,
+                  "byte": 50
+                }
+              },
+              "source": "over.sentinel",
+              "sourcerange": {
+                "filename": "sentinel_override.hcl",
+                "start": {
+                  "line": 6,
+                  "column": 4,
+                  "byte": 57
+                },
+                "end": {
+                  "line": 6,
+                  "column": 28,
+                  "byte": 81
+                }
+              }
+            }
+          },
+          "name": "foo",
+          "namerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 0,
+              "column": 5,
+              "byte": 5
+            },
+            "end": {
+              "line": 0,
+              "column": 10,
+              "byte": 10
+            }
+          }
+        }
+      }
+    },
+    "params": {},
+    "policies": {},
+    "sentineloptions": null,
+    "test": null
+  }
+}
+-- diagOut.txt --

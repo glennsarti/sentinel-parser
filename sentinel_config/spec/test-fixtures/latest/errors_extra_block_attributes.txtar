@@ -1,0 +1,120 @@
+-- sentinel.hcl --
+// Policies
+policy "pol1" {
+  extra_attribute = true
+
+  extra-block {
+  }
+}
+
+mock "static1" {
+  extra_attribute = true
+
+  extra-block {
+  }
+}
+
+global "string1" {
+  extra_attribute = true
+
+  extra-block {
+  }
+}
+
+param "string1" {
+  extra_attribute = true
+
+  extra-block {
+  }
+}
+
+// Sentinel Options
+sentinel {
+  extra_attribute = true
+
+  extra-block {
+  }
+}
+
+// Tests Options
+test {
+  extra_attribute = true
+
+  extra-block {
+  }
+}
+
+// Import
+import "module" "module1" {
+  extra_attribute = true
+
+  extra-block {
+  }
+}
+
+import "plugin" "plugin1" {
+  extra_attribute = true
+
+  extra-block {
+  }
+}
+
+import "static" "static1" {
+  extra_attribute = true
+
+  extra-block {
+  }
+}
+
+module "module2" {
+ extra_attribute = true
+
+  extra-block {
+  }
+}
+
+// Extra Lables
+policy "pol2" "extra1" "extra2" { }
+mock "mock2" "extra1" "extra2" { }
+global "global2" "extra1" "extra2" { }
+param "param2" "extra1" "extra2" { }
+sentinel "param" {}
+test "param" {}
+import "module" "module2" "extra1" "extra2" { }
+module "module3" "extra1" "extra2" { }
+
+// Unknown block
+extra-block {
+}
+-- astOut.json --
+null
+-- diagOut.txt --
+ERROR: An argument named "extra_attribute" is not expected here.:sentinel.hcl:16,2->16,17
+ERROR: An argument named "extra_attribute" is not expected here.:sentinel.hcl:2,2->2,17
+ERROR: An argument named "extra_attribute" is not expected here.:sentinel.hcl:23,2->23,17
+ERROR: An argument named "extra_attribute" is not expected here.:sentinel.hcl:31,2->31,17
+ERROR: An argument named "extra_attribute" is not expected here.:sentinel.hcl:39,2->39,17
+ERROR: An argument named "extra_attribute" is not expected here.:sentinel.hcl:47,2->47,17
+ERROR: An argument named "extra_attribute" is not expected here.:sentinel.hcl:54,2->54,17
+ERROR: An argument named "extra_attribute" is not expected here.:sentinel.hcl:61,2->61,17
+ERROR: An argument named "extra_attribute" is not expected here.:sentinel.hcl:68,1->68,16
+ERROR: An argument named "extra_attribute" is not expected here.:sentinel.hcl:9,2->9,17
+ERROR: Blocks of type "extra-block" are not expected here.:sentinel.hcl:11,2->11,13
+ERROR: Blocks of type "extra-block" are not expected here.:sentinel.hcl:18,2->18,13
+ERROR: Blocks of type "extra-block" are not expected here.:sentinel.hcl:25,2->25,13
+ERROR: Blocks of type "extra-block" are not expected here.:sentinel.hcl:33,2->33,13
+ERROR: Blocks of type "extra-block" are not expected here.:sentinel.hcl:4,2->4,13
+ERROR: Blocks of type "extra-block" are not expected here.:sentinel.hcl:41,2->41,13
+ERROR: Blocks of type "extra-block" are not expected here.:sentinel.hcl:49,2->49,13
+ERROR: Blocks of type "extra-block" are not expected here.:sentinel.hcl:56,2->56,13
+ERROR: Blocks of type "extra-block" are not expected here.:sentinel.hcl:63,2->63,13
+ERROR: Blocks of type "extra-block" are not expected here.:sentinel.hcl:70,2->70,13
+ERROR: Blocks of type "extra-block" are not expected here.:sentinel.hcl:85,0->85,11
+ERROR: No labels are expected for sentinel blocks.:sentinel.hcl:79,9->79,16
+ERROR: No labels are expected for test blocks.:sentinel.hcl:80,5->80,12
+ERROR: Only 1 labels (name) are expected for global blocks.:sentinel.hcl:77,17->77,25
+ERROR: Only 1 labels (name) are expected for mock blocks.:sentinel.hcl:76,13->76,21
+ERROR: Only 1 labels (name) are expected for module blocks.:sentinel.hcl:82,17->82,25
+ERROR: Only 1 labels (name) are expected for param blocks.:sentinel.hcl:78,15->78,23
+ERROR: Only 1 labels (name) are expected for policy blocks.:sentinel.hcl:75,14->75,22
+ERROR: Only 2 labels (kind, name) are expected for import blocks.:sentinel.hcl:81,26->81,34

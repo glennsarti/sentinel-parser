@@ -1,0 +1,24 @@
+-- sentinel.hcl --
+-- sentinel_override.hcl --
+
+
+import "static" "module1" {
+  source = "override.sentinel"
+  format = "yaml"
+}
+  
+-- astOut.json --
+{
+  "_t": "File",
+  "_p": {
+    "globals": {},
+    "imports": {},
+    "mocks": {},
+    "params": {},
+    "policies": {},
+    "sentineloptions": null,
+    "test": null
+  }
+}
+-- diagOut.txt --
+ERROR: There is no static import named "module1". An override file can only override a static import that was already declared in a primary configuration file.:sentinel_override.hcl:2,0->2,25

@@ -1,0 +1,100 @@
+-- sentinel.hcl --
+-- sentinel_override.hcl --
+
+
+test {
+  rules = { main = "true" }
+}
+      
+-- astOut.json --
+{
+  "_t": "File",
+  "_p": {
+    "globals": {},
+    "imports": {},
+    "mocks": {},
+    "params": {},
+    "policies": {},
+    "sentineloptions": null,
+    "test": {
+      "_t": "Test",
+      "_p": {
+        "rules": [
+          {
+            "_t": "TestRule",
+            "_p": {
+              "name": "main",
+              "namerange": {
+                "filename": "sentinel_override.hcl",
+                "start": {
+                  "line": 3,
+                  "column": 12,
+                  "byte": 21
+                },
+                "end": {
+                  "line": 3,
+                  "column": 16,
+                  "byte": 25
+                }
+              },
+              "testrulerange": {
+                "filename": "sentinel_override.hcl",
+                "start": {
+                  "line": 3,
+                  "column": 12,
+                  "byte": 21
+                },
+                "end": {
+                  "line": 3,
+                  "column": 25,
+                  "byte": 34
+                }
+              },
+              "valuerange": {
+                "filename": "sentinel_override.hcl",
+                "start": {
+                  "line": 3,
+                  "column": 19,
+                  "byte": 28
+                },
+                "end": {
+                  "line": 3,
+                  "column": 25,
+                  "byte": 34
+                }
+              },
+              "valuetype": "string"
+            }
+          }
+        ],
+        "rulesrange": {
+          "filename": "sentinel_override.hcl",
+          "start": {
+            "line": 3,
+            "column": 2,
+            "byte": 11
+          },
+          "end": {
+            "line": 3,
+            "column": 27,
+            "byte": 36
+          }
+        },
+        "testrange": {
+          "filename": "sentinel_override.hcl",
+          "start": {
+            "line": 2,
+            "column": 0,
+            "byte": 2
+          },
+          "end": {
+            "line": 2,
+            "column": 4,
+            "byte": 6
+          }
+        }
+      }
+    }
+  }
+}
+-- diagOut.txt --

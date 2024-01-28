@@ -1,0 +1,21 @@
+-- sentinel.hcl --
+import "dupe" {}
+import "dupe" {}
+import "dupe" {}
+
+module "dupe" {}
+module "dupe" {}
+module "dupe" {}
+-- astOut.json --
+null
+-- diagOut.txt --
+ERROR: import block with the name of "dupe" has already been defined.:sentinel.hcl:1,7->1,13
+  RELATED: First block definition with name "dupe".:sentinel.hcl:0,7->0,13
+ERROR: import block with the name of "dupe" has already been defined.:sentinel.hcl:2,7->2,13
+  RELATED: First block definition with name "dupe".:sentinel.hcl:0,7->0,13
+ERROR: module block with the name of "dupe" has already been defined.:sentinel.hcl:4,7->4,13
+  RELATED: First block definition with name "dupe".:sentinel.hcl:0,7->0,13
+ERROR: module block with the name of "dupe" has already been defined.:sentinel.hcl:5,7->5,13
+  RELATED: First block definition with name "dupe".:sentinel.hcl:0,7->0,13
+ERROR: module block with the name of "dupe" has already been defined.:sentinel.hcl:6,7->6,13
+  RELATED: First block definition with name "dupe".:sentinel.hcl:0,7->0,13

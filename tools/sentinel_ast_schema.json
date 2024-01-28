@@ -1,0 +1,352 @@
+[
+  {
+    "name": "AssignStatement",
+    "isStatement": true,
+    "properties": [
+      { "name": "AssignOp", "type": "token.TokenType" },
+      { "name": "AssignOpPos", "type": "position.SourceRange" },
+      { "name": "LhsExpr", "type": "Expression" },
+      { "name": "NodePos", "type": "position.SourceRange" },
+      { "name": "RhsExpr", "type": "Expression" }
+    ]
+  },
+  {
+    "name": "BadExpression",
+    "isExpression": true,
+    "properties": [
+      { "name": "NodePos", "type": "position.SourceRange" }
+    ]
+  },
+  {
+    "name": "BadStatement",
+    "isStatement": true,
+    "properties": [
+      { "name": "NodePos", "type": "position.SourceRange" }
+    ]
+  },
+  {
+    "name": "BasicLit",
+    "isExpression": true,
+    "properties": [
+      { "name": "Kind", "type": "token.TokenType" },
+      { "name": "NodePos", "type": "position.SourceRange" },
+      { "name": "Value", "type": "string" }
+    ]
+  },
+  {
+    "name": "BinaryExpression",
+    "isExpression": true,
+    "properties": [
+      { "name": "LeftExpr", "type": "Expression" },
+      { "name": "NodePos", "type": "position.SourceRange" },
+      { "name": "Op", "type": "token.TokenType" },
+      { "name": "OpPos", "type": "position.SourceRange" },
+      { "name": "RightExpr", "type": "Expression" }
+    ]
+  },
+  {
+    "name": "BlockStatement",
+    "isStatement": true,
+    "properties": [
+      { "name": "LeftBrace", "type": "position.SourceRange" },
+      { "name": "NodePos", "type": "position.SourceRange" },
+      { "name": "RightBrace", "type": "position.SourceRange" },
+      { "name": "Statments", "type": "[]Statement" }
+    ]
+  },
+  {
+    "name": "BranchStatement",
+    "isStatement": true,
+    "properties": [
+      { "name": "Kind", "type": "token.TokenType" },
+      { "name": "NodePos", "type": "position.SourceRange" }
+    ]
+  },
+  {
+    "name": "CallExpression",
+    "isExpression": true,
+    "properties": [
+      { "name": "Args", "type": "[]Expression" },
+      { "name": "Callee", "type": "Expression" },
+      { "name": "LeftParen", "type": "position.SourceRange" },
+      { "name": "NodePos", "type": "position.SourceRange" },
+      { "name": "RightParen", "type": "position.SourceRange" }
+    ]
+  },
+  {
+    "name": "CaseWhenClause",
+    "isStatement": true,
+    "properties": [
+      { "name": "ColonPos", "type": "position.SourceRange" },
+      { "name": "Conditions", "type": "[]Expression" },
+      { "name": "NodePos", "type": "position.SourceRange" },
+      { "name": "Statements", "type": "[]Statement" },
+      { "name": "TokenKind", "type": "token.TokenType" },
+      { "name": "TokenPos", "type": "position.SourceRange" }
+    ]
+  },
+  {
+    "name": "CaseStatement",
+    "isStatement": true,
+    "properties": [
+      { "name": "CasePos", "type": "position.SourceRange" },
+      { "name": "Clauses", "type": "*BlockStatement" },
+      { "name": "NodePos", "type": "position.SourceRange" },
+      { "name": "Value", "type": "Expression" }
+    ]
+  },
+  {
+    "name": "Comment",
+    "properties": [
+      { "name": "NodePos", "type": "position.SourceRange" },
+      { "name": "Prefix", "type": "string", "description": "The #, // or /* prefix" },
+      { "name": "PrefixPos", "type": "position.SourceRange" },
+      { "name": "Text", "type": "string", "description": " Excludes trailing line feeds and trailing '*/'" },
+      { "name": "TextPos", "type": "position.SourceRange" }
+    ]
+  },
+  {
+    "name": "Comments",
+    "properties": [
+      { "name": "List", "type": "[]*Comment" },
+      { "name": "NodePos", "type": "position.SourceRange" }
+    ]
+  },
+  {
+    "name": "EmptyStatement",
+    "isStatement": true,
+    "properties": [
+      { "name": "Implied", "type": "bool" },
+      { "name": "NodePos", "type": "position.SourceRange" }
+    ]
+  },
+  {
+    "name": "ExpressionStatement",
+    "isStatement": true,
+    "properties": [
+      { "name": "Expr", "type": "Expression" },
+      { "name": "NodePos", "type": "position.SourceRange" }
+    ]
+  },
+  {
+    "name": "FieldList",
+    "properties": [
+      { "name": "Fields", "type": "[]*Ident" },
+      { "name": "LeftParen", "type": "position.SourceRange" },
+      { "name": "NodePos", "type": "position.SourceRange" },
+      { "name": "RightParen", "type": "position.SourceRange" }
+    ]
+  },
+  {
+    "name": "File",
+    "description": "A Sentinel File",
+    "properties": [
+      { "name": "Doc", "type": "*Comments" },
+      { "name": "Imports", "type": "[]*ImportDecl" },
+      { "name": "NodePos", "type": "position.SourceRange" },
+      { "name": "Params", "type": "[]*ParamDecl" },
+      { "name": "Statements", "type": "[]Statement" }
+    ]
+  },
+  {
+    "name": "FuncDecl",
+    "isStatement": true,
+    "properties": [
+      { "name": "Body", "type": "*BlockStatement" },
+      { "name": "Doc", "type": "*Comments" },
+      { "name": "FuncPos", "type": "position.SourceRange" },
+      { "name": "Name", "type": "*Ident" },
+      { "name": "NodePos", "type": "position.SourceRange" },
+      { "name": "Params", "type": "*FieldList" }
+    ]
+  },
+  {
+    "name": "FuncLit",
+    "isExpression": true,
+    "properties": [
+      { "name": "Body", "type": "*BlockStatement" },
+      { "name": "FuncPos", "type": "position.SourceRange" },
+      { "name": "NodePos", "type": "position.SourceRange" },
+      { "name": "Params", "type": "*FieldList" }
+    ]
+  },
+  {
+    "name": "Ident",
+    "isExpression": true,
+    "properties": [
+      { "name": "Name", "type": "string" },
+      { "name": "NodePos", "type": "position.SourceRange" }
+    ]
+  },
+  {
+    "name": "IfStatement",
+    "isStatement": true,
+    "properties": [
+      { "name": "Condition", "type": "Expression" },
+      { "name": "ElsePos", "type": "position.SourceRange" },
+      { "name": "FalseBlock", "type": "Statement" },
+      { "name": "IfPos", "type": "position.SourceRange" },
+      { "name": "NodePos", "type": "position.SourceRange" },
+      { "name": "TrueBlock", "type": "*BlockStatement" }
+    ]
+  },
+  {
+    "name": "ImportDecl",
+    "properties": [
+      { "name": "Alias", "type": "*Ident" },
+      { "name": "AsPos", "type": "position.SourceRange" },
+      { "name": "Doc", "type": "*Comments" },
+      { "name": "ImportPos", "type": "position.SourceRange" },
+      { "name": "Name", "type": "*BasicLit" },
+      { "name": "NodePos", "type": "position.SourceRange" }
+    ]
+  },
+  {
+    "name": "IndexExpression",
+    "isExpression": true,
+    "properties": [
+      { "name": "Index", "type": "Expression" },
+      { "name": "LeftBrack", "type": "position.SourceRange" },
+      { "name": "NodePos", "type": "position.SourceRange" },
+      { "name": "RightBrack", "type": "position.SourceRange" },
+      { "name": "Value", "type": "Expression" }
+    ]
+  },
+  {
+    "name": "ForStatement",
+    "isStatement": true,
+    "properties": [
+      { "name": "AsPos", "type": "position.SourceRange" },
+      { "name": "Block", "type": "*BlockStatement" },
+      { "name": "ForPos", "type": "position.SourceRange" },
+      { "name": "Iterable", "type": "Expression" },
+      { "name": "Iterator1", "type": "*Ident" },
+      { "name": "Iterator2", "type": "*Ident" },
+      { "name": "NodePos", "type": "position.SourceRange" }
+    ]
+  },
+  {
+    "name": "GroupExpression",
+    "isExpression": true,
+    "properties": [
+      { "name": "LeftParen", "type": "position.SourceRange" },
+      { "name": "NodePos", "type": "position.SourceRange" },
+      { "name": "RightParen", "type": "position.SourceRange" },
+      { "name": "Value", "type": "Expression" }
+    ]
+  },
+  {
+    "name": "KeyedElementExpression",
+    "isExpression": true,
+    "properties": [
+      { "name": "ColonPos", "type": "position.SourceRange" },
+      { "name": "Key", "type": "Expression" },
+      { "name": "NodePos", "type": "position.SourceRange" },
+      { "name": "Value", "type": "Expression" }
+    ]
+  },
+  {
+    "name": "ListLit",
+    "isExpression": true,
+    "properties": [
+      { "name": "Items", "type": "[]Expression" },
+      { "name": "LeftBrack", "type": "position.SourceRange" },
+      { "name": "NodePos", "type": "position.SourceRange" },
+      { "name": "RightBrack", "type": "position.SourceRange" }
+    ]
+  },
+  {
+    "name": "MapLit",
+    "isExpression": true,
+    "properties": [
+      { "name": "Elements", "type": "[]Expression" },
+      { "name": "LeftBrace", "type": "position.SourceRange" },
+      { "name": "NodePos", "type": "position.SourceRange" },
+      { "name": "RightBrace", "type": "position.SourceRange" }
+    ]
+  },
+  {
+    "name": "ParamDecl",
+    "properties": [
+      { "name": "Default", "type": "Expression" },
+      { "name": "DefaultPos", "type": "position.SourceRange" },
+      { "name": "Doc", "type": "*Comments" },
+      { "name": "Name", "type": "*Ident" },
+      { "name": "NodePos", "type": "position.SourceRange" }
+    ]
+  },
+  {
+    "name": "QuantExpression",
+    "isExpression": true,
+    "properties": [
+      { "name": "AsPos", "type": "position.SourceRange" },
+      { "name": "CommaPos", "type": "*position.SourceRange" },
+      { "name": "LeftBrace", "type": "position.SourceRange" },
+      { "name": "Name1", "type": "*Ident" },
+      { "name": "Name2", "type": "*Ident" },
+      { "name": "NodePos", "type": "position.SourceRange" },
+      { "name": "Op", "type": "token.TokenType" },
+      { "name": "OpPos", "type": "position.SourceRange" },
+      { "name": "Quantifier", "type": "Expression" },
+      { "name": "RightBrace", "type": "position.SourceRange" },
+      { "name": "Value", "type": "Expression" }
+    ]
+  },
+  {
+    "name": "ReturnStatement",
+    "isStatement": true,
+    "properties": [
+      { "name": "NodePos", "type": "position.SourceRange" },
+      { "name": "Result", "type": "Expression" },
+      { "name": "ReturnPos", "type": "position.SourceRange" }
+    ]
+  },
+  {
+    "name": "RuleExpression",
+    "isExpression": true,
+    "properties": [
+      { "name": "Doc", "type": "*Comments" },
+      { "name": "LeftBracePos", "type": "position.SourceRange" },
+      { "name": "NodePos", "type": "position.SourceRange" },
+      { "name": "RightBracePos", "type": "position.SourceRange" },
+      { "name": "RuleTokenPos", "type": "position.SourceRange" },
+      { "name": "Value", "type": "Expression" },
+      { "name": "When", "type": "Expression" },
+      { "name": "WhenTokenPos", "type": "*position.SourceRange" }
+    ]
+  },
+  {
+    "name": "SelectorExpression",
+    "description": "<Value>.<Selector>",
+    "isExpression": true,
+    "properties": [
+      { "name": "NodePos", "type": "position.SourceRange" },
+      { "name": "Selector", "type": "*Ident" },
+      { "name": "Value", "type": "Expression" }
+    ]
+  },
+  {
+    "name": "SliceExpression",
+    "description": "<Expression>[<Low>:<High>]",
+    "isExpression": true,
+    "properties": [
+      { "name": "Colon", "type": "position.SourceRange" },
+      { "name": "HighExpr", "type": "Expression" },
+      { "name": "LeftBrack", "type": "position.SourceRange" },
+      { "name": "LowExpr", "type": "Expression" },
+      { "name": "NodePos", "type": "position.SourceRange" },
+      { "name": "RightBrack", "type": "position.SourceRange" },
+      { "name": "Value", "type": "Expression" }
+    ]
+  },
+  {
+    "name": "UnaryExpression",
+    "isExpression": true,
+    "properties": [
+      { "name": "NodePos", "type": "position.SourceRange" },
+      { "name": "Op", "type": "token.TokenType" },
+      { "name": "OpPos", "type": "position.SourceRange" },
+      { "name": "RhsExpr", "type": "Expression" }
+    ]
+  }
+]

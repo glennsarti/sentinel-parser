@@ -1,0 +1,184 @@
+-- input.sentinel --
+# func <name>(...) was added in v0.20.0
+func foo() { return false }
+-- tokens.txt --
+0:39:COMMENT:# func <name>(...) was added in v0.20.0
+40:44:func:func
+45:48:IDENT:foo
+48:49:(:(
+49:50:):)
+51:52:{:{
+53:59:return:return
+60:65:IDENT:false
+66:67:}:}
+67:68:;:\n
+68:68:EOF:
+-- astOut.txt --
+{
+  "_t": "File",
+  "_p": {
+    "doc": null,
+    "imports": [],
+    "nodepos": {
+      "end": {
+        "byte": 67,
+        "column": 27,
+        "line": 1
+      },
+      "filename": "input.sentinel",
+      "start": {
+        "byte": 40,
+        "column": 0,
+        "line": 1
+      }
+    },
+    "params": [],
+    "statements": [
+      {
+        "_t": "ExpressionStatement",
+        "_p": {
+          "expr": {
+            "_t": "BadExpression",
+            "_p": {
+              "nodepos": {
+                "end": {
+                  "byte": 49,
+                  "column": 9,
+                  "line": 1
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 40,
+                  "column": 0,
+                  "line": 1
+                }
+              }
+            }
+          },
+          "nodepos": {
+            "end": {
+              "byte": 49,
+              "column": 9,
+              "line": 1
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 40,
+              "column": 0,
+              "line": 1
+            }
+          }
+        }
+      },
+      {
+        "_t": "BadStatement",
+        "_p": {
+          "nodepos": {
+            "end": {
+              "byte": 52,
+              "column": 12,
+              "line": 1
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 49,
+              "column": 9,
+              "line": 1
+            }
+          }
+        }
+      },
+      {
+        "_t": "ReturnStatement",
+        "_p": {
+          "nodepos": {
+            "end": {
+              "byte": 65,
+              "column": 25,
+              "line": 1
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 53,
+              "column": 13,
+              "line": 1
+            }
+          },
+          "result": {
+            "_t": "Ident",
+            "_p": {
+              "name": "false",
+              "nodepos": {
+                "end": {
+                  "byte": 65,
+                  "column": 25,
+                  "line": 1
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 60,
+                  "column": 20,
+                  "line": 1
+                }
+              }
+            }
+          },
+          "returnpos": {
+            "end": {
+              "byte": 59,
+              "column": 19,
+              "line": 1
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 53,
+              "column": 13,
+              "line": 1
+            }
+          }
+        }
+      },
+      {
+        "_t": "ExpressionStatement",
+        "_p": {
+          "expr": {
+            "_t": "BadExpression",
+            "_p": {
+              "nodepos": {
+                "end": {
+                  "byte": 67,
+                  "column": 27,
+                  "line": 1
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 66,
+                  "column": 26,
+                  "line": 1
+                }
+              }
+            }
+          },
+          "nodepos": {
+            "end": {
+              "byte": 67,
+              "column": 27,
+              "line": 1
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 66,
+              "column": 26,
+              "line": 1
+            }
+          }
+        }
+      }
+    ]
+  }
+}
+-- astError.txt --
+ERROR: Expected '(', but found 'IDENT':1,5->1,8
+ERROR: Expected ';', found '{':1,11->1,12
+ERROR: No unary parser of ')':1,9->1,10
+ERROR: No unary parser of '}':1,26->1,27

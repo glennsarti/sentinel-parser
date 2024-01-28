@@ -1,0 +1,22 @@
+-- sentinel.hcl --
+-- sentinel_override.hcl --
+
+param "foo" {
+  value = "string"
+}
+		  
+-- astOut.json --
+{
+  "_t": "File",
+  "_p": {
+    "globals": {},
+    "imports": {},
+    "mocks": {},
+    "params": {},
+    "policies": {},
+    "sentineloptions": null,
+    "test": null
+  }
+}
+-- diagOut.txt --
+ERROR: There is no param named "foo". An override file can only override a param that was already declared in a primary configuration file.:sentinel_override.hcl:1,0->1,11

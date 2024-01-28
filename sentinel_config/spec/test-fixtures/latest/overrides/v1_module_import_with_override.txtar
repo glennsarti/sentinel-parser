@@ -1,0 +1,74 @@
+-- sentinel.hcl --
+
+module "module1" {
+  source = "primary.sentinel"
+}
+  
+-- sentinel_override.hcl --
+
+
+module "module1" {
+  source = "override.sentinel"
+}
+  
+-- astOut.json --
+{
+  "_t": "File",
+  "_p": {
+    "globals": {},
+    "imports": {
+      "module1": {
+        "_t": "V1ModuleImport",
+        "_p": {
+          "blockrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 1,
+              "column": 0,
+              "byte": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 16,
+              "byte": 17
+            }
+          },
+          "name": "module1",
+          "namerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 1,
+              "column": 7,
+              "byte": 8
+            },
+            "end": {
+              "line": 1,
+              "column": 16,
+              "byte": 17
+            }
+          },
+          "source": "override.sentinel",
+          "sourcerange": {
+            "filename": "sentinel_override.hcl",
+            "start": {
+              "line": 3,
+              "column": 2,
+              "byte": 23
+            },
+            "end": {
+              "line": 3,
+              "column": 30,
+              "byte": 51
+            }
+          }
+        }
+      }
+    },
+    "mocks": {},
+    "params": {},
+    "policies": {},
+    "sentineloptions": null,
+    "test": null
+  }
+}
+-- diagOut.txt --

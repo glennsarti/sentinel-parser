@@ -1,0 +1,13 @@
+-- sentinel.hcl --
+module "modulev1" {}
+
+import "module" "modulev2" { }
+
+import "plugin" "pluginv2" { }
+
+// Should not mix v1 v2 schema
+-- astOut.json --
+null
+-- diagOut.txt --
+ERROR: Cannot use different import schemas in the same configuration:sentinel.hcl:2,0->2,26
+ERROR: Cannot use different import schemas in the same configuration:sentinel.hcl:4,0->4,26

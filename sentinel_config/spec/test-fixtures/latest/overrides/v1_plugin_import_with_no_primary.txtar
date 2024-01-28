@@ -1,0 +1,28 @@
+-- sentinel.hcl --
+-- sentinel_override.hcl --
+
+
+import "module1" {
+  path = "override.binary"
+  args = ["-override"]
+  env = ["FOO=bar"]
+  config = {
+    number = 42
+  }
+}
+  
+-- astOut.json --
+{
+  "_t": "File",
+  "_p": {
+    "globals": {},
+    "imports": {},
+    "mocks": {},
+    "params": {},
+    "policies": {},
+    "sentineloptions": null,
+    "test": null
+  }
+}
+-- diagOut.txt --
+ERROR: There is no import named "module1". An override file can only override a import that was already declared in a primary configuration file.:sentinel_override.hcl:2,0->2,16
