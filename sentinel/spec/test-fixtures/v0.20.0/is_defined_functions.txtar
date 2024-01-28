@@ -1,0 +1,288 @@
+-- input.sentinel --
+# "is defined" was added in v0.21.0
+value1 = "" is defined
+value2 = "" is not defined
+-- tokens.txt --
+0:35:COMMENT:# "is defined" was added in v0.21.0
+36:42:IDENT:value1
+43:44:=:=
+45:47:STRING:""
+48:50:is:is
+51:58:IDENT:defined
+58:59:;:\n
+59:65:IDENT:value2
+66:67:=:=
+68:70:STRING:""
+71:77:is not:is not
+78:85:IDENT:defined
+85:86:;:\n
+86:86:EOF:
+-- astOut.txt --
+{
+  "_t": "File",
+  "_p": {
+    "doc": null,
+    "imports": [],
+    "nodepos": {
+      "end": {
+        "byte": 85,
+        "column": 26,
+        "line": 2
+      },
+      "filename": "input.sentinel",
+      "start": {
+        "byte": 36,
+        "column": 0,
+        "line": 1
+      }
+    },
+    "params": [],
+    "statements": [
+      {
+        "_t": "AssignStatement",
+        "_p": {
+          "assignop": "=",
+          "assignoppos": {
+            "end": {
+              "byte": 44,
+              "column": 8,
+              "line": 1
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 43,
+              "column": 7,
+              "line": 1
+            }
+          },
+          "lhsexpr": {
+            "_t": "Ident",
+            "_p": {
+              "name": "value1",
+              "nodepos": {
+                "end": {
+                  "byte": 42,
+                  "column": 6,
+                  "line": 1
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 36,
+                  "column": 0,
+                  "line": 1
+                }
+              }
+            }
+          },
+          "nodepos": {
+            "end": {
+              "byte": 58,
+              "column": 22,
+              "line": 1
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 36,
+              "column": 0,
+              "line": 1
+            }
+          },
+          "rhsexpr": {
+            "_t": "BinaryExpression",
+            "_p": {
+              "leftexpr": {
+                "_t": "BasicLit",
+                "_p": {
+                  "kind": "STRING",
+                  "nodepos": {
+                    "end": {
+                      "byte": 47,
+                      "column": 11,
+                      "line": 1
+                    },
+                    "filename": "input.sentinel",
+                    "start": {
+                      "byte": 45,
+                      "column": 9,
+                      "line": 1
+                    }
+                  },
+                  "value": "\"\""
+                }
+              },
+              "nodepos": {
+                "end": {
+                  "byte": 58,
+                  "column": 22,
+                  "line": 1
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 45,
+                  "column": 9,
+                  "line": 1
+                }
+              },
+              "op": "is",
+              "oppos": {
+                "end": {
+                  "byte": 50,
+                  "column": 14,
+                  "line": 1
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 48,
+                  "column": 12,
+                  "line": 1
+                }
+              },
+              "rightexpr": {
+                "_t": "Ident",
+                "_p": {
+                  "name": "defined",
+                  "nodepos": {
+                    "end": {
+                      "byte": 58,
+                      "column": 22,
+                      "line": 1
+                    },
+                    "filename": "input.sentinel",
+                    "start": {
+                      "byte": 51,
+                      "column": 15,
+                      "line": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "_t": "AssignStatement",
+        "_p": {
+          "assignop": "=",
+          "assignoppos": {
+            "end": {
+              "byte": 67,
+              "column": 8,
+              "line": 2
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 66,
+              "column": 7,
+              "line": 2
+            }
+          },
+          "lhsexpr": {
+            "_t": "Ident",
+            "_p": {
+              "name": "value2",
+              "nodepos": {
+                "end": {
+                  "byte": 65,
+                  "column": 6,
+                  "line": 2
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 59,
+                  "column": 0,
+                  "line": 2
+                }
+              }
+            }
+          },
+          "nodepos": {
+            "end": {
+              "byte": 85,
+              "column": 26,
+              "line": 2
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 59,
+              "column": 0,
+              "line": 2
+            }
+          },
+          "rhsexpr": {
+            "_t": "BinaryExpression",
+            "_p": {
+              "leftexpr": {
+                "_t": "BasicLit",
+                "_p": {
+                  "kind": "STRING",
+                  "nodepos": {
+                    "end": {
+                      "byte": 70,
+                      "column": 11,
+                      "line": 2
+                    },
+                    "filename": "input.sentinel",
+                    "start": {
+                      "byte": 68,
+                      "column": 9,
+                      "line": 2
+                    }
+                  },
+                  "value": "\"\""
+                }
+              },
+              "nodepos": {
+                "end": {
+                  "byte": 85,
+                  "column": 26,
+                  "line": 2
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 68,
+                  "column": 9,
+                  "line": 2
+                }
+              },
+              "op": "is not",
+              "oppos": {
+                "end": {
+                  "byte": 77,
+                  "column": 18,
+                  "line": 2
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 71,
+                  "column": 12,
+                  "line": 2
+                }
+              },
+              "rightexpr": {
+                "_t": "Ident",
+                "_p": {
+                  "name": "defined",
+                  "nodepos": {
+                    "end": {
+                      "byte": 85,
+                      "column": 26,
+                      "line": 2
+                    },
+                    "filename": "input.sentinel",
+                    "start": {
+                      "byte": 78,
+                      "column": 19,
+                      "line": 2
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}
+-- astError.txt --

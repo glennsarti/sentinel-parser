@@ -1,0 +1,29 @@
+-- input.sentinel --
+// An empty file
+-- tokens.txt --
+0:16:COMMENT:// An empty file
+17:17:EOF:
+-- astOut.txt --
+{
+  "_t": "File",
+  "_p": {
+    "doc": null,
+    "imports": [],
+    "nodepos": {
+      "end": {
+        "byte": 17,
+        "column": 0,
+        "line": 1
+      },
+      "filename": "input.sentinel",
+      "start": {
+        "byte": 17,
+        "column": 0,
+        "line": 1
+      }
+    },
+    "params": [],
+    "statements": []
+  }
+}
+-- astError.txt --

@@ -1,0 +1,21 @@
+-- sentinel.hcl --
+module "module1" {
+  extra_attribute = true
+
+  extra-block {
+  }
+}
+
+import "import1" {
+  extra_attribute = true
+
+  extra-block {
+  }
+}
+-- astOut.json --
+null
+-- diagOut.txt --
+ERROR: An argument named "extra_attribute" is not expected here.:sentinel.hcl:1,2->1,17
+ERROR: An argument named "extra_attribute" is not expected here.:sentinel.hcl:8,2->8,17
+ERROR: Blocks of type "extra-block" are not expected here.:sentinel.hcl:10,2->10,13
+ERROR: Blocks of type "extra-block" are not expected here.:sentinel.hcl:3,2->3,13

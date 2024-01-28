@@ -1,0 +1,75 @@
+-- sentinel.hcl --
+global "foo" {}
+-- sentinel_override.hcl --
+
+global "foo" {
+  value = "string"
+}
+      
+-- astOut.json --
+{
+  "_t": "File",
+  "_p": {
+    "globals": {
+      "foo": {
+        "_t": "Global",
+        "_p": {
+          "globalrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 0,
+              "column": 0,
+              "byte": 0
+            },
+            "end": {
+              "line": 0,
+              "column": 12,
+              "byte": 12
+            }
+          },
+          "name": "foo",
+          "namerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 0,
+              "column": 7,
+              "byte": 7
+            },
+            "end": {
+              "line": 0,
+              "column": 12,
+              "byte": 12
+            }
+          },
+          "value": {
+            "_t": "DynamicValue",
+            "_p": {
+              "value": "string"
+            }
+          },
+          "valuerange": {
+            "filename": "sentinel_override.hcl",
+            "start": {
+              "line": 2,
+              "column": 10,
+              "byte": 26
+            },
+            "end": {
+              "line": 2,
+              "column": 18,
+              "byte": 34
+            }
+          },
+          "valuetype": "string"
+        }
+      }
+    },
+    "imports": {},
+    "mocks": {},
+    "params": {},
+    "policies": {},
+    "sentineloptions": null,
+    "test": null
+  }
+}
+-- diagOut.txt --

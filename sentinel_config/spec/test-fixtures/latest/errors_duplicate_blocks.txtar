@@ -1,0 +1,79 @@
+-- sentinel.hcl --
+policy "dupe" { }
+policy "dupe" { }
+policy "dupe" { }
+
+mock "dupe" {}
+mock "dupe" {}
+mock "dupe" {}
+
+global "dupe" {}
+global "dupe" {}
+global "dupe" {}
+
+param "dupe" {}
+param "dupe" {}
+param "dupe" {}
+
+sentinel {}
+sentinel {}
+sentinel {}
+
+test {}
+test {}
+test {}
+
+import "module" "dupe" {}
+import "module" "dupe" {}
+import "module" "dupe" {}
+
+import "plugin" "dupe" {}
+import "plugin" "dupe" {}
+import "plugin" "dupe" {}
+
+import "static" "dupe" {}
+import "static" "dupe" {}
+import "static" "dupe" {}
+-- astOut.json --
+null
+-- diagOut.txt --
+ERROR: global block with the name of "dupe" has already been defined.:sentinel.hcl:10,7->10,13
+  RELATED: First global block definition with name "dupe".:sentinel.hcl:8,7->8,13
+ERROR: global block with the name of "dupe" has already been defined.:sentinel.hcl:9,7->9,13
+  RELATED: First global block definition with name "dupe".:sentinel.hcl:8,7->8,13
+ERROR: import block with the name of "dupe" has already been defined.:sentinel.hcl:25,16->25,22
+  RELATED: First block definition with name "dupe".:sentinel.hcl:24,16->24,22
+ERROR: import block with the name of "dupe" has already been defined.:sentinel.hcl:26,16->26,22
+  RELATED: First block definition with name "dupe".:sentinel.hcl:24,16->24,22
+ERROR: import block with the name of "dupe" has already been defined.:sentinel.hcl:28,16->28,22
+  RELATED: First block definition with name "dupe".:sentinel.hcl:24,16->24,22
+ERROR: import block with the name of "dupe" has already been defined.:sentinel.hcl:29,16->29,22
+  RELATED: First block definition with name "dupe".:sentinel.hcl:24,16->24,22
+ERROR: import block with the name of "dupe" has already been defined.:sentinel.hcl:30,16->30,22
+  RELATED: First block definition with name "dupe".:sentinel.hcl:24,16->24,22
+ERROR: import block with the name of "dupe" has already been defined.:sentinel.hcl:32,16->32,22
+  RELATED: First block definition with name "dupe".:sentinel.hcl:24,16->24,22
+ERROR: import block with the name of "dupe" has already been defined.:sentinel.hcl:33,16->33,22
+  RELATED: First block definition with name "dupe".:sentinel.hcl:24,16->24,22
+ERROR: import block with the name of "dupe" has already been defined.:sentinel.hcl:34,16->34,22
+  RELATED: First block definition with name "dupe".:sentinel.hcl:24,16->24,22
+ERROR: mock block with the name of "dupe" has already been defined.:sentinel.hcl:5,5->5,11
+  RELATED: First mock block definition with name "dupe".:sentinel.hcl:4,5->4,11
+ERROR: mock block with the name of "dupe" has already been defined.:sentinel.hcl:6,5->6,11
+  RELATED: First mock block definition with name "dupe".:sentinel.hcl:4,5->4,11
+ERROR: param block with the name of "dupe" has already been defined.:sentinel.hcl:13,6->13,12
+  RELATED: First param block definition with name "dupe".:sentinel.hcl:12,6->12,12
+ERROR: param block with the name of "dupe" has already been defined.:sentinel.hcl:14,6->14,12
+  RELATED: First param block definition with name "dupe".:sentinel.hcl:12,6->12,12
+ERROR: policy block with the name of "dupe" has already been defined.:sentinel.hcl:1,7->1,13
+  RELATED: First policy block definition with name "dupe".:sentinel.hcl:0,7->0,13
+ERROR: policy block with the name of "dupe" has already been defined.:sentinel.hcl:2,7->2,13
+  RELATED: First policy block definition with name "dupe".:sentinel.hcl:0,7->0,13
+ERROR: sentinel block has already been defined.:sentinel.hcl:17,0->17,8
+  RELATED: First sentinel block definition.:sentinel.hcl:16,0->16,8
+ERROR: sentinel block has already been defined.:sentinel.hcl:18,0->18,8
+  RELATED: First sentinel block definition.:sentinel.hcl:16,0->16,8
+ERROR: test block has already been defined.:sentinel.hcl:21,0->21,4
+  RELATED: First test block definition.:sentinel.hcl:20,0->20,4
+ERROR: test block has already been defined.:sentinel.hcl:22,0->22,4
+  RELATED: First test block definition.:sentinel.hcl:20,0->20,4

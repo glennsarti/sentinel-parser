@@ -1,0 +1,2372 @@
+-- sentinel.hcl --
+// Policies
+policy "pol1" {
+  source            = "foo.sentinel"
+}
+
+policy "pol2" {
+  enforcement_level = "hard-mandatory"
+}
+
+policy "pol3" {
+  params = {
+    "string" = "Sample"
+    "number" = 42
+    "array" = [1,2,3]
+    "object" = {"a": "b"}
+  }
+}
+
+// Mocks
+mock "static1" {
+  data = {
+    string1 = "value1"
+    number  = 100
+    boolean = false
+    "null"  = null
+    list    = [1,2,3]
+    map = { "key1" = "value1" }
+  }
+}
+
+mock "module1" {
+  module {
+    source = "mock.sentinel"
+  }
+}
+
+// Globals
+global "string1" {
+  value = "value1"
+}
+
+global "number1" {
+  value = 42
+}
+
+global "boolean1" {
+  value = false
+}
+
+global "null1" {
+  value = null
+}
+
+global "list1" {
+  value = [1,2,3]
+}
+
+global "map1" {
+  value = { "key1" = "value1" }
+}
+
+// Params
+param "scoped-thing/string1" {
+  value = "value1"
+}
+
+param "number1" {
+  value = 42
+}
+
+param "boolean1" {
+  value = false
+}
+
+param "null1" {
+  value = null
+}
+
+param "list1" {
+  value = [1,2,3]
+}
+
+param "map1" {
+  value = { "key1" = "value1" }
+}
+
+// Sentinel Options
+sentinel {
+  features = {
+    terraform = true
+    "bad" = "string"
+  }
+}
+
+// Test
+test {
+  rules = {
+    main = false
+    another_rule = true
+    string1 = "value1"
+    number1 = 100
+    null1 = null
+    list1 = [1,2,3]
+    map1 = { "key1" = "value1" }
+  }
+}
+
+// Latest style imports
+import "module" "module1" {
+  source = "../something.sentinel"
+}
+
+import "plugin" "plugin1" {
+  source = "some_binary"
+  args = ["-arg1", "-arg2"]
+
+  env = {
+    NAME = "value"
+  }
+
+  config = {
+    string1 = "string1"
+    number1 = 100
+  }
+}
+
+import "static" "static1" {
+  source = "somewhere.json"
+  format = "json"
+}
+-- astOut.json --
+{
+  "_t": "File",
+  "_p": {
+    "globals": {
+      "boolean1": {
+        "_t": "Global",
+        "_p": {
+          "globalrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 45,
+              "column": 0,
+              "byte": 582
+            },
+            "end": {
+              "line": 45,
+              "column": 17,
+              "byte": 599
+            }
+          },
+          "name": "boolean1",
+          "namerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 45,
+              "column": 7,
+              "byte": 589
+            },
+            "end": {
+              "line": 45,
+              "column": 17,
+              "byte": 599
+            }
+          },
+          "value": {
+            "_t": "DynamicValue",
+            "_p": {
+              "value": false
+            }
+          },
+          "valuerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 46,
+              "column": 10,
+              "byte": 612
+            },
+            "end": {
+              "line": 46,
+              "column": 15,
+              "byte": 617
+            }
+          },
+          "valuetype": "bool"
+        }
+      },
+      "list1": {
+        "_t": "Global",
+        "_p": {
+          "globalrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 53,
+              "column": 0,
+              "byte": 656
+            },
+            "end": {
+              "line": 53,
+              "column": 14,
+              "byte": 670
+            }
+          },
+          "name": "list1",
+          "namerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 53,
+              "column": 7,
+              "byte": 663
+            },
+            "end": {
+              "line": 53,
+              "column": 14,
+              "byte": 670
+            }
+          },
+          "value": {
+            "_t": "DynamicValue",
+            "_p": {
+              "value": [
+                1,
+                2,
+                3
+              ]
+            }
+          },
+          "valuerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 54,
+              "column": 10,
+              "byte": 683
+            },
+            "end": {
+              "line": 54,
+              "column": 17,
+              "byte": 690
+            }
+          },
+          "valuetype": "tuple"
+        }
+      },
+      "map1": {
+        "_t": "Global",
+        "_p": {
+          "globalrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 57,
+              "column": 0,
+              "byte": 694
+            },
+            "end": {
+              "line": 57,
+              "column": 13,
+              "byte": 707
+            }
+          },
+          "name": "map1",
+          "namerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 57,
+              "column": 7,
+              "byte": 701
+            },
+            "end": {
+              "line": 57,
+              "column": 13,
+              "byte": 707
+            }
+          },
+          "value": {
+            "_t": "DynamicValue",
+            "_p": {
+              "value": {
+                "key1": "value1"
+              }
+            }
+          },
+          "valuerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 58,
+              "column": 10,
+              "byte": 720
+            },
+            "end": {
+              "line": 58,
+              "column": 31,
+              "byte": 741
+            }
+          },
+          "valuetype": "object"
+        }
+      },
+      "null1": {
+        "_t": "Global",
+        "_p": {
+          "globalrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 49,
+              "column": 0,
+              "byte": 621
+            },
+            "end": {
+              "line": 49,
+              "column": 14,
+              "byte": 635
+            }
+          },
+          "name": "null1",
+          "namerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 49,
+              "column": 7,
+              "byte": 628
+            },
+            "end": {
+              "line": 49,
+              "column": 14,
+              "byte": 635
+            }
+          },
+          "value": {
+            "_t": "DynamicValue",
+            "_p": {
+              "value": null
+            }
+          },
+          "valuerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 50,
+              "column": 10,
+              "byte": 648
+            },
+            "end": {
+              "line": 50,
+              "column": 14,
+              "byte": 652
+            }
+          },
+          "valuetype": "dynamic"
+        }
+      },
+      "number1": {
+        "_t": "Global",
+        "_p": {
+          "globalrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 41,
+              "column": 0,
+              "byte": 547
+            },
+            "end": {
+              "line": 41,
+              "column": 16,
+              "byte": 563
+            }
+          },
+          "name": "number1",
+          "namerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 41,
+              "column": 7,
+              "byte": 554
+            },
+            "end": {
+              "line": 41,
+              "column": 16,
+              "byte": 563
+            }
+          },
+          "value": {
+            "_t": "DynamicValue",
+            "_p": {
+              "value": 42
+            }
+          },
+          "valuerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 42,
+              "column": 10,
+              "byte": 576
+            },
+            "end": {
+              "line": 42,
+              "column": 12,
+              "byte": 578
+            }
+          },
+          "valuetype": "number"
+        }
+      },
+      "string1": {
+        "_t": "Global",
+        "_p": {
+          "globalrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 37,
+              "column": 0,
+              "byte": 506
+            },
+            "end": {
+              "line": 37,
+              "column": 16,
+              "byte": 522
+            }
+          },
+          "name": "string1",
+          "namerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 37,
+              "column": 7,
+              "byte": 513
+            },
+            "end": {
+              "line": 37,
+              "column": 16,
+              "byte": 522
+            }
+          },
+          "value": {
+            "_t": "DynamicValue",
+            "_p": {
+              "value": "value1"
+            }
+          },
+          "valuerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 38,
+              "column": 10,
+              "byte": 535
+            },
+            "end": {
+              "line": 38,
+              "column": 18,
+              "byte": 543
+            }
+          },
+          "valuetype": "string"
+        }
+      }
+    },
+    "imports": {
+      "module1": {
+        "_t": "V2ModuleImport",
+        "_p": {
+          "blockrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 108,
+              "column": 0,
+              "byte": 1306
+            },
+            "end": {
+              "line": 108,
+              "column": 25,
+              "byte": 1331
+            }
+          },
+          "kind": "module",
+          "kindrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 108,
+              "column": 7,
+              "byte": 1313
+            },
+            "end": {
+              "line": 108,
+              "column": 15,
+              "byte": 1321
+            }
+          },
+          "name": "module1",
+          "namerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 108,
+              "column": 16,
+              "byte": 1322
+            },
+            "end": {
+              "line": 108,
+              "column": 25,
+              "byte": 1331
+            }
+          },
+          "source": "../something.sentinel",
+          "sourcerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 109,
+              "column": 2,
+              "byte": 1336
+            },
+            "end": {
+              "line": 109,
+              "column": 34,
+              "byte": 1368
+            }
+          }
+        }
+      },
+      "plugin1": {
+        "_t": "V2PluginImport",
+        "_p": {
+          "args": [
+            "-arg1",
+            "-arg2"
+          ],
+          "argsrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 114,
+              "column": 2,
+              "byte": 1427
+            },
+            "end": {
+              "line": 114,
+              "column": 27,
+              "byte": 1452
+            }
+          },
+          "blockrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 112,
+              "column": 0,
+              "byte": 1372
+            },
+            "end": {
+              "line": 112,
+              "column": 25,
+              "byte": 1397
+            }
+          },
+          "config": {
+            "number1": {
+              "_t": "Parameter",
+              "_p": {
+                "name": "number1",
+                "namerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 122,
+                    "column": 4,
+                    "byte": 1529
+                  },
+                  "end": {
+                    "line": 122,
+                    "column": 11,
+                    "byte": 1536
+                  }
+                },
+                "parameterrange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 122,
+                    "column": 4,
+                    "byte": 1529
+                  },
+                  "end": {
+                    "line": 122,
+                    "column": 17,
+                    "byte": 1542
+                  }
+                },
+                "value": {
+                  "_t": "DynamicValue",
+                  "_p": {
+                    "value": 100
+                  }
+                },
+                "valuerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 122,
+                    "column": 14,
+                    "byte": 1539
+                  },
+                  "end": {
+                    "line": 122,
+                    "column": 17,
+                    "byte": 1542
+                  }
+                },
+                "valuetype": "number"
+              }
+            },
+            "string1": {
+              "_t": "Parameter",
+              "_p": {
+                "name": "string1",
+                "namerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 121,
+                    "column": 4,
+                    "byte": 1505
+                  },
+                  "end": {
+                    "line": 121,
+                    "column": 11,
+                    "byte": 1512
+                  }
+                },
+                "parameterrange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 121,
+                    "column": 4,
+                    "byte": 1505
+                  },
+                  "end": {
+                    "line": 121,
+                    "column": 23,
+                    "byte": 1524
+                  }
+                },
+                "value": {
+                  "_t": "DynamicValue",
+                  "_p": {
+                    "value": "string1"
+                  }
+                },
+                "valuerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 121,
+                    "column": 14,
+                    "byte": 1515
+                  },
+                  "end": {
+                    "line": 121,
+                    "column": 23,
+                    "byte": 1524
+                  }
+                },
+                "valuetype": "string"
+              }
+            }
+          },
+          "configrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 120,
+              "column": 2,
+              "byte": 1490
+            },
+            "end": {
+              "line": 123,
+              "column": 3,
+              "byte": 1546
+            }
+          },
+          "env": {
+            "NAME": {
+              "_t": "Parameter",
+              "_p": {
+                "name": "NAME",
+                "namerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 117,
+                    "column": 4,
+                    "byte": 1468
+                  },
+                  "end": {
+                    "line": 117,
+                    "column": 8,
+                    "byte": 1472
+                  }
+                },
+                "parameterrange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 117,
+                    "column": 4,
+                    "byte": 1468
+                  },
+                  "end": {
+                    "line": 117,
+                    "column": 18,
+                    "byte": 1482
+                  }
+                },
+                "value": {
+                  "_t": "DynamicValue",
+                  "_p": {
+                    "value": "value"
+                  }
+                },
+                "valuerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 117,
+                    "column": 11,
+                    "byte": 1475
+                  },
+                  "end": {
+                    "line": 117,
+                    "column": 18,
+                    "byte": 1482
+                  }
+                },
+                "valuetype": "string"
+              }
+            }
+          },
+          "envrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 116,
+              "column": 2,
+              "byte": 1456
+            },
+            "end": {
+              "line": 118,
+              "column": 3,
+              "byte": 1486
+            }
+          },
+          "kind": "plugin",
+          "kindrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 112,
+              "column": 7,
+              "byte": 1379
+            },
+            "end": {
+              "line": 112,
+              "column": 15,
+              "byte": 1387
+            }
+          },
+          "name": "plugin1",
+          "namerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 112,
+              "column": 16,
+              "byte": 1388
+            },
+            "end": {
+              "line": 112,
+              "column": 25,
+              "byte": 1397
+            }
+          },
+          "source": "some_binary",
+          "sourcerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 113,
+              "column": 2,
+              "byte": 1402
+            },
+            "end": {
+              "line": 113,
+              "column": 24,
+              "byte": 1424
+            }
+          }
+        }
+      },
+      "static1": {
+        "_t": "V2StaticImport",
+        "_p": {
+          "blockrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 126,
+              "column": 0,
+              "byte": 1550
+            },
+            "end": {
+              "line": 126,
+              "column": 25,
+              "byte": 1575
+            }
+          },
+          "format": "json",
+          "formatrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 128,
+              "column": 2,
+              "byte": 1608
+            },
+            "end": {
+              "line": 128,
+              "column": 17,
+              "byte": 1623
+            }
+          },
+          "kind": "static",
+          "kindrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 126,
+              "column": 7,
+              "byte": 1557
+            },
+            "end": {
+              "line": 126,
+              "column": 15,
+              "byte": 1565
+            }
+          },
+          "name": "static1",
+          "namerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 126,
+              "column": 16,
+              "byte": 1566
+            },
+            "end": {
+              "line": 126,
+              "column": 25,
+              "byte": 1575
+            }
+          },
+          "source": "somewhere.json",
+          "sourcerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 127,
+              "column": 2,
+              "byte": 1580
+            },
+            "end": {
+              "line": 127,
+              "column": 27,
+              "byte": 1605
+            }
+          }
+        }
+      }
+    },
+    "mocks": {
+      "module1": {
+        "_t": "Mock",
+        "_p": {
+          "data": {},
+          "datarange": null,
+          "mockrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 30,
+              "column": 0,
+              "byte": 431
+            },
+            "end": {
+              "line": 30,
+              "column": 14,
+              "byte": 445
+            }
+          },
+          "module": {
+            "_t": "MockModule",
+            "_p": {
+              "mockmodulerange": {
+                "filename": "sentinel.hcl",
+                "start": {
+                  "line": 31,
+                  "column": 2,
+                  "byte": 450
+                },
+                "end": {
+                  "line": 31,
+                  "column": 8,
+                  "byte": 456
+                }
+              },
+              "source": "mock.sentinel",
+              "sourcerange": {
+                "filename": "sentinel.hcl",
+                "start": {
+                  "line": 32,
+                  "column": 4,
+                  "byte": 463
+                },
+                "end": {
+                  "line": 32,
+                  "column": 28,
+                  "byte": 487
+                }
+              }
+            }
+          },
+          "name": "module1",
+          "namerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 30,
+              "column": 5,
+              "byte": 436
+            },
+            "end": {
+              "line": 30,
+              "column": 14,
+              "byte": 445
+            }
+          }
+        }
+      },
+      "static1": {
+        "_t": "Mock",
+        "_p": {
+          "data": {
+            "boolean": {
+              "_t": "Parameter",
+              "_p": {
+                "name": "boolean",
+                "namerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 23,
+                    "column": 4,
+                    "byte": 335
+                  },
+                  "end": {
+                    "line": 23,
+                    "column": 11,
+                    "byte": 342
+                  }
+                },
+                "parameterrange": null,
+                "value": {
+                  "_t": "DynamicValue",
+                  "_p": {
+                    "value": false
+                  }
+                },
+                "valuerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 23,
+                    "column": 14,
+                    "byte": 345
+                  },
+                  "end": {
+                    "line": 23,
+                    "column": 19,
+                    "byte": 350
+                  }
+                },
+                "valuetype": "bool"
+              }
+            },
+            "list": {
+              "_t": "Parameter",
+              "_p": {
+                "name": "list",
+                "namerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 25,
+                    "column": 4,
+                    "byte": 374
+                  },
+                  "end": {
+                    "line": 25,
+                    "column": 8,
+                    "byte": 378
+                  }
+                },
+                "parameterrange": null,
+                "value": {
+                  "_t": "DynamicValue",
+                  "_p": {
+                    "value": [
+                      1,
+                      2,
+                      3
+                    ]
+                  }
+                },
+                "valuerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 25,
+                    "column": 14,
+                    "byte": 384
+                  },
+                  "end": {
+                    "line": 25,
+                    "column": 21,
+                    "byte": 391
+                  }
+                },
+                "valuetype": "tuple"
+              }
+            },
+            "map": {
+              "_t": "Parameter",
+              "_p": {
+                "name": "map",
+                "namerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 26,
+                    "column": 4,
+                    "byte": 396
+                  },
+                  "end": {
+                    "line": 26,
+                    "column": 7,
+                    "byte": 399
+                  }
+                },
+                "parameterrange": null,
+                "value": {
+                  "_t": "DynamicValue",
+                  "_p": {
+                    "value": {
+                      "key1": "value1"
+                    }
+                  }
+                },
+                "valuerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 26,
+                    "column": 10,
+                    "byte": 402
+                  },
+                  "end": {
+                    "line": 26,
+                    "column": 31,
+                    "byte": 423
+                  }
+                },
+                "valuetype": "object"
+              }
+            },
+            "null": {
+              "_t": "Parameter",
+              "_p": {
+                "name": "null",
+                "namerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 24,
+                    "column": 4,
+                    "byte": 355
+                  },
+                  "end": {
+                    "line": 24,
+                    "column": 10,
+                    "byte": 361
+                  }
+                },
+                "parameterrange": null,
+                "value": {
+                  "_t": "DynamicValue",
+                  "_p": {
+                    "value": null
+                  }
+                },
+                "valuerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 24,
+                    "column": 14,
+                    "byte": 365
+                  },
+                  "end": {
+                    "line": 24,
+                    "column": 18,
+                    "byte": 369
+                  }
+                },
+                "valuetype": "dynamic"
+              }
+            },
+            "number": {
+              "_t": "Parameter",
+              "_p": {
+                "name": "number",
+                "namerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 22,
+                    "column": 4,
+                    "byte": 317
+                  },
+                  "end": {
+                    "line": 22,
+                    "column": 10,
+                    "byte": 323
+                  }
+                },
+                "parameterrange": null,
+                "value": {
+                  "_t": "DynamicValue",
+                  "_p": {
+                    "value": 100
+                  }
+                },
+                "valuerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 22,
+                    "column": 14,
+                    "byte": 327
+                  },
+                  "end": {
+                    "line": 22,
+                    "column": 17,
+                    "byte": 330
+                  }
+                },
+                "valuetype": "number"
+              }
+            },
+            "string1": {
+              "_t": "Parameter",
+              "_p": {
+                "name": "string1",
+                "namerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 21,
+                    "column": 4,
+                    "byte": 294
+                  },
+                  "end": {
+                    "line": 21,
+                    "column": 11,
+                    "byte": 301
+                  }
+                },
+                "parameterrange": null,
+                "value": {
+                  "_t": "DynamicValue",
+                  "_p": {
+                    "value": "value1"
+                  }
+                },
+                "valuerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 21,
+                    "column": 14,
+                    "byte": 304
+                  },
+                  "end": {
+                    "line": 21,
+                    "column": 22,
+                    "byte": 312
+                  }
+                },
+                "valuetype": "string"
+              }
+            }
+          },
+          "datarange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 20,
+              "column": 2,
+              "byte": 281
+            },
+            "end": {
+              "line": 27,
+              "column": 3,
+              "byte": 427
+            }
+          },
+          "mockrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 19,
+              "column": 0,
+              "byte": 262
+            },
+            "end": {
+              "line": 19,
+              "column": 14,
+              "byte": 276
+            }
+          },
+          "module": null,
+          "name": "static1",
+          "namerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 19,
+              "column": 5,
+              "byte": 267
+            },
+            "end": {
+              "line": 19,
+              "column": 14,
+              "byte": 276
+            }
+          }
+        }
+      }
+    },
+    "params": {
+      "boolean1": {
+        "_t": "Parameter",
+        "_p": {
+          "name": "boolean1",
+          "namerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 70,
+              "column": 6,
+              "byte": 848
+            },
+            "end": {
+              "line": 70,
+              "column": 16,
+              "byte": 858
+            }
+          },
+          "parameterrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 70,
+              "column": 0,
+              "byte": 842
+            },
+            "end": {
+              "line": 70,
+              "column": 16,
+              "byte": 858
+            }
+          },
+          "value": {
+            "_t": "DynamicValue",
+            "_p": {
+              "value": false
+            }
+          },
+          "valuerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 71,
+              "column": 2,
+              "byte": 863
+            },
+            "end": {
+              "line": 71,
+              "column": 15,
+              "byte": 876
+            }
+          },
+          "valuetype": "bool"
+        }
+      },
+      "list1": {
+        "_t": "Parameter",
+        "_p": {
+          "name": "list1",
+          "namerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 78,
+              "column": 6,
+              "byte": 920
+            },
+            "end": {
+              "line": 78,
+              "column": 13,
+              "byte": 927
+            }
+          },
+          "parameterrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 78,
+              "column": 0,
+              "byte": 914
+            },
+            "end": {
+              "line": 78,
+              "column": 13,
+              "byte": 927
+            }
+          },
+          "value": {
+            "_t": "DynamicValue",
+            "_p": {
+              "value": [
+                1,
+                2,
+                3
+              ]
+            }
+          },
+          "valuerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 79,
+              "column": 2,
+              "byte": 932
+            },
+            "end": {
+              "line": 79,
+              "column": 17,
+              "byte": 947
+            }
+          },
+          "valuetype": "tuple"
+        }
+      },
+      "map1": {
+        "_t": "Parameter",
+        "_p": {
+          "name": "map1",
+          "namerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 82,
+              "column": 6,
+              "byte": 957
+            },
+            "end": {
+              "line": 82,
+              "column": 12,
+              "byte": 963
+            }
+          },
+          "parameterrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 82,
+              "column": 0,
+              "byte": 951
+            },
+            "end": {
+              "line": 82,
+              "column": 12,
+              "byte": 963
+            }
+          },
+          "value": {
+            "_t": "DynamicValue",
+            "_p": {
+              "value": {
+                "key1": "value1"
+              }
+            }
+          },
+          "valuerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 83,
+              "column": 2,
+              "byte": 968
+            },
+            "end": {
+              "line": 83,
+              "column": 31,
+              "byte": 997
+            }
+          },
+          "valuetype": "object"
+        }
+      },
+      "null1": {
+        "_t": "Parameter",
+        "_p": {
+          "name": "null1",
+          "namerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 74,
+              "column": 6,
+              "byte": 886
+            },
+            "end": {
+              "line": 74,
+              "column": 13,
+              "byte": 893
+            }
+          },
+          "parameterrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 74,
+              "column": 0,
+              "byte": 880
+            },
+            "end": {
+              "line": 74,
+              "column": 13,
+              "byte": 893
+            }
+          },
+          "value": {
+            "_t": "DynamicValue",
+            "_p": {
+              "value": null
+            }
+          },
+          "valuerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 75,
+              "column": 2,
+              "byte": 898
+            },
+            "end": {
+              "line": 75,
+              "column": 14,
+              "byte": 910
+            }
+          },
+          "valuetype": "dynamic"
+        }
+      },
+      "number1": {
+        "_t": "Parameter",
+        "_p": {
+          "name": "number1",
+          "namerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 66,
+              "column": 6,
+              "byte": 814
+            },
+            "end": {
+              "line": 66,
+              "column": 15,
+              "byte": 823
+            }
+          },
+          "parameterrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 66,
+              "column": 0,
+              "byte": 808
+            },
+            "end": {
+              "line": 66,
+              "column": 15,
+              "byte": 823
+            }
+          },
+          "value": {
+            "_t": "DynamicValue",
+            "_p": {
+              "value": 42
+            }
+          },
+          "valuerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 67,
+              "column": 2,
+              "byte": 828
+            },
+            "end": {
+              "line": 67,
+              "column": 12,
+              "byte": 838
+            }
+          },
+          "valuetype": "number"
+        }
+      },
+      "scoped-thing/string1": {
+        "_t": "Parameter",
+        "_p": {
+          "name": "scoped-thing/string1",
+          "namerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 62,
+              "column": 6,
+              "byte": 761
+            },
+            "end": {
+              "line": 62,
+              "column": 28,
+              "byte": 783
+            }
+          },
+          "parameterrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 62,
+              "column": 0,
+              "byte": 755
+            },
+            "end": {
+              "line": 62,
+              "column": 28,
+              "byte": 783
+            }
+          },
+          "value": {
+            "_t": "DynamicValue",
+            "_p": {
+              "value": "value1"
+            }
+          },
+          "valuerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 63,
+              "column": 2,
+              "byte": 788
+            },
+            "end": {
+              "line": 63,
+              "column": 18,
+              "byte": 804
+            }
+          },
+          "valuetype": "string"
+        }
+      }
+    },
+    "policies": {
+      "pol1": {
+        "_t": "Policy",
+        "_p": {
+          "enforcementlevel": "",
+          "enforcementlevelrange": null,
+          "name": "pol1",
+          "namerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 1,
+              "column": 7,
+              "byte": 19
+            },
+            "end": {
+              "line": 1,
+              "column": 13,
+              "byte": 25
+            }
+          },
+          "params": {},
+          "paramsrange": null,
+          "policyrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 1,
+              "column": 0,
+              "byte": 12
+            },
+            "end": {
+              "line": 1,
+              "column": 13,
+              "byte": 25
+            }
+          },
+          "source": "foo.sentinel",
+          "sourcerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 2,
+              "column": 2,
+              "byte": 30
+            },
+            "end": {
+              "line": 2,
+              "column": 36,
+              "byte": 64
+            }
+          }
+        }
+      },
+      "pol2": {
+        "_t": "Policy",
+        "_p": {
+          "enforcementlevel": "hard-mandatory",
+          "enforcementlevelrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 6,
+              "column": 2,
+              "byte": 86
+            },
+            "end": {
+              "line": 6,
+              "column": 38,
+              "byte": 122
+            }
+          },
+          "name": "pol2",
+          "namerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 5,
+              "column": 7,
+              "byte": 75
+            },
+            "end": {
+              "line": 5,
+              "column": 13,
+              "byte": 81
+            }
+          },
+          "params": {},
+          "paramsrange": null,
+          "policyrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 5,
+              "column": 0,
+              "byte": 68
+            },
+            "end": {
+              "line": 5,
+              "column": 13,
+              "byte": 81
+            }
+          },
+          "source": "",
+          "sourcerange": null
+        }
+      },
+      "pol3": {
+        "_t": "Policy",
+        "_p": {
+          "enforcementlevel": "",
+          "enforcementlevelrange": null,
+          "name": "pol3",
+          "namerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 9,
+              "column": 7,
+              "byte": 133
+            },
+            "end": {
+              "line": 9,
+              "column": 13,
+              "byte": 139
+            }
+          },
+          "params": {
+            "array": {
+              "_t": "Parameter",
+              "_p": {
+                "name": "array",
+                "namerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 13,
+                    "column": 4,
+                    "byte": 201
+                  },
+                  "end": {
+                    "line": 13,
+                    "column": 11,
+                    "byte": 208
+                  }
+                },
+                "parameterrange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 13,
+                    "column": 4,
+                    "byte": 201
+                  },
+                  "end": {
+                    "line": 13,
+                    "column": 21,
+                    "byte": 218
+                  }
+                },
+                "value": {
+                  "_t": "DynamicValue",
+                  "_p": {
+                    "value": [
+                      1,
+                      2,
+                      3
+                    ]
+                  }
+                },
+                "valuerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 13,
+                    "column": 14,
+                    "byte": 211
+                  },
+                  "end": {
+                    "line": 13,
+                    "column": 21,
+                    "byte": 218
+                  }
+                },
+                "valuetype": "tuple"
+              }
+            },
+            "number": {
+              "_t": "Parameter",
+              "_p": {
+                "name": "number",
+                "namerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 12,
+                    "column": 4,
+                    "byte": 183
+                  },
+                  "end": {
+                    "line": 12,
+                    "column": 12,
+                    "byte": 191
+                  }
+                },
+                "parameterrange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 12,
+                    "column": 4,
+                    "byte": 183
+                  },
+                  "end": {
+                    "line": 12,
+                    "column": 17,
+                    "byte": 196
+                  }
+                },
+                "value": {
+                  "_t": "DynamicValue",
+                  "_p": {
+                    "value": 42
+                  }
+                },
+                "valuerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 12,
+                    "column": 15,
+                    "byte": 194
+                  },
+                  "end": {
+                    "line": 12,
+                    "column": 17,
+                    "byte": 196
+                  }
+                },
+                "valuetype": "number"
+              }
+            },
+            "object": {
+              "_t": "Parameter",
+              "_p": {
+                "name": "object",
+                "namerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 14,
+                    "column": 4,
+                    "byte": 223
+                  },
+                  "end": {
+                    "line": 14,
+                    "column": 12,
+                    "byte": 231
+                  }
+                },
+                "parameterrange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 14,
+                    "column": 4,
+                    "byte": 223
+                  },
+                  "end": {
+                    "line": 14,
+                    "column": 25,
+                    "byte": 244
+                  }
+                },
+                "value": {
+                  "_t": "DynamicValue",
+                  "_p": {
+                    "value": {
+                      "a": "b"
+                    }
+                  }
+                },
+                "valuerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 14,
+                    "column": 15,
+                    "byte": 234
+                  },
+                  "end": {
+                    "line": 14,
+                    "column": 25,
+                    "byte": 244
+                  }
+                },
+                "valuetype": "object"
+              }
+            },
+            "string": {
+              "_t": "Parameter",
+              "_p": {
+                "name": "string",
+                "namerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 11,
+                    "column": 4,
+                    "byte": 159
+                  },
+                  "end": {
+                    "line": 11,
+                    "column": 12,
+                    "byte": 167
+                  }
+                },
+                "parameterrange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 11,
+                    "column": 4,
+                    "byte": 159
+                  },
+                  "end": {
+                    "line": 11,
+                    "column": 23,
+                    "byte": 178
+                  }
+                },
+                "value": {
+                  "_t": "DynamicValue",
+                  "_p": {
+                    "value": "Sample"
+                  }
+                },
+                "valuerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 11,
+                    "column": 15,
+                    "byte": 170
+                  },
+                  "end": {
+                    "line": 11,
+                    "column": 23,
+                    "byte": 178
+                  }
+                },
+                "valuetype": "string"
+              }
+            }
+          },
+          "paramsrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 10,
+              "column": 2,
+              "byte": 144
+            },
+            "end": {
+              "line": 15,
+              "column": 3,
+              "byte": 248
+            }
+          },
+          "policyrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 9,
+              "column": 0,
+              "byte": 126
+            },
+            "end": {
+              "line": 9,
+              "column": 13,
+              "byte": 139
+            }
+          },
+          "source": "",
+          "sourcerange": null
+        }
+      }
+    },
+    "sentineloptions": {
+      "_t": "SentinelOptions",
+      "_p": {
+        "features": [
+          {
+            "_t": "Feature",
+            "_p": {
+              "name": "terraform",
+              "namerange": {
+                "filename": "sentinel.hcl",
+                "start": {
+                  "line": 89,
+                  "column": 4,
+                  "byte": 1051
+                },
+                "end": {
+                  "line": 89,
+                  "column": 13,
+                  "byte": 1060
+                }
+              },
+              "value": {
+                "_t": "DynamicValue",
+                "_p": {
+                  "value": true
+                }
+              },
+              "valuerange": {
+                "filename": "sentinel.hcl",
+                "start": {
+                  "line": 89,
+                  "column": 16,
+                  "byte": 1063
+                },
+                "end": {
+                  "line": 89,
+                  "column": 20,
+                  "byte": 1067
+                }
+              },
+              "valuetype": "bool"
+            }
+          },
+          {
+            "_t": "Feature",
+            "_p": {
+              "name": "bad",
+              "namerange": {
+                "filename": "sentinel.hcl",
+                "start": {
+                  "line": 90,
+                  "column": 4,
+                  "byte": 1072
+                },
+                "end": {
+                  "line": 90,
+                  "column": 9,
+                  "byte": 1077
+                }
+              },
+              "value": {
+                "_t": "DynamicValue",
+                "_p": {
+                  "value": "string"
+                }
+              },
+              "valuerange": {
+                "filename": "sentinel.hcl",
+                "start": {
+                  "line": 90,
+                  "column": 12,
+                  "byte": 1080
+                },
+                "end": {
+                  "line": 90,
+                  "column": 20,
+                  "byte": 1088
+                }
+              },
+              "valuetype": "string"
+            }
+          }
+        ],
+        "featuresrange": {
+          "filename": "sentinel.hcl",
+          "start": {
+            "line": 88,
+            "column": 2,
+            "byte": 1034
+          },
+          "end": {
+            "line": 91,
+            "column": 3,
+            "byte": 1092
+          }
+        },
+        "sentineloptionsrange": {
+          "filename": "sentinel.hcl",
+          "start": {
+            "line": 87,
+            "column": 0,
+            "byte": 1021
+          },
+          "end": {
+            "line": 87,
+            "column": 8,
+            "byte": 1029
+          }
+        }
+      }
+    },
+    "test": {
+      "_t": "Test",
+      "_p": {
+        "rules": [
+          {
+            "_t": "TestRule",
+            "_p": {
+              "name": "main",
+              "namerange": {
+                "filename": "sentinel.hcl",
+                "start": {
+                  "line": 97,
+                  "column": 4,
+                  "byte": 1127
+                },
+                "end": {
+                  "line": 97,
+                  "column": 8,
+                  "byte": 1131
+                }
+              },
+              "testrulerange": {
+                "filename": "sentinel.hcl",
+                "start": {
+                  "line": 97,
+                  "column": 4,
+                  "byte": 1127
+                },
+                "end": {
+                  "line": 97,
+                  "column": 16,
+                  "byte": 1139
+                }
+              },
+              "valuerange": {
+                "filename": "sentinel.hcl",
+                "start": {
+                  "line": 97,
+                  "column": 11,
+                  "byte": 1134
+                },
+                "end": {
+                  "line": 97,
+                  "column": 16,
+                  "byte": 1139
+                }
+              },
+              "valuetype": "bool"
+            }
+          },
+          {
+            "_t": "TestRule",
+            "_p": {
+              "name": "another_rule",
+              "namerange": {
+                "filename": "sentinel.hcl",
+                "start": {
+                  "line": 98,
+                  "column": 4,
+                  "byte": 1144
+                },
+                "end": {
+                  "line": 98,
+                  "column": 16,
+                  "byte": 1156
+                }
+              },
+              "testrulerange": {
+                "filename": "sentinel.hcl",
+                "start": {
+                  "line": 98,
+                  "column": 4,
+                  "byte": 1144
+                },
+                "end": {
+                  "line": 98,
+                  "column": 23,
+                  "byte": 1163
+                }
+              },
+              "valuerange": {
+                "filename": "sentinel.hcl",
+                "start": {
+                  "line": 98,
+                  "column": 19,
+                  "byte": 1159
+                },
+                "end": {
+                  "line": 98,
+                  "column": 23,
+                  "byte": 1163
+                }
+              },
+              "valuetype": "bool"
+            }
+          },
+          {
+            "_t": "TestRule",
+            "_p": {
+              "name": "string1",
+              "namerange": {
+                "filename": "sentinel.hcl",
+                "start": {
+                  "line": 99,
+                  "column": 4,
+                  "byte": 1168
+                },
+                "end": {
+                  "line": 99,
+                  "column": 11,
+                  "byte": 1175
+                }
+              },
+              "testrulerange": {
+                "filename": "sentinel.hcl",
+                "start": {
+                  "line": 99,
+                  "column": 4,
+                  "byte": 1168
+                },
+                "end": {
+                  "line": 99,
+                  "column": 22,
+                  "byte": 1186
+                }
+              },
+              "valuerange": {
+                "filename": "sentinel.hcl",
+                "start": {
+                  "line": 99,
+                  "column": 14,
+                  "byte": 1178
+                },
+                "end": {
+                  "line": 99,
+                  "column": 22,
+                  "byte": 1186
+                }
+              },
+              "valuetype": "string"
+            }
+          },
+          {
+            "_t": "TestRule",
+            "_p": {
+              "name": "number1",
+              "namerange": {
+                "filename": "sentinel.hcl",
+                "start": {
+                  "line": 100,
+                  "column": 4,
+                  "byte": 1191
+                },
+                "end": {
+                  "line": 100,
+                  "column": 11,
+                  "byte": 1198
+                }
+              },
+              "testrulerange": {
+                "filename": "sentinel.hcl",
+                "start": {
+                  "line": 100,
+                  "column": 4,
+                  "byte": 1191
+                },
+                "end": {
+                  "line": 100,
+                  "column": 17,
+                  "byte": 1204
+                }
+              },
+              "valuerange": {
+                "filename": "sentinel.hcl",
+                "start": {
+                  "line": 100,
+                  "column": 14,
+                  "byte": 1201
+                },
+                "end": {
+                  "line": 100,
+                  "column": 17,
+                  "byte": 1204
+                }
+              },
+              "valuetype": "number"
+            }
+          },
+          {
+            "_t": "TestRule",
+            "_p": {
+              "name": "null1",
+              "namerange": {
+                "filename": "sentinel.hcl",
+                "start": {
+                  "line": 101,
+                  "column": 4,
+                  "byte": 1209
+                },
+                "end": {
+                  "line": 101,
+                  "column": 9,
+                  "byte": 1214
+                }
+              },
+              "testrulerange": {
+                "filename": "sentinel.hcl",
+                "start": {
+                  "line": 101,
+                  "column": 4,
+                  "byte": 1209
+                },
+                "end": {
+                  "line": 101,
+                  "column": 16,
+                  "byte": 1221
+                }
+              },
+              "valuerange": {
+                "filename": "sentinel.hcl",
+                "start": {
+                  "line": 101,
+                  "column": 12,
+                  "byte": 1217
+                },
+                "end": {
+                  "line": 101,
+                  "column": 16,
+                  "byte": 1221
+                }
+              },
+              "valuetype": "dynamic"
+            }
+          },
+          {
+            "_t": "TestRule",
+            "_p": {
+              "name": "list1",
+              "namerange": {
+                "filename": "sentinel.hcl",
+                "start": {
+                  "line": 102,
+                  "column": 4,
+                  "byte": 1226
+                },
+                "end": {
+                  "line": 102,
+                  "column": 9,
+                  "byte": 1231
+                }
+              },
+              "testrulerange": {
+                "filename": "sentinel.hcl",
+                "start": {
+                  "line": 102,
+                  "column": 4,
+                  "byte": 1226
+                },
+                "end": {
+                  "line": 102,
+                  "column": 19,
+                  "byte": 1241
+                }
+              },
+              "valuerange": {
+                "filename": "sentinel.hcl",
+                "start": {
+                  "line": 102,
+                  "column": 12,
+                  "byte": 1234
+                },
+                "end": {
+                  "line": 102,
+                  "column": 19,
+                  "byte": 1241
+                }
+              },
+              "valuetype": "tuple"
+            }
+          },
+          {
+            "_t": "TestRule",
+            "_p": {
+              "name": "map1",
+              "namerange": {
+                "filename": "sentinel.hcl",
+                "start": {
+                  "line": 103,
+                  "column": 4,
+                  "byte": 1246
+                },
+                "end": {
+                  "line": 103,
+                  "column": 8,
+                  "byte": 1250
+                }
+              },
+              "testrulerange": {
+                "filename": "sentinel.hcl",
+                "start": {
+                  "line": 103,
+                  "column": 4,
+                  "byte": 1246
+                },
+                "end": {
+                  "line": 103,
+                  "column": 32,
+                  "byte": 1274
+                }
+              },
+              "valuerange": {
+                "filename": "sentinel.hcl",
+                "start": {
+                  "line": 103,
+                  "column": 11,
+                  "byte": 1253
+                },
+                "end": {
+                  "line": 103,
+                  "column": 32,
+                  "byte": 1274
+                }
+              },
+              "valuetype": "object"
+            }
+          }
+        ],
+        "rulesrange": {
+          "filename": "sentinel.hcl",
+          "start": {
+            "line": 96,
+            "column": 2,
+            "byte": 1113
+          },
+          "end": {
+            "line": 104,
+            "column": 3,
+            "byte": 1278
+          }
+        },
+        "testrange": {
+          "filename": "sentinel.hcl",
+          "start": {
+            "line": 95,
+            "column": 0,
+            "byte": 1104
+          },
+          "end": {
+            "line": 95,
+            "column": 4,
+            "byte": 1108
+          }
+        }
+      }
+    }
+  }
+}
+-- diagOut.txt --

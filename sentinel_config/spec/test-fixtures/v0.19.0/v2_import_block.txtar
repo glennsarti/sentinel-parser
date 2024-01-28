@@ -1,0 +1,80 @@
+-- sentinel.hcl --
+// V2 style import schema is supported in v0.19.0 onwards
+import "module" "module1" {
+  source = "../something.sentinel"
+}
+-- astOut.json --
+{
+  "_t": "File",
+  "_p": {
+    "globals": {},
+    "imports": {
+      "module1": {
+        "_t": "V2ModuleImport",
+        "_p": {
+          "blockrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 1,
+              "column": 0,
+              "byte": 58
+            },
+            "end": {
+              "line": 1,
+              "column": 25,
+              "byte": 83
+            }
+          },
+          "kind": "module",
+          "kindrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 1,
+              "column": 7,
+              "byte": 65
+            },
+            "end": {
+              "line": 1,
+              "column": 15,
+              "byte": 73
+            }
+          },
+          "name": "module1",
+          "namerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 1,
+              "column": 16,
+              "byte": 74
+            },
+            "end": {
+              "line": 1,
+              "column": 25,
+              "byte": 83
+            }
+          },
+          "source": "../something.sentinel",
+          "sourcerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 2,
+              "column": 2,
+              "byte": 88
+            },
+            "end": {
+              "line": 2,
+              "column": 34,
+              "byte": 120
+            }
+          }
+        }
+      }
+    },
+    "mocks": {},
+    "params": {},
+    "policies": {},
+    "sentineloptions": null,
+    "test": null
+  }
+}
+-- diagOut.txt --

@@ -1,0 +1,240 @@
+-- sentinel.hcl --
+
+import "plugin" "module1" {
+  source = "primary.binary"
+  args = ["-primary"]
+  env = {
+    NAME = "value"
+  }
+  config = {
+    string1 = "string1"
+  }
+}
+  
+-- sentinel_override.hcl --
+import "plugin" "module1" {}
+-- astOut.json --
+{
+  "_t": "File",
+  "_p": {
+    "globals": {},
+    "imports": {
+      "module1": {
+        "_t": "V2PluginImport",
+        "_p": {
+          "args": [
+            "-primary"
+          ],
+          "argsrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 3,
+              "column": 2,
+              "byte": 59
+            },
+            "end": {
+              "line": 3,
+              "column": 21,
+              "byte": 78
+            }
+          },
+          "blockrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 1,
+              "column": 0,
+              "byte": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 25,
+              "byte": 26
+            }
+          },
+          "config": {
+            "string1": {
+              "_t": "Parameter",
+              "_p": {
+                "name": "string1",
+                "namerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 8,
+                    "column": 4,
+                    "byte": 129
+                  },
+                  "end": {
+                    "line": 8,
+                    "column": 11,
+                    "byte": 136
+                  }
+                },
+                "parameterrange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 8,
+                    "column": 4,
+                    "byte": 129
+                  },
+                  "end": {
+                    "line": 8,
+                    "column": 23,
+                    "byte": 148
+                  }
+                },
+                "value": {
+                  "_t": "DynamicValue",
+                  "_p": {
+                    "value": "string1"
+                  }
+                },
+                "valuerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 8,
+                    "column": 14,
+                    "byte": 139
+                  },
+                  "end": {
+                    "line": 8,
+                    "column": 23,
+                    "byte": 148
+                  }
+                },
+                "valuetype": "string"
+              }
+            }
+          },
+          "configrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 7,
+              "column": 2,
+              "byte": 114
+            },
+            "end": {
+              "line": 9,
+              "column": 3,
+              "byte": 152
+            }
+          },
+          "env": {
+            "NAME": {
+              "_t": "Parameter",
+              "_p": {
+                "name": "NAME",
+                "namerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 5,
+                    "column": 4,
+                    "byte": 93
+                  },
+                  "end": {
+                    "line": 5,
+                    "column": 8,
+                    "byte": 97
+                  }
+                },
+                "parameterrange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 5,
+                    "column": 4,
+                    "byte": 93
+                  },
+                  "end": {
+                    "line": 5,
+                    "column": 18,
+                    "byte": 107
+                  }
+                },
+                "value": {
+                  "_t": "DynamicValue",
+                  "_p": {
+                    "value": "value"
+                  }
+                },
+                "valuerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 5,
+                    "column": 11,
+                    "byte": 100
+                  },
+                  "end": {
+                    "line": 5,
+                    "column": 18,
+                    "byte": 107
+                  }
+                },
+                "valuetype": "string"
+              }
+            }
+          },
+          "envrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 4,
+              "column": 2,
+              "byte": 81
+            },
+            "end": {
+              "line": 6,
+              "column": 3,
+              "byte": 111
+            }
+          },
+          "kind": "plugin",
+          "kindrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 1,
+              "column": 7,
+              "byte": 8
+            },
+            "end": {
+              "line": 1,
+              "column": 15,
+              "byte": 16
+            }
+          },
+          "name": "module1",
+          "namerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 1,
+              "column": 16,
+              "byte": 17
+            },
+            "end": {
+              "line": 1,
+              "column": 25,
+              "byte": 26
+            }
+          },
+          "source": "primary.binary",
+          "sourcerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 2,
+              "column": 2,
+              "byte": 31
+            },
+            "end": {
+              "line": 2,
+              "column": 27,
+              "byte": 56
+            }
+          }
+        }
+      }
+    },
+    "mocks": {},
+    "params": {},
+    "policies": {},
+    "sentineloptions": null,
+    "test": null
+  }
+}
+-- diagOut.txt --

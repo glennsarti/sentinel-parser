@@ -1,0 +1,280 @@
+-- input.sentinel --
+
+# Single line comment
+
+// Single line comment
+
+/* Single line comment */
+
+/* a */ /* b */ /* c */
+
+/* multi
+line
+    comment */
+
+x = 1 # End of line comment
+
+y = 2 // Another end of line comment
+
+# Empty comments below
+
+#
+
+//
+
+/**/
+-- tokens.txt --
+1:22:COMMENT:# Single line comment
+24:46:COMMENT:// Single line comment
+48:73:COMMENT:/* Single line comment */
+75:82:COMMENT:/* a */
+83:90:COMMENT:/* b */
+91:98:COMMENT:/* c */
+100:128:COMMENT:/* multi\nline\n    comment */
+130:131:IDENT:x
+132:133:=:=
+134:135:INT:1
+136:137:;:\n
+136:157:COMMENT:# End of line comment
+159:160:IDENT:y
+161:162:=:=
+163:164:INT:2
+165:166:;:\n
+165:195:COMMENT:// Another end of line comment
+197:219:COMMENT:# Empty comments below
+221:222:COMMENT:#
+224:226:COMMENT://
+228:232:COMMENT:/**/
+233:233:EOF:
+-- astOut.txt --
+{
+  "_t": "File",
+  "_p": {
+    "doc": {
+      "_t": "Comments",
+      "_p": {
+        "list": [
+          {
+            "_t": "Comment",
+            "_p": {
+              "nodepos": {
+                "end": {
+                  "byte": 22,
+                  "column": 21,
+                  "line": 1
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 1,
+                  "column": 0,
+                  "line": 1
+                }
+              },
+              "prefix": "#",
+              "prefixpos": {
+                "end": {
+                  "byte": 2,
+                  "column": 1,
+                  "line": 1
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 1,
+                  "column": 0,
+                  "line": 1
+                }
+              },
+              "text": "Single line comment",
+              "textpos": {
+                "end": {
+                  "byte": 22,
+                  "column": 21,
+                  "line": 1
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 3,
+                  "column": 2,
+                  "line": 1
+                }
+              }
+            }
+          }
+        ],
+        "nodepos": {
+          "end": {
+            "byte": 22,
+            "column": 21,
+            "line": 1
+          },
+          "filename": "input.sentinel",
+          "start": {
+            "byte": 1,
+            "column": 0,
+            "line": 1
+          }
+        }
+      }
+    },
+    "imports": [],
+    "nodepos": {
+      "end": {
+        "byte": 164,
+        "column": 5,
+        "line": 15
+      },
+      "filename": "input.sentinel",
+      "start": {
+        "byte": 130,
+        "column": 0,
+        "line": 13
+      }
+    },
+    "params": [],
+    "statements": [
+      {
+        "_t": "AssignStatement",
+        "_p": {
+          "assignop": "=",
+          "assignoppos": {
+            "end": {
+              "byte": 133,
+              "column": 3,
+              "line": 13
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 132,
+              "column": 2,
+              "line": 13
+            }
+          },
+          "lhsexpr": {
+            "_t": "Ident",
+            "_p": {
+              "name": "x",
+              "nodepos": {
+                "end": {
+                  "byte": 131,
+                  "column": 1,
+                  "line": 13
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 130,
+                  "column": 0,
+                  "line": 13
+                }
+              }
+            }
+          },
+          "nodepos": {
+            "end": {
+              "byte": 135,
+              "column": 5,
+              "line": 13
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 130,
+              "column": 0,
+              "line": 13
+            }
+          },
+          "rhsexpr": {
+            "_t": "BasicLit",
+            "_p": {
+              "kind": "INT",
+              "nodepos": {
+                "end": {
+                  "byte": 135,
+                  "column": 5,
+                  "line": 13
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 134,
+                  "column": 4,
+                  "line": 13
+                }
+              },
+              "value": "1"
+            }
+          }
+        }
+      },
+      {
+        "_t": "AssignStatement",
+        "_p": {
+          "assignop": "=",
+          "assignoppos": {
+            "end": {
+              "byte": 162,
+              "column": 3,
+              "line": 15
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 161,
+              "column": 2,
+              "line": 15
+            }
+          },
+          "lhsexpr": {
+            "_t": "Ident",
+            "_p": {
+              "name": "y",
+              "nodepos": {
+                "end": {
+                  "byte": 160,
+                  "column": 1,
+                  "line": 15
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 159,
+                  "column": 0,
+                  "line": 15
+                }
+              }
+            }
+          },
+          "nodepos": {
+            "end": {
+              "byte": 164,
+              "column": 5,
+              "line": 15
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 159,
+              "column": 0,
+              "line": 15
+            }
+          },
+          "rhsexpr": {
+            "_t": "BasicLit",
+            "_p": {
+              "kind": "INT",
+              "nodepos": {
+                "end": {
+                  "byte": 164,
+                  "column": 5,
+                  "line": 15
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 163,
+                  "column": 4,
+                  "line": 15
+                }
+              },
+              "value": "2"
+            }
+          }
+        }
+      }
+    ]
+  }
+}
+-- astError.txt --

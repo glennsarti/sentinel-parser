@@ -1,0 +1,49 @@
+-- input.sentinel --
+{
+-- tokens.txt --
+0:1:{:{
+2:2:EOF:
+-- astOut.txt --
+{
+  "_t": "File",
+  "_p": {
+    "doc": null,
+    "imports": [],
+    "nodepos": {
+      "end": {
+        "byte": 2,
+        "column": 0,
+        "line": 1
+      },
+      "filename": "input.sentinel",
+      "start": {
+        "byte": 0,
+        "column": 0,
+        "line": 0
+      }
+    },
+    "params": [],
+    "statements": [
+      {
+        "_t": "BadStatement",
+        "_p": {
+          "nodepos": {
+            "end": {
+              "byte": 2,
+              "column": 0,
+              "line": 1
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 0,
+              "column": 0,
+              "line": 0
+            }
+          }
+        }
+      }
+    ]
+  }
+}
+-- astError.txt --
+ERROR: Expected '}', but found 'EOF':1,0->1,0

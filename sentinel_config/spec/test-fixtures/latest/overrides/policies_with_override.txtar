@@ -1,0 +1,161 @@
+-- sentinel.hcl --
+
+policy "pol1" {
+  source = "foo.sentinel"
+  enforcement_level = "hard-mandatory"
+  params = {
+    "string" = "primary_value"
+  }
+}
+      
+-- sentinel_override.hcl --
+
+
+policy "pol1" {
+    source = "other.sentinel"
+    enforcement_level = "advisory"
+    params = { "string" = 42 }
+}
+      
+-- astOut.json --
+{
+  "_t": "File",
+  "_p": {
+    "globals": {},
+    "imports": {},
+    "mocks": {},
+    "params": {},
+    "policies": {
+      "pol1": {
+        "_t": "Policy",
+        "_p": {
+          "enforcementlevel": "advisory",
+          "enforcementlevelrange": {
+            "filename": "sentinel_override.hcl",
+            "start": {
+              "line": 4,
+              "column": 4,
+              "byte": 52
+            },
+            "end": {
+              "line": 4,
+              "column": 34,
+              "byte": 82
+            }
+          },
+          "name": "pol1",
+          "namerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 1,
+              "column": 7,
+              "byte": 8
+            },
+            "end": {
+              "line": 1,
+              "column": 13,
+              "byte": 14
+            }
+          },
+          "params": {
+            "string": {
+              "_t": "Parameter",
+              "_p": {
+                "name": "string",
+                "namerange": {
+                  "filename": "sentinel_override.hcl",
+                  "start": {
+                    "line": 5,
+                    "column": 15,
+                    "byte": 98
+                  },
+                  "end": {
+                    "line": 5,
+                    "column": 23,
+                    "byte": 106
+                  }
+                },
+                "parameterrange": {
+                  "filename": "sentinel_override.hcl",
+                  "start": {
+                    "line": 5,
+                    "column": 15,
+                    "byte": 98
+                  },
+                  "end": {
+                    "line": 5,
+                    "column": 28,
+                    "byte": 111
+                  }
+                },
+                "value": {
+                  "_t": "DynamicValue",
+                  "_p": {
+                    "value": 42
+                  }
+                },
+                "valuerange": {
+                  "filename": "sentinel_override.hcl",
+                  "start": {
+                    "line": 5,
+                    "column": 26,
+                    "byte": 109
+                  },
+                  "end": {
+                    "line": 5,
+                    "column": 28,
+                    "byte": 111
+                  }
+                },
+                "valuetype": "number"
+              }
+            }
+          },
+          "paramsrange": {
+            "filename": "sentinel_override.hcl",
+            "start": {
+              "line": 5,
+              "column": 4,
+              "byte": 87
+            },
+            "end": {
+              "line": 5,
+              "column": 30,
+              "byte": 113
+            }
+          },
+          "policyrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 1,
+              "column": 0,
+              "byte": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 13,
+              "byte": 14
+            }
+          },
+          "source": "other.sentinel",
+          "sourcerange": {
+            "filename": "sentinel_override.hcl",
+            "start": {
+              "line": 3,
+              "column": 4,
+              "byte": 22
+            },
+            "end": {
+              "line": 3,
+              "column": 29,
+              "byte": 47
+            }
+          }
+        }
+      }
+    },
+    "sentineloptions": null,
+    "test": null
+  }
+}
+-- diagOut.txt --
