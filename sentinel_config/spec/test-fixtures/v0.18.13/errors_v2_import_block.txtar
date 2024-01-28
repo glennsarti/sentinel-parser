@@ -1,0 +1,9 @@
+-- sentinel.hcl --
+// V2 style import schema
+import "module" "module1" {
+  source = "../something.sentinel"
+}
+-- astOut.json --
+null
+-- diagOut.txt --
+ERROR: Only 1 labels (name) are expected for import blocks.:sentinel.hcl:1,16->1,25

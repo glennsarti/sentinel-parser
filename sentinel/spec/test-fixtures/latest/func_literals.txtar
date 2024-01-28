@@ -1,0 +1,592 @@
+-- input.sentinel --
+# From language documentation
+value1 = func(a, b) { return b }
+
+// Same but split over many lines
+value1 = func(
+	a,
+	b,
+	) {
+		return b
+}
+-- tokens.txt --
+0:29:COMMENT:# From language documentation
+30:36:IDENT:value1
+37:38:=:=
+39:43:func:func
+43:44:(:(
+44:45:IDENT:a
+45:46:,:,
+47:48:IDENT:b
+48:49:):)
+50:51:{:{
+52:58:return:return
+59:60:IDENT:b
+61:62:}:}
+62:63:;:\n
+64:97:COMMENT:// Same but split over many lines
+98:104:IDENT:value1
+105:106:=:=
+107:111:func:func
+111:112:(:(
+114:115:IDENT:a
+115:116:,:,
+118:119:IDENT:b
+119:120:,:,
+122:123:):)
+124:125:{:{
+128:134:return:return
+135:136:IDENT:b
+136:137:;:\n
+137:138:}:}
+138:139:;:\n
+139:139:EOF:
+-- astOut.txt --
+{
+  "_t": "File",
+  "_p": {
+    "doc": null,
+    "imports": [],
+    "nodepos": {
+      "end": {
+        "byte": 138,
+        "column": 1,
+        "line": 9
+      },
+      "filename": "input.sentinel",
+      "start": {
+        "byte": 30,
+        "column": 0,
+        "line": 1
+      }
+    },
+    "params": [],
+    "statements": [
+      {
+        "_t": "AssignStatement",
+        "_p": {
+          "assignop": "=",
+          "assignoppos": {
+            "end": {
+              "byte": 38,
+              "column": 8,
+              "line": 1
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 37,
+              "column": 7,
+              "line": 1
+            }
+          },
+          "leftexpr": {
+            "_t": "Ident",
+            "_p": {
+              "name": "value1",
+              "nodepos": {
+                "end": {
+                  "byte": 36,
+                  "column": 6,
+                  "line": 1
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 30,
+                  "column": 0,
+                  "line": 1
+                }
+              }
+            }
+          },
+          "nodepos": {
+            "end": {
+              "byte": 62,
+              "column": 32,
+              "line": 1
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 30,
+              "column": 0,
+              "line": 1
+            }
+          },
+          "rightexpr": {
+            "_t": "FuncLit",
+            "_p": {
+              "body": {
+                "_t": "BlockStatement",
+                "_p": {
+                  "leftbrace": {
+                    "end": {
+                      "byte": 51,
+                      "column": 21,
+                      "line": 1
+                    },
+                    "filename": "input.sentinel",
+                    "start": {
+                      "byte": 50,
+                      "column": 20,
+                      "line": 1
+                    }
+                  },
+                  "nodepos": {
+                    "end": {
+                      "byte": 62,
+                      "column": 32,
+                      "line": 1
+                    },
+                    "filename": "input.sentinel",
+                    "start": {
+                      "byte": 50,
+                      "column": 20,
+                      "line": 1
+                    }
+                  },
+                  "rightbrace": {
+                    "end": {
+                      "byte": 62,
+                      "column": 32,
+                      "line": 1
+                    },
+                    "filename": "input.sentinel",
+                    "start": {
+                      "byte": 61,
+                      "column": 31,
+                      "line": 1
+                    }
+                  },
+                  "statments": [
+                    {
+                      "_t": "ReturnStatement",
+                      "_p": {
+                        "nodepos": {
+                          "end": {
+                            "byte": 60,
+                            "column": 30,
+                            "line": 1
+                          },
+                          "filename": "input.sentinel",
+                          "start": {
+                            "byte": 52,
+                            "column": 22,
+                            "line": 1
+                          }
+                        },
+                        "result": {
+                          "_t": "Ident",
+                          "_p": {
+                            "name": "b",
+                            "nodepos": {
+                              "end": {
+                                "byte": 60,
+                                "column": 30,
+                                "line": 1
+                              },
+                              "filename": "input.sentinel",
+                              "start": {
+                                "byte": 59,
+                                "column": 29,
+                                "line": 1
+                              }
+                            }
+                          }
+                        },
+                        "returnpos": {
+                          "end": {
+                            "byte": 58,
+                            "column": 28,
+                            "line": 1
+                          },
+                          "filename": "input.sentinel",
+                          "start": {
+                            "byte": 52,
+                            "column": 22,
+                            "line": 1
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "funcpos": {
+                "end": {
+                  "byte": 43,
+                  "column": 13,
+                  "line": 1
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 39,
+                  "column": 9,
+                  "line": 1
+                }
+              },
+              "nodepos": {
+                "end": {
+                  "byte": 62,
+                  "column": 32,
+                  "line": 1
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 39,
+                  "column": 9,
+                  "line": 1
+                }
+              },
+              "params": {
+                "_t": "FieldList",
+                "_p": {
+                  "fields": [
+                    {
+                      "_t": "Ident",
+                      "_p": {
+                        "name": "a",
+                        "nodepos": {
+                          "end": {
+                            "byte": 45,
+                            "column": 15,
+                            "line": 1
+                          },
+                          "filename": "input.sentinel",
+                          "start": {
+                            "byte": 44,
+                            "column": 14,
+                            "line": 1
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "_t": "Ident",
+                      "_p": {
+                        "name": "b",
+                        "nodepos": {
+                          "end": {
+                            "byte": 48,
+                            "column": 18,
+                            "line": 1
+                          },
+                          "filename": "input.sentinel",
+                          "start": {
+                            "byte": 47,
+                            "column": 17,
+                            "line": 1
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "leftparen": {
+                    "end": {
+                      "byte": 44,
+                      "column": 14,
+                      "line": 1
+                    },
+                    "filename": "input.sentinel",
+                    "start": {
+                      "byte": 43,
+                      "column": 13,
+                      "line": 1
+                    }
+                  },
+                  "nodepos": {
+                    "end": {
+                      "byte": 49,
+                      "column": 19,
+                      "line": 1
+                    },
+                    "filename": "input.sentinel",
+                    "start": {
+                      "byte": 43,
+                      "column": 13,
+                      "line": 1
+                    }
+                  },
+                  "rightparen": {
+                    "end": {
+                      "byte": 49,
+                      "column": 19,
+                      "line": 1
+                    },
+                    "filename": "input.sentinel",
+                    "start": {
+                      "byte": 48,
+                      "column": 18,
+                      "line": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "_t": "AssignStatement",
+        "_p": {
+          "assignop": "=",
+          "assignoppos": {
+            "end": {
+              "byte": 106,
+              "column": 8,
+              "line": 4
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 105,
+              "column": 7,
+              "line": 4
+            }
+          },
+          "leftexpr": {
+            "_t": "Ident",
+            "_p": {
+              "name": "value1",
+              "nodepos": {
+                "end": {
+                  "byte": 104,
+                  "column": 6,
+                  "line": 4
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 98,
+                  "column": 0,
+                  "line": 4
+                }
+              }
+            }
+          },
+          "nodepos": {
+            "end": {
+              "byte": 138,
+              "column": 1,
+              "line": 9
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 98,
+              "column": 0,
+              "line": 4
+            }
+          },
+          "rightexpr": {
+            "_t": "FuncLit",
+            "_p": {
+              "body": {
+                "_t": "BlockStatement",
+                "_p": {
+                  "leftbrace": {
+                    "end": {
+                      "byte": 125,
+                      "column": 4,
+                      "line": 7
+                    },
+                    "filename": "input.sentinel",
+                    "start": {
+                      "byte": 124,
+                      "column": 3,
+                      "line": 7
+                    }
+                  },
+                  "nodepos": {
+                    "end": {
+                      "byte": 138,
+                      "column": 1,
+                      "line": 9
+                    },
+                    "filename": "input.sentinel",
+                    "start": {
+                      "byte": 124,
+                      "column": 3,
+                      "line": 7
+                    }
+                  },
+                  "rightbrace": {
+                    "end": {
+                      "byte": 138,
+                      "column": 1,
+                      "line": 9
+                    },
+                    "filename": "input.sentinel",
+                    "start": {
+                      "byte": 137,
+                      "column": 0,
+                      "line": 9
+                    }
+                  },
+                  "statments": [
+                    {
+                      "_t": "ReturnStatement",
+                      "_p": {
+                        "nodepos": {
+                          "end": {
+                            "byte": 136,
+                            "column": 10,
+                            "line": 8
+                          },
+                          "filename": "input.sentinel",
+                          "start": {
+                            "byte": 128,
+                            "column": 2,
+                            "line": 8
+                          }
+                        },
+                        "result": {
+                          "_t": "Ident",
+                          "_p": {
+                            "name": "b",
+                            "nodepos": {
+                              "end": {
+                                "byte": 136,
+                                "column": 10,
+                                "line": 8
+                              },
+                              "filename": "input.sentinel",
+                              "start": {
+                                "byte": 135,
+                                "column": 9,
+                                "line": 8
+                              }
+                            }
+                          }
+                        },
+                        "returnpos": {
+                          "end": {
+                            "byte": 134,
+                            "column": 8,
+                            "line": 8
+                          },
+                          "filename": "input.sentinel",
+                          "start": {
+                            "byte": 128,
+                            "column": 2,
+                            "line": 8
+                          }
+                        }
+                      }
+                    }
+                  ]
+                }
+              },
+              "funcpos": {
+                "end": {
+                  "byte": 111,
+                  "column": 13,
+                  "line": 4
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 107,
+                  "column": 9,
+                  "line": 4
+                }
+              },
+              "nodepos": {
+                "end": {
+                  "byte": 138,
+                  "column": 1,
+                  "line": 9
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 107,
+                  "column": 9,
+                  "line": 4
+                }
+              },
+              "params": {
+                "_t": "FieldList",
+                "_p": {
+                  "fields": [
+                    {
+                      "_t": "Ident",
+                      "_p": {
+                        "name": "a",
+                        "nodepos": {
+                          "end": {
+                            "byte": 115,
+                            "column": 2,
+                            "line": 5
+                          },
+                          "filename": "input.sentinel",
+                          "start": {
+                            "byte": 114,
+                            "column": 1,
+                            "line": 5
+                          }
+                        }
+                      }
+                    },
+                    {
+                      "_t": "Ident",
+                      "_p": {
+                        "name": "b",
+                        "nodepos": {
+                          "end": {
+                            "byte": 119,
+                            "column": 2,
+                            "line": 6
+                          },
+                          "filename": "input.sentinel",
+                          "start": {
+                            "byte": 118,
+                            "column": 1,
+                            "line": 6
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "leftparen": {
+                    "end": {
+                      "byte": 112,
+                      "column": 14,
+                      "line": 4
+                    },
+                    "filename": "input.sentinel",
+                    "start": {
+                      "byte": 111,
+                      "column": 13,
+                      "line": 4
+                    }
+                  },
+                  "nodepos": {
+                    "end": {
+                      "byte": 123,
+                      "column": 2,
+                      "line": 7
+                    },
+                    "filename": "input.sentinel",
+                    "start": {
+                      "byte": 111,
+                      "column": 13,
+                      "line": 4
+                    }
+                  },
+                  "rightparen": {
+                    "end": {
+                      "byte": 123,
+                      "column": 2,
+                      "line": 7
+                    },
+                    "filename": "input.sentinel",
+                    "start": {
+                      "byte": 122,
+                      "column": 1,
+                      "line": 7
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  }
+}
+-- astError.txt --

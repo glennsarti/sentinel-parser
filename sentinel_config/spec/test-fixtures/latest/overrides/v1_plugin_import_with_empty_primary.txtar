@@ -1,0 +1,175 @@
+-- sentinel.hcl --
+
+import "module1" {}
+-- sentinel_override.hcl --
+
+
+import "module1" {
+  path = "override.binary"
+  args = ["-override"]
+  env = ["FOO=bar"]
+  config = {
+    number = 42
+  }
+}
+  
+-- astOut.json --
+{
+  "_t": "File",
+  "_p": {
+    "globals": {},
+    "imports": {
+      "module1": {
+        "_t": "V1PluginImport",
+        "_p": {
+          "args": [
+            "-override"
+          ],
+          "argsrange": {
+            "filename": "sentinel_override.hcl",
+            "start": {
+              "line": 4,
+              "column": 2,
+              "byte": 50
+            },
+            "end": {
+              "line": 4,
+              "column": 22,
+              "byte": 70
+            }
+          },
+          "blockrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 1,
+              "column": 0,
+              "byte": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 16,
+              "byte": 17
+            }
+          },
+          "config": {
+            "number": {
+              "_t": "Parameter",
+              "_p": {
+                "name": "number",
+                "namerange": {
+                  "filename": "sentinel_override.hcl",
+                  "start": {
+                    "line": 7,
+                    "column": 4,
+                    "byte": 108
+                  },
+                  "end": {
+                    "line": 7,
+                    "column": 10,
+                    "byte": 114
+                  }
+                },
+                "parameterrange": {
+                  "filename": "sentinel_override.hcl",
+                  "start": {
+                    "line": 7,
+                    "column": 4,
+                    "byte": 108
+                  },
+                  "end": {
+                    "line": 7,
+                    "column": 15,
+                    "byte": 119
+                  }
+                },
+                "value": {
+                  "_t": "DynamicValue",
+                  "_p": {
+                    "value": 42
+                  }
+                },
+                "valuerange": {
+                  "filename": "sentinel_override.hcl",
+                  "start": {
+                    "line": 7,
+                    "column": 13,
+                    "byte": 117
+                  },
+                  "end": {
+                    "line": 7,
+                    "column": 15,
+                    "byte": 119
+                  }
+                },
+                "valuetype": "number"
+              }
+            }
+          },
+          "configrange": {
+            "filename": "sentinel_override.hcl",
+            "start": {
+              "line": 6,
+              "column": 2,
+              "byte": 93
+            },
+            "end": {
+              "line": 8,
+              "column": 3,
+              "byte": 123
+            }
+          },
+          "env": [
+            "FOO=bar"
+          ],
+          "envrange": {
+            "filename": "sentinel_override.hcl",
+            "start": {
+              "line": 5,
+              "column": 2,
+              "byte": 73
+            },
+            "end": {
+              "line": 5,
+              "column": 19,
+              "byte": 90
+            }
+          },
+          "name": "module1",
+          "namerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 1,
+              "column": 7,
+              "byte": 8
+            },
+            "end": {
+              "line": 1,
+              "column": 16,
+              "byte": 17
+            }
+          },
+          "path": "override.binary",
+          "pathrange": {
+            "filename": "sentinel_override.hcl",
+            "start": {
+              "line": 3,
+              "column": 2,
+              "byte": 23
+            },
+            "end": {
+              "line": 3,
+              "column": 26,
+              "byte": 47
+            }
+          }
+        }
+      }
+    },
+    "mocks": {},
+    "params": {},
+    "policies": {},
+    "sentineloptions": null,
+    "test": null
+  }
+}
+-- diagOut.txt --

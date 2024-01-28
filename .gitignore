@@ -1,0 +1,10 @@
+### Custom ###
+/bin
+/pkg
+temp/
+
+### OSX ###
+*.DS_Store
+.AppleDouble
+.LSOverride
+._*

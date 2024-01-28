@@ -1,0 +1,37 @@
+-- sentinel.hcl --
+sentinel {}
+
+// Sentinel block was supported in v0.22.0 onwards
+-- astOut.json --
+{
+  "_t": "File",
+  "_p": {
+    "globals": {},
+    "imports": {},
+    "mocks": {},
+    "params": {},
+    "policies": {},
+    "sentineloptions": {
+      "_t": "SentinelOptions",
+      "_p": {
+        "features": [],
+        "featuresrange": null,
+        "sentineloptionsrange": {
+          "filename": "sentinel.hcl",
+          "start": {
+            "line": 0,
+            "column": 0,
+            "byte": 0
+          },
+          "end": {
+            "line": 0,
+            "column": 8,
+            "byte": 8
+          }
+        }
+      }
+    },
+    "test": null
+  }
+}
+-- diagOut.txt --

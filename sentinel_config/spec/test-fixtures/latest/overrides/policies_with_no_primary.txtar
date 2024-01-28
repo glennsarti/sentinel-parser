@@ -1,0 +1,24 @@
+-- sentinel.hcl --
+-- sentinel_override.hcl --
+
+policy "pol1" {
+    source = "other.sentinel"
+    enforcement_level = "advisory"
+    params = { "string" = 42 }
+}
+      
+-- astOut.json --
+{
+  "_t": "File",
+  "_p": {
+    "globals": {},
+    "imports": {},
+    "mocks": {},
+    "params": {},
+    "policies": {},
+    "sentineloptions": null,
+    "test": null
+  }
+}
+-- diagOut.txt --
+ERROR: There is no policy named "pol1". An override file can only override a policy that was already declared in a primary configuration file.:sentinel_override.hcl:1,0->1,13

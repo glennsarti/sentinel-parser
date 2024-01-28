@@ -1,0 +1,140 @@
+-- sentinel.hcl --
+policy "foo" {
+  source = "foo.sentinel"
+
+  params = {
+    "name" = "Sample"
+  }
+}
+
+// params in policies is supported in v0.21.0 onwards
+-- astOut.json --
+{
+  "_t": "File",
+  "_p": {
+    "globals": {},
+    "imports": {},
+    "mocks": {},
+    "params": {},
+    "policies": {
+      "foo": {
+        "_t": "Policy",
+        "_p": {
+          "enforcementlevel": "",
+          "enforcementlevelrange": null,
+          "name": "foo",
+          "namerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 0,
+              "column": 7,
+              "byte": 7
+            },
+            "end": {
+              "line": 0,
+              "column": 12,
+              "byte": 12
+            }
+          },
+          "params": {
+            "name": {
+              "_t": "Parameter",
+              "_p": {
+                "name": "name",
+                "namerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 4,
+                    "column": 4,
+                    "byte": 59
+                  },
+                  "end": {
+                    "line": 4,
+                    "column": 10,
+                    "byte": 65
+                  }
+                },
+                "parameterrange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 4,
+                    "column": 4,
+                    "byte": 59
+                  },
+                  "end": {
+                    "line": 4,
+                    "column": 21,
+                    "byte": 76
+                  }
+                },
+                "value": {
+                  "_t": "DynamicValue",
+                  "_p": {
+                    "value": "Sample"
+                  }
+                },
+                "valuerange": {
+                  "filename": "sentinel.hcl",
+                  "start": {
+                    "line": 4,
+                    "column": 13,
+                    "byte": 68
+                  },
+                  "end": {
+                    "line": 4,
+                    "column": 21,
+                    "byte": 76
+                  }
+                },
+                "valuetype": "string"
+              }
+            }
+          },
+          "paramsrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 3,
+              "column": 2,
+              "byte": 44
+            },
+            "end": {
+              "line": 5,
+              "column": 3,
+              "byte": 80
+            }
+          },
+          "policyrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 0,
+              "column": 0,
+              "byte": 0
+            },
+            "end": {
+              "line": 0,
+              "column": 12,
+              "byte": 12
+            }
+          },
+          "source": "foo.sentinel",
+          "sourcerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 1,
+              "column": 2,
+              "byte": 17
+            },
+            "end": {
+              "line": 1,
+              "column": 25,
+              "byte": 40
+            }
+          }
+        }
+      }
+    },
+    "sentineloptions": null,
+    "test": null
+  }
+}
+-- diagOut.txt --

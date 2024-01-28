@@ -1,0 +1,8 @@
+-- sentinel.hcl --
+policy "foo" {
+  source = "foo.sentinel"
+}
+-- astOut.json --
+null
+-- diagOut.txt --
+ERROR: enforcement_level attribute in a policy block is not optional in Sentinel v0.18.10 (Requires v0.18.11+).:sentinel.hcl:0,0->0,12

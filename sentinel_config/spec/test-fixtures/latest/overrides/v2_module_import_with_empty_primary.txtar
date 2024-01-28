@@ -1,0 +1,85 @@
+-- sentinel.hcl --
+
+import "module" "module1" {}
+-- sentinel_override.hcl --
+
+
+import "module" "module1" {
+  source = "override.sentinel"
+}
+  
+-- astOut.json --
+{
+  "_t": "File",
+  "_p": {
+    "globals": {},
+    "imports": {
+      "module1": {
+        "_t": "V2ModuleImport",
+        "_p": {
+          "blockrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 1,
+              "column": 0,
+              "byte": 1
+            },
+            "end": {
+              "line": 1,
+              "column": 25,
+              "byte": 26
+            }
+          },
+          "kind": "module",
+          "kindrange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 1,
+              "column": 7,
+              "byte": 8
+            },
+            "end": {
+              "line": 1,
+              "column": 15,
+              "byte": 16
+            }
+          },
+          "name": "module1",
+          "namerange": {
+            "filename": "sentinel.hcl",
+            "start": {
+              "line": 1,
+              "column": 16,
+              "byte": 17
+            },
+            "end": {
+              "line": 1,
+              "column": 25,
+              "byte": 26
+            }
+          },
+          "source": "override.sentinel",
+          "sourcerange": {
+            "filename": "sentinel_override.hcl",
+            "start": {
+              "line": 3,
+              "column": 2,
+              "byte": 32
+            },
+            "end": {
+              "line": 3,
+              "column": 30,
+              "byte": 60
+            }
+          }
+        }
+      }
+    },
+    "mocks": {},
+    "params": {},
+    "policies": {},
+    "sentineloptions": null,
+    "test": null
+  }
+}
+-- diagOut.txt --

@@ -1,0 +1,3191 @@
+-- input.sentinel --
+// From language documentation
+value1 = math.pi
+value1 = time.pst.hour
+
+value1 = mapvalue.key == "foo"
+
+// Deep selectors with alll manner of indexing
+value2 = root.name1.name2[idx].name3[idx1][idx2].name4
+
+// Selector names can be reserved keywords so need to make sure they parse correctly
+main = rule {
+	import1.all and
+	import1.and and
+	import1.any and
+	import1.as and
+	import1.break and
+	import1.contains and
+	import1.continue and
+	import1.else and
+	import1.for and
+	import1.func and
+	import1.if and
+	import1.import and
+	import1.in and
+	import1.is and
+	import1.matches and
+	import1.not and
+	import1.null and
+	import1.or and
+	import1.return and
+	import1.rule and
+	import1.undefined and
+	import1.when and
+	import1.xor
+}
+-- tokens.txt --
+0:30:COMMENT:// From language documentation
+31:37:IDENT:value1
+38:39:=:=
+40:44:IDENT:math
+44:45:.:.
+45:47:IDENT:pi
+47:48:;:\n
+48:54:IDENT:value1
+55:56:=:=
+57:61:IDENT:time
+61:62:.:.
+62:65:IDENT:pst
+65:66:.:.
+66:70:IDENT:hour
+70:71:;:\n
+72:78:IDENT:value1
+79:80:=:=
+81:89:IDENT:mapvalue
+89:90:.:.
+90:93:IDENT:key
+94:96:==:==
+97:102:STRING:"foo"
+102:103:;:\n
+104:150:COMMENT:// Deep selectors with alll manner of indexing
+151:157:IDENT:value2
+158:159:=:=
+160:164:IDENT:root
+164:165:.:.
+165:170:IDENT:name1
+170:171:.:.
+171:176:IDENT:name2
+176:177:[:[
+177:180:IDENT:idx
+180:181:]:]
+181:182:.:.
+182:187:IDENT:name3
+187:188:[:[
+188:192:IDENT:idx1
+192:193:]:]
+193:194:[:[
+194:198:IDENT:idx2
+198:199:]:]
+199:200:.:.
+200:205:IDENT:name4
+205:206:;:\n
+207:291:COMMENT:// Selector names can be reserved keywords so need to make sure they parse correctly
+292:296:IDENT:main
+297:298:=:=
+299:303:rule:rule
+304:305:{:{
+307:314:IDENT:import1
+314:315:.:.
+315:318:all:all
+319:322:and:and
+324:331:IDENT:import1
+331:332:.:.
+332:335:and:and
+336:339:and:and
+341:348:IDENT:import1
+348:349:.:.
+349:352:any:any
+353:356:and:and
+358:365:IDENT:import1
+365:366:.:.
+366:368:as:as
+369:372:and:and
+374:381:IDENT:import1
+381:382:.:.
+382:387:break:break
+388:391:and:and
+393:400:IDENT:import1
+400:401:.:.
+401:409:contains:contains
+410:413:and:and
+415:422:IDENT:import1
+422:423:.:.
+423:431:continue:continue
+432:435:and:and
+437:444:IDENT:import1
+444:445:.:.
+445:449:else:else
+450:453:and:and
+455:462:IDENT:import1
+462:463:.:.
+463:466:for:for
+467:470:and:and
+472:479:IDENT:import1
+479:480:.:.
+480:484:func:func
+485:488:and:and
+490:497:IDENT:import1
+497:498:.:.
+498:500:if:if
+501:504:and:and
+506:513:IDENT:import1
+513:514:.:.
+514:520:import:import
+521:524:and:and
+526:533:IDENT:import1
+533:534:.:.
+534:536:in:in
+537:540:and:and
+542:549:IDENT:import1
+549:550:.:.
+550:552:is:is
+553:556:and:and
+558:565:IDENT:import1
+565:566:.:.
+566:573:matches:matches
+574:577:and:and
+579:586:IDENT:import1
+586:587:.:.
+587:590:not:not
+591:594:and:and
+596:603:IDENT:import1
+603:604:.:.
+604:608:IDENT:null
+609:612:and:and
+614:621:IDENT:import1
+621:622:.:.
+622:624:or:or
+625:628:and:and
+630:637:IDENT:import1
+637:638:.:.
+638:644:return:return
+645:648:and:and
+650:657:IDENT:import1
+657:658:.:.
+658:662:rule:rule
+663:666:and:and
+668:675:IDENT:import1
+675:676:.:.
+676:685:IDENT:undefined
+686:689:and:and
+691:698:IDENT:import1
+698:699:.:.
+699:703:when:when
+704:707:and:and
+709:716:IDENT:import1
+716:717:.:.
+717:720:xor:xor
+721:722:}:}
+722:723:;:\n
+723:723:EOF:
+-- astOut.txt --
+{
+  "_t": "File",
+  "_p": {
+    "doc": null,
+    "imports": [],
+    "nodepos": {
+      "end": {
+        "byte": 722,
+        "column": 1,
+        "line": 34
+      },
+      "filename": "input.sentinel",
+      "start": {
+        "byte": 31,
+        "column": 0,
+        "line": 1
+      }
+    },
+    "params": [],
+    "statements": [
+      {
+        "_t": "AssignStatement",
+        "_p": {
+          "assignop": "=",
+          "assignoppos": {
+            "end": {
+              "byte": 39,
+              "column": 8,
+              "line": 1
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 38,
+              "column": 7,
+              "line": 1
+            }
+          },
+          "leftexpr": {
+            "_t": "Ident",
+            "_p": {
+              "name": "value1",
+              "nodepos": {
+                "end": {
+                  "byte": 37,
+                  "column": 6,
+                  "line": 1
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 31,
+                  "column": 0,
+                  "line": 1
+                }
+              }
+            }
+          },
+          "nodepos": {
+            "end": {
+              "byte": 47,
+              "column": 16,
+              "line": 1
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 31,
+              "column": 0,
+              "line": 1
+            }
+          },
+          "rightexpr": {
+            "_t": "SelectorExpression",
+            "_p": {
+              "nodepos": {
+                "end": {
+                  "byte": 47,
+                  "column": 16,
+                  "line": 1
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 40,
+                  "column": 9,
+                  "line": 1
+                }
+              },
+              "selector": {
+                "_t": "Ident",
+                "_p": {
+                  "name": "pi",
+                  "nodepos": {
+                    "end": {
+                      "byte": 47,
+                      "column": 16,
+                      "line": 1
+                    },
+                    "filename": "input.sentinel",
+                    "start": {
+                      "byte": 45,
+                      "column": 14,
+                      "line": 1
+                    }
+                  }
+                }
+              },
+              "value": {
+                "_t": "Ident",
+                "_p": {
+                  "name": "math",
+                  "nodepos": {
+                    "end": {
+                      "byte": 44,
+                      "column": 13,
+                      "line": 1
+                    },
+                    "filename": "input.sentinel",
+                    "start": {
+                      "byte": 40,
+                      "column": 9,
+                      "line": 1
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "_t": "AssignStatement",
+        "_p": {
+          "assignop": "=",
+          "assignoppos": {
+            "end": {
+              "byte": 56,
+              "column": 8,
+              "line": 2
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 55,
+              "column": 7,
+              "line": 2
+            }
+          },
+          "leftexpr": {
+            "_t": "Ident",
+            "_p": {
+              "name": "value1",
+              "nodepos": {
+                "end": {
+                  "byte": 54,
+                  "column": 6,
+                  "line": 2
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 48,
+                  "column": 0,
+                  "line": 2
+                }
+              }
+            }
+          },
+          "nodepos": {
+            "end": {
+              "byte": 70,
+              "column": 22,
+              "line": 2
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 48,
+              "column": 0,
+              "line": 2
+            }
+          },
+          "rightexpr": {
+            "_t": "SelectorExpression",
+            "_p": {
+              "nodepos": {
+                "end": {
+                  "byte": 70,
+                  "column": 22,
+                  "line": 2
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 57,
+                  "column": 9,
+                  "line": 2
+                }
+              },
+              "selector": {
+                "_t": "Ident",
+                "_p": {
+                  "name": "hour",
+                  "nodepos": {
+                    "end": {
+                      "byte": 70,
+                      "column": 22,
+                      "line": 2
+                    },
+                    "filename": "input.sentinel",
+                    "start": {
+                      "byte": 66,
+                      "column": 18,
+                      "line": 2
+                    }
+                  }
+                }
+              },
+              "value": {
+                "_t": "SelectorExpression",
+                "_p": {
+                  "nodepos": {
+                    "end": {
+                      "byte": 65,
+                      "column": 17,
+                      "line": 2
+                    },
+                    "filename": "input.sentinel",
+                    "start": {
+                      "byte": 57,
+                      "column": 9,
+                      "line": 2
+                    }
+                  },
+                  "selector": {
+                    "_t": "Ident",
+                    "_p": {
+                      "name": "pst",
+                      "nodepos": {
+                        "end": {
+                          "byte": 65,
+                          "column": 17,
+                          "line": 2
+                        },
+                        "filename": "input.sentinel",
+                        "start": {
+                          "byte": 62,
+                          "column": 14,
+                          "line": 2
+                        }
+                      }
+                    }
+                  },
+                  "value": {
+                    "_t": "Ident",
+                    "_p": {
+                      "name": "time",
+                      "nodepos": {
+                        "end": {
+                          "byte": 61,
+                          "column": 13,
+                          "line": 2
+                        },
+                        "filename": "input.sentinel",
+                        "start": {
+                          "byte": 57,
+                          "column": 9,
+                          "line": 2
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "_t": "AssignStatement",
+        "_p": {
+          "assignop": "=",
+          "assignoppos": {
+            "end": {
+              "byte": 80,
+              "column": 8,
+              "line": 4
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 79,
+              "column": 7,
+              "line": 4
+            }
+          },
+          "leftexpr": {
+            "_t": "Ident",
+            "_p": {
+              "name": "value1",
+              "nodepos": {
+                "end": {
+                  "byte": 78,
+                  "column": 6,
+                  "line": 4
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 72,
+                  "column": 0,
+                  "line": 4
+                }
+              }
+            }
+          },
+          "nodepos": {
+            "end": {
+              "byte": 102,
+              "column": 30,
+              "line": 4
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 72,
+              "column": 0,
+              "line": 4
+            }
+          },
+          "rightexpr": {
+            "_t": "BinaryExpression",
+            "_p": {
+              "leftexpr": {
+                "_t": "SelectorExpression",
+                "_p": {
+                  "nodepos": {
+                    "end": {
+                      "byte": 93,
+                      "column": 21,
+                      "line": 4
+                    },
+                    "filename": "input.sentinel",
+                    "start": {
+                      "byte": 81,
+                      "column": 9,
+                      "line": 4
+                    }
+                  },
+                  "selector": {
+                    "_t": "Ident",
+                    "_p": {
+                      "name": "key",
+                      "nodepos": {
+                        "end": {
+                          "byte": 93,
+                          "column": 21,
+                          "line": 4
+                        },
+                        "filename": "input.sentinel",
+                        "start": {
+                          "byte": 90,
+                          "column": 18,
+                          "line": 4
+                        }
+                      }
+                    }
+                  },
+                  "value": {
+                    "_t": "Ident",
+                    "_p": {
+                      "name": "mapvalue",
+                      "nodepos": {
+                        "end": {
+                          "byte": 89,
+                          "column": 17,
+                          "line": 4
+                        },
+                        "filename": "input.sentinel",
+                        "start": {
+                          "byte": 81,
+                          "column": 9,
+                          "line": 4
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "nodepos": {
+                "end": {
+                  "byte": 102,
+                  "column": 30,
+                  "line": 4
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 81,
+                  "column": 9,
+                  "line": 4
+                }
+              },
+              "op": "==",
+              "oppos": {
+                "end": {
+                  "byte": 96,
+                  "column": 24,
+                  "line": 4
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 94,
+                  "column": 22,
+                  "line": 4
+                }
+              },
+              "rightexpr": {
+                "_t": "BasicLit",
+                "_p": {
+                  "kind": "STRING",
+                  "nodepos": {
+                    "end": {
+                      "byte": 102,
+                      "column": 30,
+                      "line": 4
+                    },
+                    "filename": "input.sentinel",
+                    "start": {
+                      "byte": 97,
+                      "column": 25,
+                      "line": 4
+                    }
+                  },
+                  "value": "\"foo\""
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "_t": "AssignStatement",
+        "_p": {
+          "assignop": "=",
+          "assignoppos": {
+            "end": {
+              "byte": 159,
+              "column": 8,
+              "line": 7
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 158,
+              "column": 7,
+              "line": 7
+            }
+          },
+          "leftexpr": {
+            "_t": "Ident",
+            "_p": {
+              "name": "value2",
+              "nodepos": {
+                "end": {
+                  "byte": 157,
+                  "column": 6,
+                  "line": 7
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 151,
+                  "column": 0,
+                  "line": 7
+                }
+              }
+            }
+          },
+          "nodepos": {
+            "end": {
+              "byte": 205,
+              "column": 54,
+              "line": 7
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 151,
+              "column": 0,
+              "line": 7
+            }
+          },
+          "rightexpr": {
+            "_t": "SelectorExpression",
+            "_p": {
+              "nodepos": {
+                "end": {
+                  "byte": 205,
+                  "column": 54,
+                  "line": 7
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 160,
+                  "column": 9,
+                  "line": 7
+                }
+              },
+              "selector": {
+                "_t": "Ident",
+                "_p": {
+                  "name": "name4",
+                  "nodepos": {
+                    "end": {
+                      "byte": 205,
+                      "column": 54,
+                      "line": 7
+                    },
+                    "filename": "input.sentinel",
+                    "start": {
+                      "byte": 200,
+                      "column": 49,
+                      "line": 7
+                    }
+                  }
+                }
+              },
+              "value": {
+                "_t": "IndexExpression",
+                "_p": {
+                  "index": {
+                    "_t": "Ident",
+                    "_p": {
+                      "name": "idx2",
+                      "nodepos": {
+                        "end": {
+                          "byte": 198,
+                          "column": 47,
+                          "line": 7
+                        },
+                        "filename": "input.sentinel",
+                        "start": {
+                          "byte": 194,
+                          "column": 43,
+                          "line": 7
+                        }
+                      }
+                    }
+                  },
+                  "leftbrack": {
+                    "end": {
+                      "byte": 194,
+                      "column": 43,
+                      "line": 7
+                    },
+                    "filename": "input.sentinel",
+                    "start": {
+                      "byte": 193,
+                      "column": 42,
+                      "line": 7
+                    }
+                  },
+                  "nodepos": {
+                    "end": {
+                      "byte": 199,
+                      "column": 48,
+                      "line": 7
+                    },
+                    "filename": "input.sentinel",
+                    "start": {
+                      "byte": 160,
+                      "column": 9,
+                      "line": 7
+                    }
+                  },
+                  "rightbrack": {
+                    "end": {
+                      "byte": 199,
+                      "column": 48,
+                      "line": 7
+                    },
+                    "filename": "input.sentinel",
+                    "start": {
+                      "byte": 198,
+                      "column": 47,
+                      "line": 7
+                    }
+                  },
+                  "value": {
+                    "_t": "IndexExpression",
+                    "_p": {
+                      "index": {
+                        "_t": "Ident",
+                        "_p": {
+                          "name": "idx1",
+                          "nodepos": {
+                            "end": {
+                              "byte": 192,
+                              "column": 41,
+                              "line": 7
+                            },
+                            "filename": "input.sentinel",
+                            "start": {
+                              "byte": 188,
+                              "column": 37,
+                              "line": 7
+                            }
+                          }
+                        }
+                      },
+                      "leftbrack": {
+                        "end": {
+                          "byte": 188,
+                          "column": 37,
+                          "line": 7
+                        },
+                        "filename": "input.sentinel",
+                        "start": {
+                          "byte": 187,
+                          "column": 36,
+                          "line": 7
+                        }
+                      },
+                      "nodepos": {
+                        "end": {
+                          "byte": 193,
+                          "column": 42,
+                          "line": 7
+                        },
+                        "filename": "input.sentinel",
+                        "start": {
+                          "byte": 160,
+                          "column": 9,
+                          "line": 7
+                        }
+                      },
+                      "rightbrack": {
+                        "end": {
+                          "byte": 193,
+                          "column": 42,
+                          "line": 7
+                        },
+                        "filename": "input.sentinel",
+                        "start": {
+                          "byte": 192,
+                          "column": 41,
+                          "line": 7
+                        }
+                      },
+                      "value": {
+                        "_t": "SelectorExpression",
+                        "_p": {
+                          "nodepos": {
+                            "end": {
+                              "byte": 187,
+                              "column": 36,
+                              "line": 7
+                            },
+                            "filename": "input.sentinel",
+                            "start": {
+                              "byte": 160,
+                              "column": 9,
+                              "line": 7
+                            }
+                          },
+                          "selector": {
+                            "_t": "Ident",
+                            "_p": {
+                              "name": "name3",
+                              "nodepos": {
+                                "end": {
+                                  "byte": 187,
+                                  "column": 36,
+                                  "line": 7
+                                },
+                                "filename": "input.sentinel",
+                                "start": {
+                                  "byte": 182,
+                                  "column": 31,
+                                  "line": 7
+                                }
+                              }
+                            }
+                          },
+                          "value": {
+                            "_t": "IndexExpression",
+                            "_p": {
+                              "index": {
+                                "_t": "Ident",
+                                "_p": {
+                                  "name": "idx",
+                                  "nodepos": {
+                                    "end": {
+                                      "byte": 180,
+                                      "column": 29,
+                                      "line": 7
+                                    },
+                                    "filename": "input.sentinel",
+                                    "start": {
+                                      "byte": 177,
+                                      "column": 26,
+                                      "line": 7
+                                    }
+                                  }
+                                }
+                              },
+                              "leftbrack": {
+                                "end": {
+                                  "byte": 177,
+                                  "column": 26,
+                                  "line": 7
+                                },
+                                "filename": "input.sentinel",
+                                "start": {
+                                  "byte": 176,
+                                  "column": 25,
+                                  "line": 7
+                                }
+                              },
+                              "nodepos": {
+                                "end": {
+                                  "byte": 181,
+                                  "column": 30,
+                                  "line": 7
+                                },
+                                "filename": "input.sentinel",
+                                "start": {
+                                  "byte": 160,
+                                  "column": 9,
+                                  "line": 7
+                                }
+                              },
+                              "rightbrack": {
+                                "end": {
+                                  "byte": 181,
+                                  "column": 30,
+                                  "line": 7
+                                },
+                                "filename": "input.sentinel",
+                                "start": {
+                                  "byte": 180,
+                                  "column": 29,
+                                  "line": 7
+                                }
+                              },
+                              "value": {
+                                "_t": "SelectorExpression",
+                                "_p": {
+                                  "nodepos": {
+                                    "end": {
+                                      "byte": 176,
+                                      "column": 25,
+                                      "line": 7
+                                    },
+                                    "filename": "input.sentinel",
+                                    "start": {
+                                      "byte": 160,
+                                      "column": 9,
+                                      "line": 7
+                                    }
+                                  },
+                                  "selector": {
+                                    "_t": "Ident",
+                                    "_p": {
+                                      "name": "name2",
+                                      "nodepos": {
+                                        "end": {
+                                          "byte": 176,
+                                          "column": 25,
+                                          "line": 7
+                                        },
+                                        "filename": "input.sentinel",
+                                        "start": {
+                                          "byte": 171,
+                                          "column": 20,
+                                          "line": 7
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "value": {
+                                    "_t": "SelectorExpression",
+                                    "_p": {
+                                      "nodepos": {
+                                        "end": {
+                                          "byte": 170,
+                                          "column": 19,
+                                          "line": 7
+                                        },
+                                        "filename": "input.sentinel",
+                                        "start": {
+                                          "byte": 160,
+                                          "column": 9,
+                                          "line": 7
+                                        }
+                                      },
+                                      "selector": {
+                                        "_t": "Ident",
+                                        "_p": {
+                                          "name": "name1",
+                                          "nodepos": {
+                                            "end": {
+                                              "byte": 170,
+                                              "column": 19,
+                                              "line": 7
+                                            },
+                                            "filename": "input.sentinel",
+                                            "start": {
+                                              "byte": 165,
+                                              "column": 14,
+                                              "line": 7
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "value": {
+                                        "_t": "Ident",
+                                        "_p": {
+                                          "name": "root",
+                                          "nodepos": {
+                                            "end": {
+                                              "byte": 164,
+                                              "column": 13,
+                                              "line": 7
+                                            },
+                                            "filename": "input.sentinel",
+                                            "start": {
+                                              "byte": 160,
+                                              "column": 9,
+                                              "line": 7
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      {
+        "_t": "AssignStatement",
+        "_p": {
+          "assignop": "=",
+          "assignoppos": {
+            "end": {
+              "byte": 298,
+              "column": 6,
+              "line": 10
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 297,
+              "column": 5,
+              "line": 10
+            }
+          },
+          "leftexpr": {
+            "_t": "Ident",
+            "_p": {
+              "name": "main",
+              "nodepos": {
+                "end": {
+                  "byte": 296,
+                  "column": 4,
+                  "line": 10
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 292,
+                  "column": 0,
+                  "line": 10
+                }
+              }
+            }
+          },
+          "nodepos": {
+            "end": {
+              "byte": 722,
+              "column": 1,
+              "line": 34
+            },
+            "filename": "input.sentinel",
+            "start": {
+              "byte": 292,
+              "column": 0,
+              "line": 10
+            }
+          },
+          "rightexpr": {
+            "_t": "RuleExpression",
+            "_p": {
+              "doc": {
+                "_t": "Comments",
+                "_p": {
+                  "list": [
+                    {
+                      "_t": "Comment",
+                      "_p": {
+                        "nodepos": {
+                          "end": {
+                            "byte": 291,
+                            "column": 84,
+                            "line": 9
+                          },
+                          "filename": "input.sentinel",
+                          "start": {
+                            "byte": 207,
+                            "column": 0,
+                            "line": 9
+                          }
+                        },
+                        "prefix": "//",
+                        "prefixpos": {
+                          "end": {
+                            "byte": 209,
+                            "column": 2,
+                            "line": 9
+                          },
+                          "filename": "input.sentinel",
+                          "start": {
+                            "byte": 207,
+                            "column": 0,
+                            "line": 9
+                          }
+                        },
+                        "text": "Selector names can be reserved keywords so need to make sure they parse correctly",
+                        "textpos": {
+                          "end": {
+                            "byte": 291,
+                            "column": 84,
+                            "line": 9
+                          },
+                          "filename": "input.sentinel",
+                          "start": {
+                            "byte": 210,
+                            "column": 3,
+                            "line": 9
+                          }
+                        }
+                      }
+                    }
+                  ],
+                  "nodepos": {
+                    "end": {
+                      "byte": 291,
+                      "column": 84,
+                      "line": 9
+                    },
+                    "filename": "input.sentinel",
+                    "start": {
+                      "byte": 207,
+                      "column": 0,
+                      "line": 9
+                    }
+                  }
+                }
+              },
+              "leftbracepos": {
+                "end": {
+                  "byte": 305,
+                  "column": 13,
+                  "line": 10
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 304,
+                  "column": 12,
+                  "line": 10
+                }
+              },
+              "nodepos": {
+                "end": {
+                  "byte": 722,
+                  "column": 1,
+                  "line": 34
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 299,
+                  "column": 7,
+                  "line": 10
+                }
+              },
+              "rightbracepos": {
+                "end": {
+                  "byte": 722,
+                  "column": 1,
+                  "line": 34
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 721,
+                  "column": 0,
+                  "line": 34
+                }
+              },
+              "ruletokenpos": {
+                "end": {
+                  "byte": 303,
+                  "column": 11,
+                  "line": 10
+                },
+                "filename": "input.sentinel",
+                "start": {
+                  "byte": 299,
+                  "column": 7,
+                  "line": 10
+                }
+              },
+              "value": {
+                "_t": "BinaryExpression",
+                "_p": {
+                  "leftexpr": {
+                    "_t": "BinaryExpression",
+                    "_p": {
+                      "leftexpr": {
+                        "_t": "BinaryExpression",
+                        "_p": {
+                          "leftexpr": {
+                            "_t": "BinaryExpression",
+                            "_p": {
+                              "leftexpr": {
+                                "_t": "BinaryExpression",
+                                "_p": {
+                                  "leftexpr": {
+                                    "_t": "BinaryExpression",
+                                    "_p": {
+                                      "leftexpr": {
+                                        "_t": "BinaryExpression",
+                                        "_p": {
+                                          "leftexpr": {
+                                            "_t": "BinaryExpression",
+                                            "_p": {
+                                              "leftexpr": {
+                                                "_t": "BinaryExpression",
+                                                "_p": {
+                                                  "leftexpr": {
+                                                    "_t": "BinaryExpression",
+                                                    "_p": {
+                                                      "leftexpr": {
+                                                        "_t": "BinaryExpression",
+                                                        "_p": {
+                                                          "leftexpr": {
+                                                            "_t": "BinaryExpression",
+                                                            "_p": {
+                                                              "leftexpr": {
+                                                                "_t": "BinaryExpression",
+                                                                "_p": {
+                                                                  "leftexpr": {
+                                                                    "_t": "BinaryExpression",
+                                                                    "_p": {
+                                                                      "leftexpr": {
+                                                                        "_t": "BinaryExpression",
+                                                                        "_p": {
+                                                                          "leftexpr": {
+                                                                            "_t": "BinaryExpression",
+                                                                            "_p": {
+                                                                              "leftexpr": {
+                                                                                "_t": "BinaryExpression",
+                                                                                "_p": {
+                                                                                  "leftexpr": {
+                                                                                    "_t": "BinaryExpression",
+                                                                                    "_p": {
+                                                                                      "leftexpr": {
+                                                                                        "_t": "BinaryExpression",
+                                                                                        "_p": {
+                                                                                          "leftexpr": {
+                                                                                            "_t": "BinaryExpression",
+                                                                                            "_p": {
+                                                                                              "leftexpr": {
+                                                                                                "_t": "BinaryExpression",
+                                                                                                "_p": {
+                                                                                                  "leftexpr": {
+                                                                                                    "_t": "BinaryExpression",
+                                                                                                    "_p": {
+                                                                                                      "leftexpr": {
+                                                                                                        "_t": "SelectorExpression",
+                                                                                                        "_p": {
+                                                                                                          "nodepos": {
+                                                                                                            "end": {
+                                                                                                              "byte": 318,
+                                                                                                              "column": 12,
+                                                                                                              "line": 11
+                                                                                                            },
+                                                                                                            "filename": "input.sentinel",
+                                                                                                            "start": {
+                                                                                                              "byte": 307,
+                                                                                                              "column": 1,
+                                                                                                              "line": 11
+                                                                                                            }
+                                                                                                          },
+                                                                                                          "selector": {
+                                                                                                            "_t": "Ident",
+                                                                                                            "_p": {
+                                                                                                              "name": "all",
+                                                                                                              "nodepos": {
+                                                                                                                "end": {
+                                                                                                                  "byte": 318,
+                                                                                                                  "column": 12,
+                                                                                                                  "line": 11
+                                                                                                                },
+                                                                                                                "filename": "input.sentinel",
+                                                                                                                "start": {
+                                                                                                                  "byte": 315,
+                                                                                                                  "column": 9,
+                                                                                                                  "line": 11
+                                                                                                                }
+                                                                                                              }
+                                                                                                            }
+                                                                                                          },
+                                                                                                          "value": {
+                                                                                                            "_t": "Ident",
+                                                                                                            "_p": {
+                                                                                                              "name": "import1",
+                                                                                                              "nodepos": {
+                                                                                                                "end": {
+                                                                                                                  "byte": 314,
+                                                                                                                  "column": 8,
+                                                                                                                  "line": 11
+                                                                                                                },
+                                                                                                                "filename": "input.sentinel",
+                                                                                                                "start": {
+                                                                                                                  "byte": 307,
+                                                                                                                  "column": 1,
+                                                                                                                  "line": 11
+                                                                                                                }
+                                                                                                              }
+                                                                                                            }
+                                                                                                          }
+                                                                                                        }
+                                                                                                      },
+                                                                                                      "nodepos": {
+                                                                                                        "end": {
+                                                                                                          "byte": 335,
+                                                                                                          "column": 12,
+                                                                                                          "line": 12
+                                                                                                        },
+                                                                                                        "filename": "input.sentinel",
+                                                                                                        "start": {
+                                                                                                          "byte": 307,
+                                                                                                          "column": 1,
+                                                                                                          "line": 11
+                                                                                                        }
+                                                                                                      },
+                                                                                                      "op": "and",
+                                                                                                      "oppos": {
+                                                                                                        "end": {
+                                                                                                          "byte": 322,
+                                                                                                          "column": 16,
+                                                                                                          "line": 11
+                                                                                                        },
+                                                                                                        "filename": "input.sentinel",
+                                                                                                        "start": {
+                                                                                                          "byte": 319,
+                                                                                                          "column": 13,
+                                                                                                          "line": 11
+                                                                                                        }
+                                                                                                      },
+                                                                                                      "rightexpr": {
+                                                                                                        "_t": "SelectorExpression",
+                                                                                                        "_p": {
+                                                                                                          "nodepos": {
+                                                                                                            "end": {
+                                                                                                              "byte": 335,
+                                                                                                              "column": 12,
+                                                                                                              "line": 12
+                                                                                                            },
+                                                                                                            "filename": "input.sentinel",
+                                                                                                            "start": {
+                                                                                                              "byte": 324,
+                                                                                                              "column": 1,
+                                                                                                              "line": 12
+                                                                                                            }
+                                                                                                          },
+                                                                                                          "selector": {
+                                                                                                            "_t": "Ident",
+                                                                                                            "_p": {
+                                                                                                              "name": "and",
+                                                                                                              "nodepos": {
+                                                                                                                "end": {
+                                                                                                                  "byte": 335,
+                                                                                                                  "column": 12,
+                                                                                                                  "line": 12
+                                                                                                                },
+                                                                                                                "filename": "input.sentinel",
+                                                                                                                "start": {
+                                                                                                                  "byte": 332,
+                                                                                                                  "column": 9,
+                                                                                                                  "line": 12
+                                                                                                                }
+                                                                                                              }
+                                                                                                            }
+                                                                                                          },
+                                                                                                          "value": {
+                                                                                                            "_t": "Ident",
+                                                                                                            "_p": {
+                                                                                                              "name": "import1",
+                                                                                                              "nodepos": {
+                                                                                                                "end": {
+                                                                                                                  "byte": 331,
+                                                                                                                  "column": 8,
+                                                                                                                  "line": 12
+                                                                                                                },
+                                                                                                                "filename": "input.sentinel",
+                                                                                                                "start": {
+                                                                                                                  "byte": 324,
+                                                                                                                  "column": 1,
+                                                                                                                  "line": 12
+                                                                                                                }
+                                                                                                              }
+                                                                                                            }
+                                                                                                          }
+                                                                                                        }
+                                                                                                      }
+                                                                                                    }
+                                                                                                  },
+                                                                                                  "nodepos": {
+                                                                                                    "end": {
+                                                                                                      "byte": 352,
+                                                                                                      "column": 12,
+                                                                                                      "line": 13
+                                                                                                    },
+                                                                                                    "filename": "input.sentinel",
+                                                                                                    "start": {
+                                                                                                      "byte": 307,
+                                                                                                      "column": 1,
+                                                                                                      "line": 11
+                                                                                                    }
+                                                                                                  },
+                                                                                                  "op": "and",
+                                                                                                  "oppos": {
+                                                                                                    "end": {
+                                                                                                      "byte": 339,
+                                                                                                      "column": 16,
+                                                                                                      "line": 12
+                                                                                                    },
+                                                                                                    "filename": "input.sentinel",
+                                                                                                    "start": {
+                                                                                                      "byte": 336,
+                                                                                                      "column": 13,
+                                                                                                      "line": 12
+                                                                                                    }
+                                                                                                  },
+                                                                                                  "rightexpr": {
+                                                                                                    "_t": "SelectorExpression",
+                                                                                                    "_p": {
+                                                                                                      "nodepos": {
+                                                                                                        "end": {
+                                                                                                          "byte": 352,
+                                                                                                          "column": 12,
+                                                                                                          "line": 13
+                                                                                                        },
+                                                                                                        "filename": "input.sentinel",
+                                                                                                        "start": {
+                                                                                                          "byte": 341,
+                                                                                                          "column": 1,
+                                                                                                          "line": 13
+                                                                                                        }
+                                                                                                      },
+                                                                                                      "selector": {
+                                                                                                        "_t": "Ident",
+                                                                                                        "_p": {
+                                                                                                          "name": "any",
+                                                                                                          "nodepos": {
+                                                                                                            "end": {
+                                                                                                              "byte": 352,
+                                                                                                              "column": 12,
+                                                                                                              "line": 13
+                                                                                                            },
+                                                                                                            "filename": "input.sentinel",
+                                                                                                            "start": {
+                                                                                                              "byte": 349,
+                                                                                                              "column": 9,
+                                                                                                              "line": 13
+                                                                                                            }
+                                                                                                          }
+                                                                                                        }
+                                                                                                      },
+                                                                                                      "value": {
+                                                                                                        "_t": "Ident",
+                                                                                                        "_p": {
+                                                                                                          "name": "import1",
+                                                                                                          "nodepos": {
+                                                                                                            "end": {
+                                                                                                              "byte": 348,
+                                                                                                              "column": 8,
+                                                                                                              "line": 13
+                                                                                                            },
+                                                                                                            "filename": "input.sentinel",
+                                                                                                            "start": {
+                                                                                                              "byte": 341,
+                                                                                                              "column": 1,
+                                                                                                              "line": 13
+                                                                                                            }
+                                                                                                          }
+                                                                                                        }
+                                                                                                      }
+                                                                                                    }
+                                                                                                  }
+                                                                                                }
+                                                                                              },
+                                                                                              "nodepos": {
+                                                                                                "end": {
+                                                                                                  "byte": 368,
+                                                                                                  "column": 11,
+                                                                                                  "line": 14
+                                                                                                },
+                                                                                                "filename": "input.sentinel",
+                                                                                                "start": {
+                                                                                                  "byte": 307,
+                                                                                                  "column": 1,
+                                                                                                  "line": 11
+                                                                                                }
+                                                                                              },
+                                                                                              "op": "and",
+                                                                                              "oppos": {
+                                                                                                "end": {
+                                                                                                  "byte": 356,
+                                                                                                  "column": 16,
+                                                                                                  "line": 13
+                                                                                                },
+                                                                                                "filename": "input.sentinel",
+                                                                                                "start": {
+                                                                                                  "byte": 353,
+                                                                                                  "column": 13,
+                                                                                                  "line": 13
+                                                                                                }
+                                                                                              },
+                                                                                              "rightexpr": {
+                                                                                                "_t": "SelectorExpression",
+                                                                                                "_p": {
+                                                                                                  "nodepos": {
+                                                                                                    "end": {
+                                                                                                      "byte": 368,
+                                                                                                      "column": 11,
+                                                                                                      "line": 14
+                                                                                                    },
+                                                                                                    "filename": "input.sentinel",
+                                                                                                    "start": {
+                                                                                                      "byte": 358,
+                                                                                                      "column": 1,
+                                                                                                      "line": 14
+                                                                                                    }
+                                                                                                  },
+                                                                                                  "selector": {
+                                                                                                    "_t": "Ident",
+                                                                                                    "_p": {
+                                                                                                      "name": "as",
+                                                                                                      "nodepos": {
+                                                                                                        "end": {
+                                                                                                          "byte": 368,
+                                                                                                          "column": 11,
+                                                                                                          "line": 14
+                                                                                                        },
+                                                                                                        "filename": "input.sentinel",
+                                                                                                        "start": {
+                                                                                                          "byte": 366,
+                                                                                                          "column": 9,
+                                                                                                          "line": 14
+                                                                                                        }
+                                                                                                      }
+                                                                                                    }
+                                                                                                  },
+                                                                                                  "value": {
+                                                                                                    "_t": "Ident",
+                                                                                                    "_p": {
+                                                                                                      "name": "import1",
+                                                                                                      "nodepos": {
+                                                                                                        "end": {
+                                                                                                          "byte": 365,
+                                                                                                          "column": 8,
+                                                                                                          "line": 14
+                                                                                                        },
+                                                                                                        "filename": "input.sentinel",
+                                                                                                        "start": {
+                                                                                                          "byte": 358,
+                                                                                                          "column": 1,
+                                                                                                          "line": 14
+                                                                                                        }
+                                                                                                      }
+                                                                                                    }
+                                                                                                  }
+                                                                                                }
+                                                                                              }
+                                                                                            }
+                                                                                          },
+                                                                                          "nodepos": {
+                                                                                            "end": {
+                                                                                              "byte": 387,
+                                                                                              "column": 14,
+                                                                                              "line": 15
+                                                                                            },
+                                                                                            "filename": "input.sentinel",
+                                                                                            "start": {
+                                                                                              "byte": 307,
+                                                                                              "column": 1,
+                                                                                              "line": 11
+                                                                                            }
+                                                                                          },
+                                                                                          "op": "and",
+                                                                                          "oppos": {
+                                                                                            "end": {
+                                                                                              "byte": 372,
+                                                                                              "column": 15,
+                                                                                              "line": 14
+                                                                                            },
+                                                                                            "filename": "input.sentinel",
+                                                                                            "start": {
+                                                                                              "byte": 369,
+                                                                                              "column": 12,
+                                                                                              "line": 14
+                                                                                            }
+                                                                                          },
+                                                                                          "rightexpr": {
+                                                                                            "_t": "SelectorExpression",
+                                                                                            "_p": {
+                                                                                              "nodepos": {
+                                                                                                "end": {
+                                                                                                  "byte": 387,
+                                                                                                  "column": 14,
+                                                                                                  "line": 15
+                                                                                                },
+                                                                                                "filename": "input.sentinel",
+                                                                                                "start": {
+                                                                                                  "byte": 374,
+                                                                                                  "column": 1,
+                                                                                                  "line": 15
+                                                                                                }
+                                                                                              },
+                                                                                              "selector": {
+                                                                                                "_t": "Ident",
+                                                                                                "_p": {
+                                                                                                  "name": "break",
+                                                                                                  "nodepos": {
+                                                                                                    "end": {
+                                                                                                      "byte": 387,
+                                                                                                      "column": 14,
+                                                                                                      "line": 15
+                                                                                                    },
+                                                                                                    "filename": "input.sentinel",
+                                                                                                    "start": {
+                                                                                                      "byte": 382,
+                                                                                                      "column": 9,
+                                                                                                      "line": 15
+                                                                                                    }
+                                                                                                  }
+                                                                                                }
+                                                                                              },
+                                                                                              "value": {
+                                                                                                "_t": "Ident",
+                                                                                                "_p": {
+                                                                                                  "name": "import1",
+                                                                                                  "nodepos": {
+                                                                                                    "end": {
+                                                                                                      "byte": 381,
+                                                                                                      "column": 8,
+                                                                                                      "line": 15
+                                                                                                    },
+                                                                                                    "filename": "input.sentinel",
+                                                                                                    "start": {
+                                                                                                      "byte": 374,
+                                                                                                      "column": 1,
+                                                                                                      "line": 15
+                                                                                                    }
+                                                                                                  }
+                                                                                                }
+                                                                                              }
+                                                                                            }
+                                                                                          }
+                                                                                        }
+                                                                                      },
+                                                                                      "nodepos": {
+                                                                                        "end": {
+                                                                                          "byte": 409,
+                                                                                          "column": 17,
+                                                                                          "line": 16
+                                                                                        },
+                                                                                        "filename": "input.sentinel",
+                                                                                        "start": {
+                                                                                          "byte": 307,
+                                                                                          "column": 1,
+                                                                                          "line": 11
+                                                                                        }
+                                                                                      },
+                                                                                      "op": "and",
+                                                                                      "oppos": {
+                                                                                        "end": {
+                                                                                          "byte": 391,
+                                                                                          "column": 18,
+                                                                                          "line": 15
+                                                                                        },
+                                                                                        "filename": "input.sentinel",
+                                                                                        "start": {
+                                                                                          "byte": 388,
+                                                                                          "column": 15,
+                                                                                          "line": 15
+                                                                                        }
+                                                                                      },
+                                                                                      "rightexpr": {
+                                                                                        "_t": "SelectorExpression",
+                                                                                        "_p": {
+                                                                                          "nodepos": {
+                                                                                            "end": {
+                                                                                              "byte": 409,
+                                                                                              "column": 17,
+                                                                                              "line": 16
+                                                                                            },
+                                                                                            "filename": "input.sentinel",
+                                                                                            "start": {
+                                                                                              "byte": 393,
+                                                                                              "column": 1,
+                                                                                              "line": 16
+                                                                                            }
+                                                                                          },
+                                                                                          "selector": {
+                                                                                            "_t": "Ident",
+                                                                                            "_p": {
+                                                                                              "name": "contains",
+                                                                                              "nodepos": {
+                                                                                                "end": {
+                                                                                                  "byte": 409,
+                                                                                                  "column": 17,
+                                                                                                  "line": 16
+                                                                                                },
+                                                                                                "filename": "input.sentinel",
+                                                                                                "start": {
+                                                                                                  "byte": 401,
+                                                                                                  "column": 9,
+                                                                                                  "line": 16
+                                                                                                }
+                                                                                              }
+                                                                                            }
+                                                                                          },
+                                                                                          "value": {
+                                                                                            "_t": "Ident",
+                                                                                            "_p": {
+                                                                                              "name": "import1",
+                                                                                              "nodepos": {
+                                                                                                "end": {
+                                                                                                  "byte": 400,
+                                                                                                  "column": 8,
+                                                                                                  "line": 16
+                                                                                                },
+                                                                                                "filename": "input.sentinel",
+                                                                                                "start": {
+                                                                                                  "byte": 393,
+                                                                                                  "column": 1,
+                                                                                                  "line": 16
+                                                                                                }
+                                                                                              }
+                                                                                            }
+                                                                                          }
+                                                                                        }
+                                                                                      }
+                                                                                    }
+                                                                                  },
+                                                                                  "nodepos": {
+                                                                                    "end": {
+                                                                                      "byte": 431,
+                                                                                      "column": 17,
+                                                                                      "line": 17
+                                                                                    },
+                                                                                    "filename": "input.sentinel",
+                                                                                    "start": {
+                                                                                      "byte": 307,
+                                                                                      "column": 1,
+                                                                                      "line": 11
+                                                                                    }
+                                                                                  },
+                                                                                  "op": "and",
+                                                                                  "oppos": {
+                                                                                    "end": {
+                                                                                      "byte": 413,
+                                                                                      "column": 21,
+                                                                                      "line": 16
+                                                                                    },
+                                                                                    "filename": "input.sentinel",
+                                                                                    "start": {
+                                                                                      "byte": 410,
+                                                                                      "column": 18,
+                                                                                      "line": 16
+                                                                                    }
+                                                                                  },
+                                                                                  "rightexpr": {
+                                                                                    "_t": "SelectorExpression",
+                                                                                    "_p": {
+                                                                                      "nodepos": {
+                                                                                        "end": {
+                                                                                          "byte": 431,
+                                                                                          "column": 17,
+                                                                                          "line": 17
+                                                                                        },
+                                                                                        "filename": "input.sentinel",
+                                                                                        "start": {
+                                                                                          "byte": 415,
+                                                                                          "column": 1,
+                                                                                          "line": 17
+                                                                                        }
+                                                                                      },
+                                                                                      "selector": {
+                                                                                        "_t": "Ident",
+                                                                                        "_p": {
+                                                                                          "name": "continue",
+                                                                                          "nodepos": {
+                                                                                            "end": {
+                                                                                              "byte": 431,
+                                                                                              "column": 17,
+                                                                                              "line": 17
+                                                                                            },
+                                                                                            "filename": "input.sentinel",
+                                                                                            "start": {
+                                                                                              "byte": 423,
+                                                                                              "column": 9,
+                                                                                              "line": 17
+                                                                                            }
+                                                                                          }
+                                                                                        }
+                                                                                      },
+                                                                                      "value": {
+                                                                                        "_t": "Ident",
+                                                                                        "_p": {
+                                                                                          "name": "import1",
+                                                                                          "nodepos": {
+                                                                                            "end": {
+                                                                                              "byte": 422,
+                                                                                              "column": 8,
+                                                                                              "line": 17
+                                                                                            },
+                                                                                            "filename": "input.sentinel",
+                                                                                            "start": {
+                                                                                              "byte": 415,
+                                                                                              "column": 1,
+                                                                                              "line": 17
+                                                                                            }
+                                                                                          }
+                                                                                        }
+                                                                                      }
+                                                                                    }
+                                                                                  }
+                                                                                }
+                                                                              },
+                                                                              "nodepos": {
+                                                                                "end": {
+                                                                                  "byte": 449,
+                                                                                  "column": 13,
+                                                                                  "line": 18
+                                                                                },
+                                                                                "filename": "input.sentinel",
+                                                                                "start": {
+                                                                                  "byte": 307,
+                                                                                  "column": 1,
+                                                                                  "line": 11
+                                                                                }
+                                                                              },
+                                                                              "op": "and",
+                                                                              "oppos": {
+                                                                                "end": {
+                                                                                  "byte": 435,
+                                                                                  "column": 21,
+                                                                                  "line": 17
+                                                                                },
+                                                                                "filename": "input.sentinel",
+                                                                                "start": {
+                                                                                  "byte": 432,
+                                                                                  "column": 18,
+                                                                                  "line": 17
+                                                                                }
+                                                                              },
+                                                                              "rightexpr": {
+                                                                                "_t": "SelectorExpression",
+                                                                                "_p": {
+                                                                                  "nodepos": {
+                                                                                    "end": {
+                                                                                      "byte": 449,
+                                                                                      "column": 13,
+                                                                                      "line": 18
+                                                                                    },
+                                                                                    "filename": "input.sentinel",
+                                                                                    "start": {
+                                                                                      "byte": 437,
+                                                                                      "column": 1,
+                                                                                      "line": 18
+                                                                                    }
+                                                                                  },
+                                                                                  "selector": {
+                                                                                    "_t": "Ident",
+                                                                                    "_p": {
+                                                                                      "name": "else",
+                                                                                      "nodepos": {
+                                                                                        "end": {
+                                                                                          "byte": 449,
+                                                                                          "column": 13,
+                                                                                          "line": 18
+                                                                                        },
+                                                                                        "filename": "input.sentinel",
+                                                                                        "start": {
+                                                                                          "byte": 445,
+                                                                                          "column": 9,
+                                                                                          "line": 18
+                                                                                        }
+                                                                                      }
+                                                                                    }
+                                                                                  },
+                                                                                  "value": {
+                                                                                    "_t": "Ident",
+                                                                                    "_p": {
+                                                                                      "name": "import1",
+                                                                                      "nodepos": {
+                                                                                        "end": {
+                                                                                          "byte": 444,
+                                                                                          "column": 8,
+                                                                                          "line": 18
+                                                                                        },
+                                                                                        "filename": "input.sentinel",
+                                                                                        "start": {
+                                                                                          "byte": 437,
+                                                                                          "column": 1,
+                                                                                          "line": 18
+                                                                                        }
+                                                                                      }
+                                                                                    }
+                                                                                  }
+                                                                                }
+                                                                              }
+                                                                            }
+                                                                          },
+                                                                          "nodepos": {
+                                                                            "end": {
+                                                                              "byte": 466,
+                                                                              "column": 12,
+                                                                              "line": 19
+                                                                            },
+                                                                            "filename": "input.sentinel",
+                                                                            "start": {
+                                                                              "byte": 307,
+                                                                              "column": 1,
+                                                                              "line": 11
+                                                                            }
+                                                                          },
+                                                                          "op": "and",
+                                                                          "oppos": {
+                                                                            "end": {
+                                                                              "byte": 453,
+                                                                              "column": 17,
+                                                                              "line": 18
+                                                                            },
+                                                                            "filename": "input.sentinel",
+                                                                            "start": {
+                                                                              "byte": 450,
+                                                                              "column": 14,
+                                                                              "line": 18
+                                                                            }
+                                                                          },
+                                                                          "rightexpr": {
+                                                                            "_t": "SelectorExpression",
+                                                                            "_p": {
+                                                                              "nodepos": {
+                                                                                "end": {
+                                                                                  "byte": 466,
+                                                                                  "column": 12,
+                                                                                  "line": 19
+                                                                                },
+                                                                                "filename": "input.sentinel",
+                                                                                "start": {
+                                                                                  "byte": 455,
+                                                                                  "column": 1,
+                                                                                  "line": 19
+                                                                                }
+                                                                              },
+                                                                              "selector": {
+                                                                                "_t": "Ident",
+                                                                                "_p": {
+                                                                                  "name": "for",
+                                                                                  "nodepos": {
+                                                                                    "end": {
+                                                                                      "byte": 466,
+                                                                                      "column": 12,
+                                                                                      "line": 19
+                                                                                    },
+                                                                                    "filename": "input.sentinel",
+                                                                                    "start": {
+                                                                                      "byte": 463,
+                                                                                      "column": 9,
+                                                                                      "line": 19
+                                                                                    }
+                                                                                  }
+                                                                                }
+                                                                              },
+                                                                              "value": {
+                                                                                "_t": "Ident",
+                                                                                "_p": {
+                                                                                  "name": "import1",
+                                                                                  "nodepos": {
+                                                                                    "end": {
+                                                                                      "byte": 462,
+                                                                                      "column": 8,
+                                                                                      "line": 19
+                                                                                    },
+                                                                                    "filename": "input.sentinel",
+                                                                                    "start": {
+                                                                                      "byte": 455,
+                                                                                      "column": 1,
+                                                                                      "line": 19
+                                                                                    }
+                                                                                  }
+                                                                                }
+                                                                              }
+                                                                            }
+                                                                          }
+                                                                        }
+                                                                      },
+                                                                      "nodepos": {
+                                                                        "end": {
+                                                                          "byte": 484,
+                                                                          "column": 13,
+                                                                          "line": 20
+                                                                        },
+                                                                        "filename": "input.sentinel",
+                                                                        "start": {
+                                                                          "byte": 307,
+                                                                          "column": 1,
+                                                                          "line": 11
+                                                                        }
+                                                                      },
+                                                                      "op": "and",
+                                                                      "oppos": {
+                                                                        "end": {
+                                                                          "byte": 470,
+                                                                          "column": 16,
+                                                                          "line": 19
+                                                                        },
+                                                                        "filename": "input.sentinel",
+                                                                        "start": {
+                                                                          "byte": 467,
+                                                                          "column": 13,
+                                                                          "line": 19
+                                                                        }
+                                                                      },
+                                                                      "rightexpr": {
+                                                                        "_t": "SelectorExpression",
+                                                                        "_p": {
+                                                                          "nodepos": {
+                                                                            "end": {
+                                                                              "byte": 484,
+                                                                              "column": 13,
+                                                                              "line": 20
+                                                                            },
+                                                                            "filename": "input.sentinel",
+                                                                            "start": {
+                                                                              "byte": 472,
+                                                                              "column": 1,
+                                                                              "line": 20
+                                                                            }
+                                                                          },
+                                                                          "selector": {
+                                                                            "_t": "Ident",
+                                                                            "_p": {
+                                                                              "name": "func",
+                                                                              "nodepos": {
+                                                                                "end": {
+                                                                                  "byte": 484,
+                                                                                  "column": 13,
+                                                                                  "line": 20
+                                                                                },
+                                                                                "filename": "input.sentinel",
+                                                                                "start": {
+                                                                                  "byte": 480,
+                                                                                  "column": 9,
+                                                                                  "line": 20
+                                                                                }
+                                                                              }
+                                                                            }
+                                                                          },
+                                                                          "value": {
+                                                                            "_t": "Ident",
+                                                                            "_p": {
+                                                                              "name": "import1",
+                                                                              "nodepos": {
+                                                                                "end": {
+                                                                                  "byte": 479,
+                                                                                  "column": 8,
+                                                                                  "line": 20
+                                                                                },
+                                                                                "filename": "input.sentinel",
+                                                                                "start": {
+                                                                                  "byte": 472,
+                                                                                  "column": 1,
+                                                                                  "line": 20
+                                                                                }
+                                                                              }
+                                                                            }
+                                                                          }
+                                                                        }
+                                                                      }
+                                                                    }
+                                                                  },
+                                                                  "nodepos": {
+                                                                    "end": {
+                                                                      "byte": 500,
+                                                                      "column": 11,
+                                                                      "line": 21
+                                                                    },
+                                                                    "filename": "input.sentinel",
+                                                                    "start": {
+                                                                      "byte": 307,
+                                                                      "column": 1,
+                                                                      "line": 11
+                                                                    }
+                                                                  },
+                                                                  "op": "and",
+                                                                  "oppos": {
+                                                                    "end": {
+                                                                      "byte": 488,
+                                                                      "column": 17,
+                                                                      "line": 20
+                                                                    },
+                                                                    "filename": "input.sentinel",
+                                                                    "start": {
+                                                                      "byte": 485,
+                                                                      "column": 14,
+                                                                      "line": 20
+                                                                    }
+                                                                  },
+                                                                  "rightexpr": {
+                                                                    "_t": "SelectorExpression",
+                                                                    "_p": {
+                                                                      "nodepos": {
+                                                                        "end": {
+                                                                          "byte": 500,
+                                                                          "column": 11,
+                                                                          "line": 21
+                                                                        },
+                                                                        "filename": "input.sentinel",
+                                                                        "start": {
+                                                                          "byte": 490,
+                                                                          "column": 1,
+                                                                          "line": 21
+                                                                        }
+                                                                      },
+                                                                      "selector": {
+                                                                        "_t": "Ident",
+                                                                        "_p": {
+                                                                          "name": "if",
+                                                                          "nodepos": {
+                                                                            "end": {
+                                                                              "byte": 500,
+                                                                              "column": 11,
+                                                                              "line": 21
+                                                                            },
+                                                                            "filename": "input.sentinel",
+                                                                            "start": {
+                                                                              "byte": 498,
+                                                                              "column": 9,
+                                                                              "line": 21
+                                                                            }
+                                                                          }
+                                                                        }
+                                                                      },
+                                                                      "value": {
+                                                                        "_t": "Ident",
+                                                                        "_p": {
+                                                                          "name": "import1",
+                                                                          "nodepos": {
+                                                                            "end": {
+                                                                              "byte": 497,
+                                                                              "column": 8,
+                                                                              "line": 21
+                                                                            },
+                                                                            "filename": "input.sentinel",
+                                                                            "start": {
+                                                                              "byte": 490,
+                                                                              "column": 1,
+                                                                              "line": 21
+                                                                            }
+                                                                          }
+                                                                        }
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              },
+                                                              "nodepos": {
+                                                                "end": {
+                                                                  "byte": 520,
+                                                                  "column": 15,
+                                                                  "line": 22
+                                                                },
+                                                                "filename": "input.sentinel",
+                                                                "start": {
+                                                                  "byte": 307,
+                                                                  "column": 1,
+                                                                  "line": 11
+                                                                }
+                                                              },
+                                                              "op": "and",
+                                                              "oppos": {
+                                                                "end": {
+                                                                  "byte": 504,
+                                                                  "column": 15,
+                                                                  "line": 21
+                                                                },
+                                                                "filename": "input.sentinel",
+                                                                "start": {
+                                                                  "byte": 501,
+                                                                  "column": 12,
+                                                                  "line": 21
+                                                                }
+                                                              },
+                                                              "rightexpr": {
+                                                                "_t": "SelectorExpression",
+                                                                "_p": {
+                                                                  "nodepos": {
+                                                                    "end": {
+                                                                      "byte": 520,
+                                                                      "column": 15,
+                                                                      "line": 22
+                                                                    },
+                                                                    "filename": "input.sentinel",
+                                                                    "start": {
+                                                                      "byte": 506,
+                                                                      "column": 1,
+                                                                      "line": 22
+                                                                    }
+                                                                  },
+                                                                  "selector": {
+                                                                    "_t": "Ident",
+                                                                    "_p": {
+                                                                      "name": "import",
+                                                                      "nodepos": {
+                                                                        "end": {
+                                                                          "byte": 520,
+                                                                          "column": 15,
+                                                                          "line": 22
+                                                                        },
+                                                                        "filename": "input.sentinel",
+                                                                        "start": {
+                                                                          "byte": 514,
+                                                                          "column": 9,
+                                                                          "line": 22
+                                                                        }
+                                                                      }
+                                                                    }
+                                                                  },
+                                                                  "value": {
+                                                                    "_t": "Ident",
+                                                                    "_p": {
+                                                                      "name": "import1",
+                                                                      "nodepos": {
+                                                                        "end": {
+                                                                          "byte": 513,
+                                                                          "column": 8,
+                                                                          "line": 22
+                                                                        },
+                                                                        "filename": "input.sentinel",
+                                                                        "start": {
+                                                                          "byte": 506,
+                                                                          "column": 1,
+                                                                          "line": 22
+                                                                        }
+                                                                      }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          },
+                                                          "nodepos": {
+                                                            "end": {
+                                                              "byte": 536,
+                                                              "column": 11,
+                                                              "line": 23
+                                                            },
+                                                            "filename": "input.sentinel",
+                                                            "start": {
+                                                              "byte": 307,
+                                                              "column": 1,
+                                                              "line": 11
+                                                            }
+                                                          },
+                                                          "op": "and",
+                                                          "oppos": {
+                                                            "end": {
+                                                              "byte": 524,
+                                                              "column": 19,
+                                                              "line": 22
+                                                            },
+                                                            "filename": "input.sentinel",
+                                                            "start": {
+                                                              "byte": 521,
+                                                              "column": 16,
+                                                              "line": 22
+                                                            }
+                                                          },
+                                                          "rightexpr": {
+                                                            "_t": "SelectorExpression",
+                                                            "_p": {
+                                                              "nodepos": {
+                                                                "end": {
+                                                                  "byte": 536,
+                                                                  "column": 11,
+                                                                  "line": 23
+                                                                },
+                                                                "filename": "input.sentinel",
+                                                                "start": {
+                                                                  "byte": 526,
+                                                                  "column": 1,
+                                                                  "line": 23
+                                                                }
+                                                              },
+                                                              "selector": {
+                                                                "_t": "Ident",
+                                                                "_p": {
+                                                                  "name": "in",
+                                                                  "nodepos": {
+                                                                    "end": {
+                                                                      "byte": 536,
+                                                                      "column": 11,
+                                                                      "line": 23
+                                                                    },
+                                                                    "filename": "input.sentinel",
+                                                                    "start": {
+                                                                      "byte": 534,
+                                                                      "column": 9,
+                                                                      "line": 23
+                                                                    }
+                                                                  }
+                                                                }
+                                                              },
+                                                              "value": {
+                                                                "_t": "Ident",
+                                                                "_p": {
+                                                                  "name": "import1",
+                                                                  "nodepos": {
+                                                                    "end": {
+                                                                      "byte": 533,
+                                                                      "column": 8,
+                                                                      "line": 23
+                                                                    },
+                                                                    "filename": "input.sentinel",
+                                                                    "start": {
+                                                                      "byte": 526,
+                                                                      "column": 1,
+                                                                      "line": 23
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      },
+                                                      "nodepos": {
+                                                        "end": {
+                                                          "byte": 552,
+                                                          "column": 11,
+                                                          "line": 24
+                                                        },
+                                                        "filename": "input.sentinel",
+                                                        "start": {
+                                                          "byte": 307,
+                                                          "column": 1,
+                                                          "line": 11
+                                                        }
+                                                      },
+                                                      "op": "and",
+                                                      "oppos": {
+                                                        "end": {
+                                                          "byte": 540,
+                                                          "column": 15,
+                                                          "line": 23
+                                                        },
+                                                        "filename": "input.sentinel",
+                                                        "start": {
+                                                          "byte": 537,
+                                                          "column": 12,
+                                                          "line": 23
+                                                        }
+                                                      },
+                                                      "rightexpr": {
+                                                        "_t": "SelectorExpression",
+                                                        "_p": {
+                                                          "nodepos": {
+                                                            "end": {
+                                                              "byte": 552,
+                                                              "column": 11,
+                                                              "line": 24
+                                                            },
+                                                            "filename": "input.sentinel",
+                                                            "start": {
+                                                              "byte": 542,
+                                                              "column": 1,
+                                                              "line": 24
+                                                            }
+                                                          },
+                                                          "selector": {
+                                                            "_t": "Ident",
+                                                            "_p": {
+                                                              "name": "is",
+                                                              "nodepos": {
+                                                                "end": {
+                                                                  "byte": 552,
+                                                                  "column": 11,
+                                                                  "line": 24
+                                                                },
+                                                                "filename": "input.sentinel",
+                                                                "start": {
+                                                                  "byte": 550,
+                                                                  "column": 9,
+                                                                  "line": 24
+                                                                }
+                                                              }
+                                                            }
+                                                          },
+                                                          "value": {
+                                                            "_t": "Ident",
+                                                            "_p": {
+                                                              "name": "import1",
+                                                              "nodepos": {
+                                                                "end": {
+                                                                  "byte": 549,
+                                                                  "column": 8,
+                                                                  "line": 24
+                                                                },
+                                                                "filename": "input.sentinel",
+                                                                "start": {
+                                                                  "byte": 542,
+                                                                  "column": 1,
+                                                                  "line": 24
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  "nodepos": {
+                                                    "end": {
+                                                      "byte": 573,
+                                                      "column": 16,
+                                                      "line": 25
+                                                    },
+                                                    "filename": "input.sentinel",
+                                                    "start": {
+                                                      "byte": 307,
+                                                      "column": 1,
+                                                      "line": 11
+                                                    }
+                                                  },
+                                                  "op": "and",
+                                                  "oppos": {
+                                                    "end": {
+                                                      "byte": 556,
+                                                      "column": 15,
+                                                      "line": 24
+                                                    },
+                                                    "filename": "input.sentinel",
+                                                    "start": {
+                                                      "byte": 553,
+                                                      "column": 12,
+                                                      "line": 24
+                                                    }
+                                                  },
+                                                  "rightexpr": {
+                                                    "_t": "SelectorExpression",
+                                                    "_p": {
+                                                      "nodepos": {
+                                                        "end": {
+                                                          "byte": 573,
+                                                          "column": 16,
+                                                          "line": 25
+                                                        },
+                                                        "filename": "input.sentinel",
+                                                        "start": {
+                                                          "byte": 558,
+                                                          "column": 1,
+                                                          "line": 25
+                                                        }
+                                                      },
+                                                      "selector": {
+                                                        "_t": "Ident",
+                                                        "_p": {
+                                                          "name": "matches",
+                                                          "nodepos": {
+                                                            "end": {
+                                                              "byte": 573,
+                                                              "column": 16,
+                                                              "line": 25
+                                                            },
+                                                            "filename": "input.sentinel",
+                                                            "start": {
+                                                              "byte": 566,
+                                                              "column": 9,
+                                                              "line": 25
+                                                            }
+                                                          }
+                                                        }
+                                                      },
+                                                      "value": {
+                                                        "_t": "Ident",
+                                                        "_p": {
+                                                          "name": "import1",
+                                                          "nodepos": {
+                                                            "end": {
+                                                              "byte": 565,
+                                                              "column": 8,
+                                                              "line": 25
+                                                            },
+                                                            "filename": "input.sentinel",
+                                                            "start": {
+                                                              "byte": 558,
+                                                              "column": 1,
+                                                              "line": 25
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              },
+                                              "nodepos": {
+                                                "end": {
+                                                  "byte": 590,
+                                                  "column": 12,
+                                                  "line": 26
+                                                },
+                                                "filename": "input.sentinel",
+                                                "start": {
+                                                  "byte": 307,
+                                                  "column": 1,
+                                                  "line": 11
+                                                }
+                                              },
+                                              "op": "and",
+                                              "oppos": {
+                                                "end": {
+                                                  "byte": 577,
+                                                  "column": 20,
+                                                  "line": 25
+                                                },
+                                                "filename": "input.sentinel",
+                                                "start": {
+                                                  "byte": 574,
+                                                  "column": 17,
+                                                  "line": 25
+                                                }
+                                              },
+                                              "rightexpr": {
+                                                "_t": "SelectorExpression",
+                                                "_p": {
+                                                  "nodepos": {
+                                                    "end": {
+                                                      "byte": 590,
+                                                      "column": 12,
+                                                      "line": 26
+                                                    },
+                                                    "filename": "input.sentinel",
+                                                    "start": {
+                                                      "byte": 579,
+                                                      "column": 1,
+                                                      "line": 26
+                                                    }
+                                                  },
+                                                  "selector": {
+                                                    "_t": "Ident",
+                                                    "_p": {
+                                                      "name": "not",
+                                                      "nodepos": {
+                                                        "end": {
+                                                          "byte": 590,
+                                                          "column": 12,
+                                                          "line": 26
+                                                        },
+                                                        "filename": "input.sentinel",
+                                                        "start": {
+                                                          "byte": 587,
+                                                          "column": 9,
+                                                          "line": 26
+                                                        }
+                                                      }
+                                                    }
+                                                  },
+                                                  "value": {
+                                                    "_t": "Ident",
+                                                    "_p": {
+                                                      "name": "import1",
+                                                      "nodepos": {
+                                                        "end": {
+                                                          "byte": 586,
+                                                          "column": 8,
+                                                          "line": 26
+                                                        },
+                                                        "filename": "input.sentinel",
+                                                        "start": {
+                                                          "byte": 579,
+                                                          "column": 1,
+                                                          "line": 26
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "nodepos": {
+                                            "end": {
+                                              "byte": 608,
+                                              "column": 13,
+                                              "line": 27
+                                            },
+                                            "filename": "input.sentinel",
+                                            "start": {
+                                              "byte": 307,
+                                              "column": 1,
+                                              "line": 11
+                                            }
+                                          },
+                                          "op": "and",
+                                          "oppos": {
+                                            "end": {
+                                              "byte": 594,
+                                              "column": 16,
+                                              "line": 26
+                                            },
+                                            "filename": "input.sentinel",
+                                            "start": {
+                                              "byte": 591,
+                                              "column": 13,
+                                              "line": 26
+                                            }
+                                          },
+                                          "rightexpr": {
+                                            "_t": "SelectorExpression",
+                                            "_p": {
+                                              "nodepos": {
+                                                "end": {
+                                                  "byte": 608,
+                                                  "column": 13,
+                                                  "line": 27
+                                                },
+                                                "filename": "input.sentinel",
+                                                "start": {
+                                                  "byte": 596,
+                                                  "column": 1,
+                                                  "line": 27
+                                                }
+                                              },
+                                              "selector": {
+                                                "_t": "Ident",
+                                                "_p": {
+                                                  "name": "null",
+                                                  "nodepos": {
+                                                    "end": {
+                                                      "byte": 608,
+                                                      "column": 13,
+                                                      "line": 27
+                                                    },
+                                                    "filename": "input.sentinel",
+                                                    "start": {
+                                                      "byte": 604,
+                                                      "column": 9,
+                                                      "line": 27
+                                                    }
+                                                  }
+                                                }
+                                              },
+                                              "value": {
+                                                "_t": "Ident",
+                                                "_p": {
+                                                  "name": "import1",
+                                                  "nodepos": {
+                                                    "end": {
+                                                      "byte": 603,
+                                                      "column": 8,
+                                                      "line": 27
+                                                    },
+                                                    "filename": "input.sentinel",
+                                                    "start": {
+                                                      "byte": 596,
+                                                      "column": 1,
+                                                      "line": 27
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "nodepos": {
+                                        "end": {
+                                          "byte": 624,
+                                          "column": 11,
+                                          "line": 28
+                                        },
+                                        "filename": "input.sentinel",
+                                        "start": {
+                                          "byte": 307,
+                                          "column": 1,
+                                          "line": 11
+                                        }
+                                      },
+                                      "op": "and",
+                                      "oppos": {
+                                        "end": {
+                                          "byte": 612,
+                                          "column": 17,
+                                          "line": 27
+                                        },
+                                        "filename": "input.sentinel",
+                                        "start": {
+                                          "byte": 609,
+                                          "column": 14,
+                                          "line": 27
+                                        }
+                                      },
+                                      "rightexpr": {
+                                        "_t": "SelectorExpression",
+                                        "_p": {
+                                          "nodepos": {
+                                            "end": {
+                                              "byte": 624,
+                                              "column": 11,
+                                              "line": 28
+                                            },
+                                            "filename": "input.sentinel",
+                                            "start": {
+                                              "byte": 614,
+                                              "column": 1,
+                                              "line": 28
+                                            }
+                                          },
+                                          "selector": {
+                                            "_t": "Ident",
+                                            "_p": {
+                                              "name": "or",
+                                              "nodepos": {
+                                                "end": {
+                                                  "byte": 624,
+                                                  "column": 11,
+                                                  "line": 28
+                                                },
+                                                "filename": "input.sentinel",
+                                                "start": {
+                                                  "byte": 622,
+                                                  "column": 9,
+                                                  "line": 28
+                                                }
+                                              }
+                                            }
+                                          },
+                                          "value": {
+                                            "_t": "Ident",
+                                            "_p": {
+                                              "name": "import1",
+                                              "nodepos": {
+                                                "end": {
+                                                  "byte": 621,
+                                                  "column": 8,
+                                                  "line": 28
+                                                },
+                                                "filename": "input.sentinel",
+                                                "start": {
+                                                  "byte": 614,
+                                                  "column": 1,
+                                                  "line": 28
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "nodepos": {
+                                    "end": {
+                                      "byte": 644,
+                                      "column": 15,
+                                      "line": 29
+                                    },
+                                    "filename": "input.sentinel",
+                                    "start": {
+                                      "byte": 307,
+                                      "column": 1,
+                                      "line": 11
+                                    }
+                                  },
+                                  "op": "and",
+                                  "oppos": {
+                                    "end": {
+                                      "byte": 628,
+                                      "column": 15,
+                                      "line": 28
+                                    },
+                                    "filename": "input.sentinel",
+                                    "start": {
+                                      "byte": 625,
+                                      "column": 12,
+                                      "line": 28
+                                    }
+                                  },
+                                  "rightexpr": {
+                                    "_t": "SelectorExpression",
+                                    "_p": {
+                                      "nodepos": {
+                                        "end": {
+                                          "byte": 644,
+                                          "column": 15,
+                                          "line": 29
+                                        },
+                                        "filename": "input.sentinel",
+                                        "start": {
+                                          "byte": 630,
+                                          "column": 1,
+                                          "line": 29
+                                        }
+                                      },
+                                      "selector": {
+                                        "_t": "Ident",
+                                        "_p": {
+                                          "name": "return",
+                                          "nodepos": {
+                                            "end": {
+                                              "byte": 644,
+                                              "column": 15,
+                                              "line": 29
+                                            },
+                                            "filename": "input.sentinel",
+                                            "start": {
+                                              "byte": 638,
+                                              "column": 9,
+                                              "line": 29
+                                            }
+                                          }
+                                        }
+                                      },
+                                      "value": {
+                                        "_t": "Ident",
+                                        "_p": {
+                                          "name": "import1",
+                                          "nodepos": {
+                                            "end": {
+                                              "byte": 637,
+                                              "column": 8,
+                                              "line": 29
+                                            },
+                                            "filename": "input.sentinel",
+                                            "start": {
+                                              "byte": 630,
+                                              "column": 1,
+                                              "line": 29
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              },
+                              "nodepos": {
+                                "end": {
+                                  "byte": 662,
+                                  "column": 13,
+                                  "line": 30
+                                },
+                                "filename": "input.sentinel",
+                                "start": {
+                                  "byte": 307,
+                                  "column": 1,
+                                  "line": 11
+                                }
+                              },
+                              "op": "and",
+                              "oppos": {
+                                "end": {
+                                  "byte": 648,
+                                  "column": 19,
+                                  "line": 29
+                                },
+                                "filename": "input.sentinel",
+                                "start": {
+                                  "byte": 645,
+                                  "column": 16,
+                                  "line": 29
+                                }
+                              },
+                              "rightexpr": {
+                                "_t": "SelectorExpression",
+                                "_p": {
+                                  "nodepos": {
+                                    "end": {
+                                      "byte": 662,
+                                      "column": 13,
+                                      "line": 30
+                                    },
+                                    "filename": "input.sentinel",
+                                    "start": {
+                                      "byte": 650,
+                                      "column": 1,
+                                      "line": 30
+                                    }
+                                  },
+                                  "selector": {
+                                    "_t": "Ident",
+                                    "_p": {
+                                      "name": "rule",
+                                      "nodepos": {
+                                        "end": {
+                                          "byte": 662,
+                                          "column": 13,
+                                          "line": 30
+                                        },
+                                        "filename": "input.sentinel",
+                                        "start": {
+                                          "byte": 658,
+                                          "column": 9,
+                                          "line": 30
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "value": {
+                                    "_t": "Ident",
+                                    "_p": {
+                                      "name": "import1",
+                                      "nodepos": {
+                                        "end": {
+                                          "byte": 657,
+                                          "column": 8,
+                                          "line": 30
+                                        },
+                                        "filename": "input.sentinel",
+                                        "start": {
+                                          "byte": 650,
+                                          "column": 1,
+                                          "line": 30
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          },
+                          "nodepos": {
+                            "end": {
+                              "byte": 685,
+                              "column": 18,
+                              "line": 31
+                            },
+                            "filename": "input.sentinel",
+                            "start": {
+                              "byte": 307,
+                              "column": 1,
+                              "line": 11
+                            }
+                          },
+                          "op": "and",
+                          "oppos": {
+                            "end": {
+                              "byte": 666,
+                              "column": 17,
+                              "line": 30
+                            },
+                            "filename": "input.sentinel",
+                            "start": {
+                              "byte": 663,
+                              "column": 14,
+                              "line": 30
+                            }
+                          },
+                          "rightexpr": {
+                            "_t": "SelectorExpression",
+                            "_p": {
+                              "nodepos": {
+                                "end": {
+                                  "byte": 685,
+                                  "column": 18,
+                                  "line": 31
+                                },
+                                "filename": "input.sentinel",
+                                "start": {
+                                  "byte": 668,
+                                  "column": 1,
+                                  "line": 31
+                                }
+                              },
+                              "selector": {
+                                "_t": "Ident",
+                                "_p": {
+                                  "name": "undefined",
+                                  "nodepos": {
+                                    "end": {
+                                      "byte": 685,
+                                      "column": 18,
+                                      "line": 31
+                                    },
+                                    "filename": "input.sentinel",
+                                    "start": {
+                                      "byte": 676,
+                                      "column": 9,
+                                      "line": 31
+                                    }
+                                  }
+                                }
+                              },
+                              "value": {
+                                "_t": "Ident",
+                                "_p": {
+                                  "name": "import1",
+                                  "nodepos": {
+                                    "end": {
+                                      "byte": 675,
+                                      "column": 8,
+                                      "line": 31
+                                    },
+                                    "filename": "input.sentinel",
+                                    "start": {
+                                      "byte": 668,
+                                      "column": 1,
+                                      "line": 31
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "nodepos": {
+                        "end": {
+                          "byte": 703,
+                          "column": 13,
+                          "line": 32
+                        },
+                        "filename": "input.sentinel",
+                        "start": {
+                          "byte": 307,
+                          "column": 1,
+                          "line": 11
+                        }
+                      },
+                      "op": "and",
+                      "oppos": {
+                        "end": {
+                          "byte": 689,
+                          "column": 22,
+                          "line": 31
+                        },
+                        "filename": "input.sentinel",
+                        "start": {
+                          "byte": 686,
+                          "column": 19,
+                          "line": 31
+                        }
+                      },
+                      "rightexpr": {
+                        "_t": "SelectorExpression",
+                        "_p": {
+                          "nodepos": {
+                            "end": {
+                              "byte": 703,
+                              "column": 13,
+                              "line": 32
+                            },
+                            "filename": "input.sentinel",
+                            "start": {
+                              "byte": 691,
+                              "column": 1,
+                              "line": 32
+                            }
+                          },
+                          "selector": {
+                            "_t": "Ident",
+                            "_p": {
+                              "name": "when",
+                              "nodepos": {
+                                "end": {
+                                  "byte": 703,
+                                  "column": 13,
+                                  "line": 32
+                                },
+                                "filename": "input.sentinel",
+                                "start": {
+                                  "byte": 699,
+                                  "column": 9,
+                                  "line": 32
+                                }
+                              }
+                            }
+                          },
+                          "value": {
+                            "_t": "Ident",
+                            "_p": {
+                              "name": "import1",
+                              "nodepos": {
+                                "end": {
+                                  "byte": 698,
+                                  "column": 8,
+                                  "line": 32
+                                },
+                                "filename": "input.sentinel",
+                                "start": {
+                                  "byte": 691,
+                                  "column": 1,
+                                  "line": 32
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "nodepos": {
+                    "end": {
+                      "byte": 720,
+                      "column": 12,
+                      "line": 33
+                    },
+                    "filename": "input.sentinel",
+                    "start": {
+                      "byte": 307,
+                      "column": 1,
+                      "line": 11
+                    }
+                  },
+                  "op": "and",
+                  "oppos": {
+                    "end": {
+                      "byte": 707,
+                      "column": 17,
+                      "line": 32
+                    },
+                    "filename": "input.sentinel",
+                    "start": {
+                      "byte": 704,
+                      "column": 14,
+                      "line": 32
+                    }
+                  },
+                  "rightexpr": {
+                    "_t": "SelectorExpression",
+                    "_p": {
+                      "nodepos": {
+                        "end": {
+                          "byte": 720,
+                          "column": 12,
+                          "line": 33
+                        },
+                        "filename": "input.sentinel",
+                        "start": {
+                          "byte": 709,
+                          "column": 1,
+                          "line": 33
+                        }
+                      },
+                      "selector": {
+                        "_t": "Ident",
+                        "_p": {
+                          "name": "xor",
+                          "nodepos": {
+                            "end": {
+                              "byte": 720,
+                              "column": 12,
+                              "line": 33
+                            },
+                            "filename": "input.sentinel",
+                            "start": {
+                              "byte": 717,
+                              "column": 9,
+                              "line": 33
+                            }
+                          }
+                        }
+                      },
+                      "value": {
+                        "_t": "Ident",
+                        "_p": {
+                          "name": "import1",
+                          "nodepos": {
+                            "end": {
+                              "byte": 716,
+                              "column": 8,
+                              "line": 33
+                            },
+                            "filename": "input.sentinel",
+                            "start": {
+                              "byte": 709,
+                              "column": 1,
+                              "line": 33
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              },
+              "when": null,
+              "whentokenpos": null
+            }
+          }
+        }
+      }
+    ]
+  }
+}
+-- astError.txt --
