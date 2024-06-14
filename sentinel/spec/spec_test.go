@@ -43,7 +43,7 @@ func TestSentinelLanguageSpecs(t *testing.T) {
 					processTestFixturesDir(item.Name(), fixturesDir, actualVersion, t)
 				})
 			} else {
-				t.Logf("Invalid directory name for a sentinel version: '%s'", item.Name())
+				t.Fatalf("Invalid directory name for a sentinel version: '%s'", item.Name())
 			}
 		}
 	}

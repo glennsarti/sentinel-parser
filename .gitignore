@@ -3,9 +3,6 @@
 /pkg
 temp/
 
-## TEMPORARILY
-sentinel/spec/test-fixtures/legacy/*.txtar
-
 ### OSX ###
 *.DS_Store
 .AppleDouble
