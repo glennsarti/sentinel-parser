@@ -64,10 +64,5 @@ func ValidateSentinelVersion(sentinelVersion string) (bool, string) {
 		return true, LatestSentinelVersion
 	}
 
-	// TODO NOPE!
-	if sentinelVersion == "legacy" {
-		return true, LatestSentinelVersion
-	}
-
 	return semver.IsValid(sentinelVersion), sentinelVersion
 }
