@@ -52,7 +52,7 @@ func TestSentinelConfigSerializers(t *testing.T) {
 					processTestFixturesDir(item.Name(), fixturesDir, actualVersion, sut, t)
 				})
 			} else {
-				t.Logf("Invalid directory name for a sentinel version: '%s'", item.Name())
+				t.Fatalf("Invalid directory name for a sentinel version: '%s'", item.Name())
 			}
 		}
 	}
