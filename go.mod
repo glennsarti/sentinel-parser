@@ -9,12 +9,12 @@ require (
 	golang.org/x/mod v0.20.0
 )
 
-require golang.org/x/tools v0.23.0
+require golang.org/x/tools v0.24.0
 
 require (
 	github.com/agext/levenshtein v1.2.3 // indirect
 	github.com/apparentlymart/go-textseg/v15 v15.0.0 // indirect
 	github.com/mitchellh/go-wordwrap v1.0.1 // indirect
-	golang.org/x/sync v0.7.0 // indirect
+	golang.org/x/sync v0.8.0 // indirect
 	golang.org/x/text v0.16.0 // indirect
 )
