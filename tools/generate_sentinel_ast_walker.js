@@ -19,7 +19,6 @@ function generateType(objSchema) {
     prop = objSchema.properties[index];
 
     switch (prop.type) {
-      case "[]*Ident":
       case "*position.SourceRange":
       case "bool":
       case "position.SourceRange":
@@ -46,6 +45,7 @@ function generateType(objSchema) {
 
       case "[]Expression":
       case "[]*Comment":
+      case "[]*Ident":
       case "[]*ImportDecl":
       case "[]*ParamDecl":
       case "[]Statement":
@@ -63,7 +63,7 @@ function generateType(objSchema) {
 
 
       default:
-        throw new Error("Unknown property type: " + prop.type);
+        throw new Error("Unknown property type '" + prop.type + "' for " + JSON.stringify(prop));
     }
   }
 
@@ -84,8 +84,12 @@ function generateTypes() {
     if (typeOutput === "") {
       noChildTypes.push("*" + schema[index].name);
     } else {
-    output = output + typeOutput;
+      output = output + typeOutput;
     }
+  }
+
+  if (noChildTypes.length > 0) {
+    output = `\tcase ${noChildTypes.join(", ")}:\n\t\t\/\/ These types have no child types to walk\n` + output;
   }
 
   return output;
@@ -98,6 +102,19 @@ content = `package ast
 
 import "fmt"
 
+// Custom errors
+var _ error = &UnexpectedNodeTypeError{}
+
+type UnexpectedNodeTypeError struct {
+	Node Node
+	Err  error
+}
+
+func (e *UnexpectedNodeTypeError) Error() string {
+	return e.Err.Error()
+}
+
+// Visitor and Walking
 type VisitFunc func(node Node) (VisitFunc)
 
 func Walk(visitor VisitFunc, node Node) error {
@@ -108,7 +125,10 @@ func Walk(visitor VisitFunc, node Node) error {
   switch n := node.(type) {
 ${generateTypes()}
 	default:
-		return fmt.Errorf("unexpected node type %T when walking", n)
+		return &UnexpectedNodeTypeError{
+			Node: n,
+			Err:  fmt.Errorf("unexpected node type %T when walking", n),
+		}
 	}
 
 	visitor(nil)
