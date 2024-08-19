@@ -8,6 +8,7 @@ import (
 	"io"
 	"os"
 	"path"
+	"regexp"
 	"sort"
 	"strings"
 	"testing"
@@ -210,6 +211,25 @@ func testSpecFile(filename, parentPath, sentinelVersion string, t *testing.T) er
 		if diff := cmp.Diff(expectedString, actualString); diff != "" {
 			debugOutputStrings(expectedString, actualString, "AST Errors", t)
 			t.Fatal(diff)
+		}
+	})
+
+	t.Run("walking", func(t *testing.T) {
+		expectedString := string(arc.AstOutFile.Data)
+
+		// Count the number of nodes in the Serialized JOSN file. This is probably brittle, but as long as
+		// the JSON serializer round-trips the content then this assertion _should_ be fine.
+		nodeParam := regexp.MustCompile(`\"_p\": \{`)
+		expectedNodes := len(nodeParam.FindAllString(expectedString, -1))
+
+		// The spec walker just counts the number of nodes visited.
+		w := &SpecTestWalker{}
+		if err := ast.Walk(w.Visit, actual.Ast); err != nil {
+			t.Fatalf("expected no errors while walking. got %s", err)
+		}
+
+		if expectedNodes != w.NodesVisited {
+			t.Errorf("the walker was expected to walk %d nodes, got %d", expectedNodes, w.NodesVisited)
 		}
 	})
 
