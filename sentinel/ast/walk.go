@@ -5,6 +5,19 @@ package ast
 
 import "fmt"
 
+// Custom errors
+var _ error = &UnexpectedNodeTypeError{}
+
+type UnexpectedNodeTypeError struct {
+	Node Node
+	Err  error
+}
+
+func (e *UnexpectedNodeTypeError) Error() string {
+	return e.Err.Error()
+}
+
+// Visitor and Walking
 type VisitFunc func(node Node) VisitFunc
 
 func Walk(visitor VisitFunc, node Node) error {
@@ -13,6 +26,8 @@ func Walk(visitor VisitFunc, node Node) error {
 	}
 
 	switch n := node.(type) {
+	case *BadExpression, *BadStatement, *BasicLit, *BranchStatement, *Comment, *EmptyStatement, *Ident:
+		// These types have no child types to walk
 	case *AssignStatement:
 		// LeftExpr
 		if n.LeftExpr != nil {
@@ -107,6 +122,15 @@ func Walk(visitor VisitFunc, node Node) error {
 		if n.Expr != nil {
 			if err := Walk(visitor, n.Expr); err != nil {
 				return err
+			}
+		}
+	case *FieldList:
+		// Fields
+		for _, obj := range n.Fields {
+			if obj != nil {
+				if err := Walk(visitor, obj); err != nil {
+					return err
+				}
 			}
 		}
 	case *File:
@@ -403,7 +427,10 @@ func Walk(visitor VisitFunc, node Node) error {
 		}
 
 	default:
-		return fmt.Errorf("unexpected node type %T when walking", n)
+		return &UnexpectedNodeTypeError{
+			Node: n,
+			Err:  fmt.Errorf("unexpected node type %T when walking", n),
+		}
 	}
 
 	visitor(nil)
