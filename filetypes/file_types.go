@@ -13,4 +13,6 @@ const (
 	ModuleFileType FileType = "module"
 	// A Sentinel Policy file
 	PolicyFileType FileType = "policy"
+	// An unknown file
+	UnknownFileType FileType = "unknown"
 )
