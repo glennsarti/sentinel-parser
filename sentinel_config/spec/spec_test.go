@@ -260,15 +260,15 @@ type astResult struct {
 }
 
 func generateAST(sentinelVersion string, primary txtar.File, overrides []txtar.File) (*astResult, error) {
-	subject, err := parser.NewParser(sentinelVersion)
+	subject, err := parser.New(sentinelVersion)
 	if err != nil {
 		return nil, err
 	}
 
-	ast, diags := subject.ParseFileSource(primary.Data, primary.Name)
+	ast, diags := subject.ParseFile(primary.Name, primary.Data)
 
 	for _, f := range overrides {
-		otherAst, otherDiags := subject.ParseFileSource(f.Data, f.Name)
+		otherAst, otherDiags := subject.ParseFile(f.Name, f.Data)
 		diags = append(diags, otherDiags...)
 		otherDiags = parser.OverrideFileWith(ast, otherAst, sentinelVersion)
 		diags = append(diags, otherDiags...)

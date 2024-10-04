@@ -153,14 +153,14 @@ func testSpecFile(filename, parentPath, sentinelVersion string, sut serializersU
 
 	t.Run(filename, func(t *testing.T) {
 		// Create the parser
-		hclParser, err := parser.NewParser(sentinelVersion)
+		hclParser, err := parser.New(sentinelVersion)
 		if err != nil {
 			t.Error(err)
 			return
 		}
 
 		// Parse it
-		expectedAst, diags := hclParser.ParseFileSource(inputFile.Data, archiveInputFile)
+		expectedAst, diags := hclParser.ParseFile(archiveInputFile, inputFile.Data)
 		if diags.HasErrors() {
 			t.Error(diags)
 			return
