@@ -1,4 +1,5 @@
-![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/glennsarti/sentinel-parser/Go%20(Lint)?logo=github&label=Lint)
+![GitHub Tag](https://img.shields.io/github/v/tag/glennsarti/sentinel-parser) ![GitHub Actions Workflow Status](https://img.shields.io/github/actions/workflow/status/glennsarti/sentinel-parser/test.yml)
+
 
 > [!IMPORTANT]
 > This repository is **not** supported or endorsed by the authors of Sentinel (HashiCorp). Do not contact them if you find any issues with this parser!
@@ -134,6 +135,6 @@ There are still many thing to complete
 
 * [ ] Describe more about the generation scripts
 
-* [ ] Actually do a 0.0.1 release
+* [x] Actually do a 0.0.1 release
 
 * [ ] What does a v1.0 release look like?
