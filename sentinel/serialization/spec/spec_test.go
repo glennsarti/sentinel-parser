@@ -144,7 +144,6 @@ func testSpecFile(filename, parentPath, sentinelVersion string, sut serializersU
 				}
 
 				if diff := cmp.Diff(expectedAst, actualAst); diff != "" {
-					//t.Fatal("DIFF")
 					t.Fatal(diff)
 				}
 			})
