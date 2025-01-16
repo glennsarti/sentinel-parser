@@ -4,6 +4,11 @@ package features
 // DO NOT MODIFY MANUALLY
 
 var SentinelVersions = []string{
+	"v0.40.0",
+	"v0.30.0",
+	"v0.29.0",
+	"v0.28.0",
+	"v0.27.0",
 	"v0.26.3",
 	"v0.26.2",
 	"v0.26.1",
