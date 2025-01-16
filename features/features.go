@@ -50,19 +50,51 @@ func SupportedFeatures(sentinelversion string) SentinelFeatures {
 	}
 }
 
+// Whether the Sentinel version is the same or later than another version, typically
+// the version when a feature was introduced.
 func SupportedVersion(sentinelVersion, minimumVersion string) bool {
-	return sentinelVersion == LatestSentinelVersion ||
-		semver.Compare(minimumVersion, sentinelVersion) <= 0
-}
-
-func UnsupportedVersion(sentinelVersion, minimumVersion string) bool {
-	return !SupportedVersion(sentinelVersion, minimumVersion)
-}
-
-func ValidateSentinelVersion(sentinelVersion string) (bool, string) {
-	if sentinelVersion == LatestSentinelVersion || sentinelVersion == "" {
-		return true, LatestSentinelVersion
+	actual := sentinelVersion
+	if actual == LatestSentinelVersion || actual == "" {
+		actual = SentinelVersions[0]
 	}
 
-	return semver.IsValid(sentinelVersion), sentinelVersion
+	if !semver.IsValid(minimumVersion) || !semver.IsValid(actual) {
+		return false
+	}
+
+	return semver.Compare(minimumVersion, actual) <= 0
+}
+
+// Whether the Sentinel version is earlier than another version, typically
+// the version when a feature was introduced.
+func UnsupportedVersion(sentinelVersion, minimumVersion string) bool {
+	actual := sentinelVersion
+	if actual == LatestSentinelVersion || actual == "" {
+		actual = SentinelVersions[0]
+	}
+
+	if !semver.IsValid(minimumVersion) || !semver.IsValid(actual) {
+		return false
+	}
+
+	return semver.Compare(minimumVersion, actual) > 0
+}
+
+// Validates a Semver string is valid, and resolves to an existing Sentinel version
+func ValidateSentinelVersion(sentinelVersion string) (bool, string) {
+	if sentinelVersion == LatestSentinelVersion || sentinelVersion == "" {
+		return true, SentinelVersions[0]
+	}
+
+	if !semver.IsValid(sentinelVersion) {
+		return false, sentinelVersion
+	}
+
+	for _, ver := range SentinelVersions {
+		if semver.Compare(ver, sentinelVersion) == 0 {
+			return true, ver
+		}
+	}
+
+	return false, sentinelVersion
 }
