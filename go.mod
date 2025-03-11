@@ -3,7 +3,7 @@ module github.com/glennsarti/sentinel-parser
 go 1.22.5
 
 require (
-	github.com/google/go-cmp v0.6.0
+	github.com/google/go-cmp v0.7.0
 	github.com/hashicorp/hcl/v2 v2.23.0
 	github.com/zclconf/go-cty v1.16.0
 	golang.org/x/mod v0.22.0
