@@ -33,8 +33,8 @@ func overrideFileWith(this, other *ast.File, overrideValues bool, sentinelVersio
 	}
 
 	// Globals
-	if other.Globals != nil && len(other.Globals) > 0 {
-		d := overrideMap[ast.Global](
+	if len(other.Globals) > 0 {
+		d := overrideMap(
 			this.Globals,
 			other.Globals,
 			func(name string) diagnostics.Diagnostics {
@@ -46,14 +46,14 @@ func overrideFileWith(this, other *ast.File, overrideValues bool, sentinelVersio
 	}
 
 	// Imports
-	if other.Imports != nil && len(other.Imports) > 0 {
+	if len(other.Imports) > 0 {
 		d := overrideImports(this, other, overrideValues)
 		diags = append(diags, d...)
 	}
 
 	// Mocks
-	if other.Mocks != nil && len(other.Mocks) > 0 {
-		d := overrideMap[ast.Mock](
+	if len(other.Mocks) > 0 {
+		d := overrideMap(
 			this.Mocks,
 			other.Mocks,
 			func(name string) diagnostics.Diagnostics {
@@ -65,8 +65,8 @@ func overrideFileWith(this, other *ast.File, overrideValues bool, sentinelVersio
 	}
 
 	// Params
-	if other.Params != nil && len(other.Params) > 0 {
-		d := overrideMap[ast.Parameter](
+	if len(other.Params) > 0 {
+		d := overrideMap(
 			this.Params,
 			other.Params,
 			func(name string) diagnostics.Diagnostics {
@@ -78,8 +78,8 @@ func overrideFileWith(this, other *ast.File, overrideValues bool, sentinelVersio
 	}
 
 	// Policies
-	if other.Policies != nil && len(other.Policies) > 0 {
-		d := overrideMap[ast.Policy](
+	if len(other.Policies) > 0 {
+		d := overrideMap(
 			this.Policies,
 			other.Policies,
 			func(name string) diagnostics.Diagnostics {
