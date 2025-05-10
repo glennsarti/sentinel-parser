@@ -75,9 +75,11 @@ func (l *lexer) NextToken() (int, int, token.Token) {
 
 		tokStart := startPos
 		tokEnd := l.position
-		if tok.Type == token.IS {
+
+		switch tok.Type {
+		case token.IS:
 			tokStart, tokEnd, tok = l.readAfterIsToken(startPos)
-		} else if tok.Type == token.NOTSTR {
+		case token.NOTSTR:
 			tokStart, tokEnd, tok = l.readNotToken(tokStart, tokEnd, tok)
 		}
 
@@ -435,7 +437,7 @@ func (l *lexer) peekTrailingCommentsHaveNewLine() bool {
 						l.readChar()
 						if l.ch == '/' {
 							// End of comment marker `*/`
-							break
+							return true
 						}
 					}
 				}

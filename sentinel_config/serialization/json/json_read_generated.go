@@ -57,7 +57,7 @@ func (jc *jsonCoder) read(data []byte) (ast.Node, error) {
 		return jc.readV2StaticImport(raw)
 
 	default:
-		return nil, fmt.Errorf("Unknown type %q while deserializing", raw.AstType)
+		return nil, fmt.Errorf("unknown type %q while deserializing", raw.AstType)
 	}
 }
 
@@ -70,7 +70,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 	switch intoActual := into.(type) {
 	case *ast.Feature:
 		if resultActual, ok := result.(*ast.Feature); !ok {
-			return fmt.Errorf("Expected to decode a Feature but it was not")
+			return fmt.Errorf("expected to decode a Feature but it was not")
 		} else {
 			intoActual.Name = resultActual.Name
 			intoActual.NameRange = resultActual.NameRange
@@ -80,7 +80,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.File:
 		if resultActual, ok := result.(*ast.File); !ok {
-			return fmt.Errorf("Expected to decode a File but it was not")
+			return fmt.Errorf("expected to decode a File but it was not")
 		} else {
 			intoActual.Globals = resultActual.Globals
 			intoActual.Imports = resultActual.Imports
@@ -92,7 +92,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.Global:
 		if resultActual, ok := result.(*ast.Global); !ok {
-			return fmt.Errorf("Expected to decode a Global but it was not")
+			return fmt.Errorf("expected to decode a Global but it was not")
 		} else {
 			intoActual.GlobalRange = resultActual.GlobalRange
 			intoActual.Name = resultActual.Name
@@ -103,7 +103,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.Mock:
 		if resultActual, ok := result.(*ast.Mock); !ok {
-			return fmt.Errorf("Expected to decode a Mock but it was not")
+			return fmt.Errorf("expected to decode a Mock but it was not")
 		} else {
 			intoActual.Data = resultActual.Data
 			intoActual.DataRange = resultActual.DataRange
@@ -114,7 +114,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.MockModule:
 		if resultActual, ok := result.(*ast.MockModule); !ok {
-			return fmt.Errorf("Expected to decode a MockModule but it was not")
+			return fmt.Errorf("expected to decode a MockModule but it was not")
 		} else {
 			intoActual.MockModuleRange = resultActual.MockModuleRange
 			intoActual.Source = resultActual.Source
@@ -122,7 +122,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.Parameter:
 		if resultActual, ok := result.(*ast.Parameter); !ok {
-			return fmt.Errorf("Expected to decode a Parameter but it was not")
+			return fmt.Errorf("expected to decode a Parameter but it was not")
 		} else {
 			intoActual.Name = resultActual.Name
 			intoActual.NameRange = resultActual.NameRange
@@ -133,7 +133,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.Policy:
 		if resultActual, ok := result.(*ast.Policy); !ok {
-			return fmt.Errorf("Expected to decode a Policy but it was not")
+			return fmt.Errorf("expected to decode a Policy but it was not")
 		} else {
 			intoActual.EnforcementLevel = resultActual.EnforcementLevel
 			intoActual.EnforcementLevelRange = resultActual.EnforcementLevelRange
@@ -147,7 +147,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.SentinelOptions:
 		if resultActual, ok := result.(*ast.SentinelOptions); !ok {
-			return fmt.Errorf("Expected to decode a SentinelOptions but it was not")
+			return fmt.Errorf("expected to decode a SentinelOptions but it was not")
 		} else {
 			intoActual.Features = resultActual.Features
 			intoActual.FeaturesRange = resultActual.FeaturesRange
@@ -155,7 +155,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.Test:
 		if resultActual, ok := result.(*ast.Test); !ok {
-			return fmt.Errorf("Expected to decode a Test but it was not")
+			return fmt.Errorf("expected to decode a Test but it was not")
 		} else {
 			intoActual.Rules = resultActual.Rules
 			intoActual.RulesRange = resultActual.RulesRange
@@ -163,7 +163,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.TestRule:
 		if resultActual, ok := result.(*ast.TestRule); !ok {
-			return fmt.Errorf("Expected to decode a TestRule but it was not")
+			return fmt.Errorf("expected to decode a TestRule but it was not")
 		} else {
 			intoActual.Name = resultActual.Name
 			intoActual.NameRange = resultActual.NameRange
@@ -173,7 +173,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.V1ModuleImport:
 		if resultActual, ok := result.(*ast.V1ModuleImport); !ok {
-			return fmt.Errorf("Expected to decode a V1ModuleImport but it was not")
+			return fmt.Errorf("expected to decode a V1ModuleImport but it was not")
 		} else {
 			intoActual.BlockRange = resultActual.BlockRange
 			intoActual.Name = resultActual.Name
@@ -183,7 +183,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.V1PluginImport:
 		if resultActual, ok := result.(*ast.V1PluginImport); !ok {
-			return fmt.Errorf("Expected to decode a V1PluginImport but it was not")
+			return fmt.Errorf("expected to decode a V1PluginImport but it was not")
 		} else {
 			intoActual.Args = resultActual.Args
 			intoActual.ArgsRange = resultActual.ArgsRange
@@ -199,7 +199,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.V2ModuleImport:
 		if resultActual, ok := result.(*ast.V2ModuleImport); !ok {
-			return fmt.Errorf("Expected to decode a V2ModuleImport but it was not")
+			return fmt.Errorf("expected to decode a V2ModuleImport but it was not")
 		} else {
 			intoActual.BlockRange = resultActual.BlockRange
 			intoActual.Kind = resultActual.Kind
@@ -211,7 +211,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.V2PluginImport:
 		if resultActual, ok := result.(*ast.V2PluginImport); !ok {
-			return fmt.Errorf("Expected to decode a V2PluginImport but it was not")
+			return fmt.Errorf("expected to decode a V2PluginImport but it was not")
 		} else {
 			intoActual.Args = resultActual.Args
 			intoActual.ArgsRange = resultActual.ArgsRange
@@ -229,7 +229,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.V2StaticImport:
 		if resultActual, ok := result.(*ast.V2StaticImport); !ok {
-			return fmt.Errorf("Expected to decode a V2StaticImport but it was not")
+			return fmt.Errorf("expected to decode a V2StaticImport but it was not")
 		} else {
 			intoActual.BlockRange = resultActual.BlockRange
 			intoActual.Format = resultActual.Format
@@ -243,7 +243,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 
 	default:
-		return fmt.Errorf("Unknown type %T while deserializing", intoActual)
+		return fmt.Errorf("unknown type %T while deserializing", intoActual)
 	}
 
 	return nil
@@ -1387,6 +1387,6 @@ func (jc *jsonCoder) readImport(data rawJsonObject) (ast.Import, error) {
 		return jc.readV2StaticImport(data)
 
 	default:
-		return nil, fmt.Errorf("Unknown type import %q while deserializing", data.AstType)
+		return nil, fmt.Errorf("unknown type import %q while deserializing", data.AstType)
 	}
 }

@@ -60,8 +60,8 @@ func (jc *jsonCoder) writeSourceRange(src position.SourceRange, writer io.Writer
 
 func (jc *jsonCoder) writeSourceRangePointer(src *position.SourceRange, writer io.Writer) error {
 	if src == nil {
-		fmt.Fprintf(writer, "null")
-		return nil
+		_, err := fmt.Fprintf(writer, "null")
+		return err
 	} else {
 		return jc.writeSourceRange(*src, writer)
 	}
@@ -69,8 +69,8 @@ func (jc *jsonCoder) writeSourceRangePointer(src *position.SourceRange, writer i
 
 func (jc *jsonCoder) writeNilableNode(src ast.Node, writer io.Writer) error {
 	if src == nil {
-		fmt.Fprintf(writer, "null")
-		return nil
+		_, err := fmt.Fprintf(writer, "null")
+		return err
 	} else {
 		return jc.write(src, writer)
 	}

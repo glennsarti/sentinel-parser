@@ -270,7 +270,7 @@ function generateReadIntoTypes() {
 
 		output = output + `\tcase *ast.${objSchema.name}:\n` +
 			`\t\tif resultActual, ok := result.(*ast.${objSchema.name}); !ok {\n` +
-			`\t\t\treturn fmt.Errorf("Expected to decode a ${objSchema.name} but it was not")\n` +
+			`\t\t\treturn fmt.Errorf("expected to decode a ${objSchema.name} but it was not")\n` +
 			`\t\t} else {\n`
 		for (let index = 0; index < objSchema.properties.length; index++) {
 			let prop = objSchema.properties[index];
@@ -338,7 +338,7 @@ func (jc *jsonCoder) read(data []byte) (ast.Node, error) {
 	switch raw.AstType {
 ${generateReadVisitSwitch()}
 	default:
-		return nil, fmt.Errorf("Unknown type %q while deserializing", raw.AstType)
+		return nil, fmt.Errorf("unknown type %q while deserializing", raw.AstType)
 	}
 }
 
@@ -351,7 +351,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 	switch intoActual := into.(type) {
 ${generateReadIntoTypes()}
 	default:
-		return fmt.Errorf("Unknown type %T while deserializing", intoActual)
+		return fmt.Errorf("unknown type %T while deserializing", intoActual)
 	}
 
 	return nil
@@ -362,7 +362,7 @@ func (jc *jsonCoder) readImport(data rawJsonObject) (ast.Import, error) {
 	switch data.AstType {
 ${generateReadImportTypes()}
 	default:
-		return nil, fmt.Errorf("Unknown type import %q while deserializing", data.AstType)
+		return nil, fmt.Errorf("unknown type import %q while deserializing", data.AstType)
 	}
 }
 `;

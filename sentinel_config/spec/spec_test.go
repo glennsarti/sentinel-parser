@@ -81,7 +81,7 @@ func processTestFixturesDir(relPath, srcDir, sentinelVersion string, t *testing.
 
 func createSpecFileFromSentinel(filename, parentPath, sentinelVersion string, t *testing.T) error {
 	srcFile := path.Join(parentPath, filename)
-	dstFilename := strings.Replace(filename, ".hcl", ".txtar", -1)
+	dstFilename := strings.ReplaceAll(filename, ".hcl", ".txtar")
 	dstFile := path.Join(parentPath, dstFilename)
 
 	f, err := os.Open(srcFile)
@@ -92,7 +92,9 @@ func createSpecFileFromSentinel(filename, parentPath, sentinelVersion string, t 
 	if err != nil {
 		return err
 	}
-	f.Close()
+	if err := f.Close(); err != nil {
+		return err
+	}
 
 	// Must end in LF
 	if contents[len(contents)-1] != 10 {

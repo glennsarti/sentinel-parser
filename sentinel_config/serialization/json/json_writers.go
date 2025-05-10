@@ -54,7 +54,9 @@ func (jc *jsonCoder) writeLiteralString(value string, writer io.Writer) error {
 }
 
 func (jc *jsonCoder) writeLiteralStringList(values []string, writer io.Writer) error {
-	fmt.Fprint(writer, `[`)
+	if _, err := fmt.Fprint(writer, `[`); err != nil {
+		return nil
+	}
 	for idx, value := range values {
 		if idx > 0 {
 			if _, err := fmt.Fprint(writer, `,`); err != nil {
@@ -71,8 +73,8 @@ func (jc *jsonCoder) writeLiteralStringList(values []string, writer io.Writer) e
 
 func (jc *jsonCoder) writeSourceRange(src *position.SourceRange, writer io.Writer) error {
 	if src == nil {
-		fmt.Fprintf(writer, "null")
-		return nil
+		_, err := fmt.Fprintf(writer, "null")
+		return err
 	}
 
 	if v, err := json.Marshal(src); err != nil {
