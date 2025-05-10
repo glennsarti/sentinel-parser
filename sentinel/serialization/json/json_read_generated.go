@@ -96,7 +96,7 @@ func (jc *jsonCoder) read(data []byte) (ast.Node, error) {
 		return jc.readUnaryExpression(raw)
 
 	default:
-		return nil, fmt.Errorf("Unknown type %q while deserializing", raw.AstType)
+		return nil, fmt.Errorf("unknown type %q while deserializing", raw.AstType)
 	}
 }
 
@@ -109,7 +109,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 	switch intoActual := into.(type) {
 	case *ast.AssignStatement:
 		if resultActual, ok := result.(*ast.AssignStatement); !ok {
-			return fmt.Errorf("Expected to decode a AssignStatement but it was not")
+			return fmt.Errorf("expected to decode a AssignStatement but it was not")
 		} else {
 			intoActual.AssignOp = resultActual.AssignOp
 			intoActual.AssignOpPos = resultActual.AssignOpPos
@@ -119,19 +119,19 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.BadExpression:
 		if resultActual, ok := result.(*ast.BadExpression); !ok {
-			return fmt.Errorf("Expected to decode a BadExpression but it was not")
+			return fmt.Errorf("expected to decode a BadExpression but it was not")
 		} else {
 			intoActual.NodePos = resultActual.NodePos
 		}
 	case *ast.BadStatement:
 		if resultActual, ok := result.(*ast.BadStatement); !ok {
-			return fmt.Errorf("Expected to decode a BadStatement but it was not")
+			return fmt.Errorf("expected to decode a BadStatement but it was not")
 		} else {
 			intoActual.NodePos = resultActual.NodePos
 		}
 	case *ast.BasicLit:
 		if resultActual, ok := result.(*ast.BasicLit); !ok {
-			return fmt.Errorf("Expected to decode a BasicLit but it was not")
+			return fmt.Errorf("expected to decode a BasicLit but it was not")
 		} else {
 			intoActual.Kind = resultActual.Kind
 			intoActual.NodePos = resultActual.NodePos
@@ -139,7 +139,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.BinaryExpression:
 		if resultActual, ok := result.(*ast.BinaryExpression); !ok {
-			return fmt.Errorf("Expected to decode a BinaryExpression but it was not")
+			return fmt.Errorf("expected to decode a BinaryExpression but it was not")
 		} else {
 			intoActual.LeftExpr = resultActual.LeftExpr
 			intoActual.NodePos = resultActual.NodePos
@@ -149,7 +149,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.BlockStatement:
 		if resultActual, ok := result.(*ast.BlockStatement); !ok {
-			return fmt.Errorf("Expected to decode a BlockStatement but it was not")
+			return fmt.Errorf("expected to decode a BlockStatement but it was not")
 		} else {
 			intoActual.LeftBrace = resultActual.LeftBrace
 			intoActual.NodePos = resultActual.NodePos
@@ -158,14 +158,14 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.BranchStatement:
 		if resultActual, ok := result.(*ast.BranchStatement); !ok {
-			return fmt.Errorf("Expected to decode a BranchStatement but it was not")
+			return fmt.Errorf("expected to decode a BranchStatement but it was not")
 		} else {
 			intoActual.Kind = resultActual.Kind
 			intoActual.NodePos = resultActual.NodePos
 		}
 	case *ast.CallExpression:
 		if resultActual, ok := result.(*ast.CallExpression); !ok {
-			return fmt.Errorf("Expected to decode a CallExpression but it was not")
+			return fmt.Errorf("expected to decode a CallExpression but it was not")
 		} else {
 			intoActual.Args = resultActual.Args
 			intoActual.Callee = resultActual.Callee
@@ -175,7 +175,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.CaseWhenClause:
 		if resultActual, ok := result.(*ast.CaseWhenClause); !ok {
-			return fmt.Errorf("Expected to decode a CaseWhenClause but it was not")
+			return fmt.Errorf("expected to decode a CaseWhenClause but it was not")
 		} else {
 			intoActual.ColonPos = resultActual.ColonPos
 			intoActual.Conditions = resultActual.Conditions
@@ -186,7 +186,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.CaseStatement:
 		if resultActual, ok := result.(*ast.CaseStatement); !ok {
-			return fmt.Errorf("Expected to decode a CaseStatement but it was not")
+			return fmt.Errorf("expected to decode a CaseStatement but it was not")
 		} else {
 			intoActual.CasePos = resultActual.CasePos
 			intoActual.Clauses = resultActual.Clauses
@@ -195,7 +195,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.Comment:
 		if resultActual, ok := result.(*ast.Comment); !ok {
-			return fmt.Errorf("Expected to decode a Comment but it was not")
+			return fmt.Errorf("expected to decode a Comment but it was not")
 		} else {
 			intoActual.NodePos = resultActual.NodePos
 			intoActual.Prefix = resultActual.Prefix
@@ -205,28 +205,28 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.Comments:
 		if resultActual, ok := result.(*ast.Comments); !ok {
-			return fmt.Errorf("Expected to decode a Comments but it was not")
+			return fmt.Errorf("expected to decode a Comments but it was not")
 		} else {
 			intoActual.List = resultActual.List
 			intoActual.NodePos = resultActual.NodePos
 		}
 	case *ast.EmptyStatement:
 		if resultActual, ok := result.(*ast.EmptyStatement); !ok {
-			return fmt.Errorf("Expected to decode a EmptyStatement but it was not")
+			return fmt.Errorf("expected to decode a EmptyStatement but it was not")
 		} else {
 			intoActual.Implied = resultActual.Implied
 			intoActual.NodePos = resultActual.NodePos
 		}
 	case *ast.ExpressionStatement:
 		if resultActual, ok := result.(*ast.ExpressionStatement); !ok {
-			return fmt.Errorf("Expected to decode a ExpressionStatement but it was not")
+			return fmt.Errorf("expected to decode a ExpressionStatement but it was not")
 		} else {
 			intoActual.Expr = resultActual.Expr
 			intoActual.NodePos = resultActual.NodePos
 		}
 	case *ast.FieldList:
 		if resultActual, ok := result.(*ast.FieldList); !ok {
-			return fmt.Errorf("Expected to decode a FieldList but it was not")
+			return fmt.Errorf("expected to decode a FieldList but it was not")
 		} else {
 			intoActual.Fields = resultActual.Fields
 			intoActual.LeftParen = resultActual.LeftParen
@@ -235,7 +235,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.File:
 		if resultActual, ok := result.(*ast.File); !ok {
-			return fmt.Errorf("Expected to decode a File but it was not")
+			return fmt.Errorf("expected to decode a File but it was not")
 		} else {
 			intoActual.Doc = resultActual.Doc
 			intoActual.Imports = resultActual.Imports
@@ -245,7 +245,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.FuncDecl:
 		if resultActual, ok := result.(*ast.FuncDecl); !ok {
-			return fmt.Errorf("Expected to decode a FuncDecl but it was not")
+			return fmt.Errorf("expected to decode a FuncDecl but it was not")
 		} else {
 			intoActual.Body = resultActual.Body
 			intoActual.Doc = resultActual.Doc
@@ -256,7 +256,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.FuncLit:
 		if resultActual, ok := result.(*ast.FuncLit); !ok {
-			return fmt.Errorf("Expected to decode a FuncLit but it was not")
+			return fmt.Errorf("expected to decode a FuncLit but it was not")
 		} else {
 			intoActual.Body = resultActual.Body
 			intoActual.FuncPos = resultActual.FuncPos
@@ -265,14 +265,14 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.Ident:
 		if resultActual, ok := result.(*ast.Ident); !ok {
-			return fmt.Errorf("Expected to decode a Ident but it was not")
+			return fmt.Errorf("expected to decode a Ident but it was not")
 		} else {
 			intoActual.Name = resultActual.Name
 			intoActual.NodePos = resultActual.NodePos
 		}
 	case *ast.IfStatement:
 		if resultActual, ok := result.(*ast.IfStatement); !ok {
-			return fmt.Errorf("Expected to decode a IfStatement but it was not")
+			return fmt.Errorf("expected to decode a IfStatement but it was not")
 		} else {
 			intoActual.Condition = resultActual.Condition
 			intoActual.ElsePos = resultActual.ElsePos
@@ -283,7 +283,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.ImportDecl:
 		if resultActual, ok := result.(*ast.ImportDecl); !ok {
-			return fmt.Errorf("Expected to decode a ImportDecl but it was not")
+			return fmt.Errorf("expected to decode a ImportDecl but it was not")
 		} else {
 			intoActual.Alias = resultActual.Alias
 			intoActual.AsPos = resultActual.AsPos
@@ -294,7 +294,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.IndexExpression:
 		if resultActual, ok := result.(*ast.IndexExpression); !ok {
-			return fmt.Errorf("Expected to decode a IndexExpression but it was not")
+			return fmt.Errorf("expected to decode a IndexExpression but it was not")
 		} else {
 			intoActual.Index = resultActual.Index
 			intoActual.LeftBrack = resultActual.LeftBrack
@@ -304,7 +304,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.ForStatement:
 		if resultActual, ok := result.(*ast.ForStatement); !ok {
-			return fmt.Errorf("Expected to decode a ForStatement but it was not")
+			return fmt.Errorf("expected to decode a ForStatement but it was not")
 		} else {
 			intoActual.AsPos = resultActual.AsPos
 			intoActual.Block = resultActual.Block
@@ -316,7 +316,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.GroupExpression:
 		if resultActual, ok := result.(*ast.GroupExpression); !ok {
-			return fmt.Errorf("Expected to decode a GroupExpression but it was not")
+			return fmt.Errorf("expected to decode a GroupExpression but it was not")
 		} else {
 			intoActual.LeftParen = resultActual.LeftParen
 			intoActual.NodePos = resultActual.NodePos
@@ -325,7 +325,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.KeyedElementExpression:
 		if resultActual, ok := result.(*ast.KeyedElementExpression); !ok {
-			return fmt.Errorf("Expected to decode a KeyedElementExpression but it was not")
+			return fmt.Errorf("expected to decode a KeyedElementExpression but it was not")
 		} else {
 			intoActual.ColonPos = resultActual.ColonPos
 			intoActual.Key = resultActual.Key
@@ -334,7 +334,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.ListLit:
 		if resultActual, ok := result.(*ast.ListLit); !ok {
-			return fmt.Errorf("Expected to decode a ListLit but it was not")
+			return fmt.Errorf("expected to decode a ListLit but it was not")
 		} else {
 			intoActual.Items = resultActual.Items
 			intoActual.LeftBrack = resultActual.LeftBrack
@@ -343,7 +343,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.MapLit:
 		if resultActual, ok := result.(*ast.MapLit); !ok {
-			return fmt.Errorf("Expected to decode a MapLit but it was not")
+			return fmt.Errorf("expected to decode a MapLit but it was not")
 		} else {
 			intoActual.Elements = resultActual.Elements
 			intoActual.LeftBrace = resultActual.LeftBrace
@@ -352,7 +352,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.ParamDecl:
 		if resultActual, ok := result.(*ast.ParamDecl); !ok {
-			return fmt.Errorf("Expected to decode a ParamDecl but it was not")
+			return fmt.Errorf("expected to decode a ParamDecl but it was not")
 		} else {
 			intoActual.Default = resultActual.Default
 			intoActual.DefaultPos = resultActual.DefaultPos
@@ -362,7 +362,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.QuantExpression:
 		if resultActual, ok := result.(*ast.QuantExpression); !ok {
-			return fmt.Errorf("Expected to decode a QuantExpression but it was not")
+			return fmt.Errorf("expected to decode a QuantExpression but it was not")
 		} else {
 			intoActual.AsPos = resultActual.AsPos
 			intoActual.CommaPos = resultActual.CommaPos
@@ -378,7 +378,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.ReturnStatement:
 		if resultActual, ok := result.(*ast.ReturnStatement); !ok {
-			return fmt.Errorf("Expected to decode a ReturnStatement but it was not")
+			return fmt.Errorf("expected to decode a ReturnStatement but it was not")
 		} else {
 			intoActual.NodePos = resultActual.NodePos
 			intoActual.Result = resultActual.Result
@@ -386,7 +386,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.RuleExpression:
 		if resultActual, ok := result.(*ast.RuleExpression); !ok {
-			return fmt.Errorf("Expected to decode a RuleExpression but it was not")
+			return fmt.Errorf("expected to decode a RuleExpression but it was not")
 		} else {
 			intoActual.Doc = resultActual.Doc
 			intoActual.LeftBracePos = resultActual.LeftBracePos
@@ -399,7 +399,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.SelectorExpression:
 		if resultActual, ok := result.(*ast.SelectorExpression); !ok {
-			return fmt.Errorf("Expected to decode a SelectorExpression but it was not")
+			return fmt.Errorf("expected to decode a SelectorExpression but it was not")
 		} else {
 			intoActual.NodePos = resultActual.NodePos
 			intoActual.Selector = resultActual.Selector
@@ -407,7 +407,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.SliceExpression:
 		if resultActual, ok := result.(*ast.SliceExpression); !ok {
-			return fmt.Errorf("Expected to decode a SliceExpression but it was not")
+			return fmt.Errorf("expected to decode a SliceExpression but it was not")
 		} else {
 			intoActual.Colon = resultActual.Colon
 			intoActual.HighExpr = resultActual.HighExpr
@@ -419,7 +419,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 	case *ast.UnaryExpression:
 		if resultActual, ok := result.(*ast.UnaryExpression); !ok {
-			return fmt.Errorf("Expected to decode a UnaryExpression but it was not")
+			return fmt.Errorf("expected to decode a UnaryExpression but it was not")
 		} else {
 			intoActual.NodePos = resultActual.NodePos
 			intoActual.Op = resultActual.Op
@@ -428,7 +428,7 @@ func (jc *jsonCoder) readInto(data []byte, into ast.Node) error {
 		}
 
 	default:
-		return fmt.Errorf("Unknown type %T while deserializing", intoActual)
+		return fmt.Errorf("unknown type %T while deserializing", intoActual)
 	}
 
 	return nil
@@ -2367,7 +2367,7 @@ func (jc *jsonCoder) readExpression(data rawJsonObject) (ast.Expression, error) 
 		return jc.readUnaryExpression(data)
 
 	default:
-		return nil, fmt.Errorf("Unknown type %q while deserializing expression", data.AstType)
+		return nil, fmt.Errorf("unknown type %q while deserializing expression", data.AstType)
 	}
 }
 
@@ -2399,6 +2399,6 @@ func (jc *jsonCoder) readStatement(data rawJsonObject) (ast.Statement, error) {
 		return jc.readReturnStatement(data)
 
 	default:
-		return nil, fmt.Errorf("Unknown type %q while deserializing statement", data.AstType)
+		return nil, fmt.Errorf("unknown type %q while deserializing statement", data.AstType)
 	}
 }

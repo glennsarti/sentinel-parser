@@ -50,7 +50,7 @@ func (fv *fileValidator) multiImportSchema() {
 	}
 
 	// Do we have multiple versions?
-	if !(hasV1 && hasV2) {
+	if !hasV1 || !hasV2 {
 		return
 	}
 
