@@ -11,7 +11,7 @@ require (
 	golang.org/x/mod v0.27.0
 )
 
-require golang.org/x/tools v0.35.0
+require golang.org/x/tools v0.36.0
 
 require (
 	github.com/agext/levenshtein v1.2.3 // indirect
