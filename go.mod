@@ -6,7 +6,7 @@ require (
 	github.com/google/go-cmp v0.7.0
 	github.com/hashicorp/hcl/v2 v2.24.0
 	github.com/zclconf/go-cty v1.17.0
-	golang.org/x/mod v0.32.0
+	golang.org/x/mod v0.33.0
 )
 
 require golang.org/x/tools v0.41.0
